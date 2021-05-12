@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Models;
 
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(UsuarioDBContext))]
-    partial class DonationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210511190903_usuario")]
+    partial class usuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,9 +30,6 @@ namespace WebAPI.Migrations
                     b.Property<string>("apellido")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("direccion")
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<int>("edad")
                         .HasColumnType("int");
 
@@ -38,6 +37,9 @@ namespace WebAPI.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("nombre")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("password")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("rol")

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace WebAPI.Models
 {
@@ -7,7 +8,6 @@ namespace WebAPI.Models
     {
         [Key]
         public int id { get; set; }
-
 
         [Column(TypeName = "nvarchar(50)")]
         public string rol { get; set; }
@@ -21,9 +21,11 @@ namespace WebAPI.Models
         [Column(TypeName = "nvarchar(100)")]
         public string email { get; set; }
 
+        
+        [Column(TypeName = "nvarchar(100)")]
+        public string password { get; set; }
+
         public int edad { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
-        public string direccion { get; set; }
     }
 }
