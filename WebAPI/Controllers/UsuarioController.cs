@@ -88,8 +88,16 @@ namespace WebAPI.Controllers
             };
 
             _context.Usuarios.Add(user);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction("GetUsuario", new { id = usuario.id }, usuario);
+
+            if (!EmailExists(user.email))
+            {
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetUsuario", new { id = usuario.id }, usuario);
+            }
+            else
+            {
+                return BadRequest(new { message = "Email ya existe en Base de Datos" });
+            }
         }
 
         // DELETE: api/Usuario/5
@@ -113,7 +121,12 @@ namespace WebAPI.Controllers
             return _context.Usuarios.Any(e => e.id == id);
         }
 
-        
+        private bool EmailExists(string email)
+        {
+            return _context.Usuarios.Any(e => e.email == email);
+        }
+
+
         [HttpPost("login")]
         public IActionResult Login(Usuario usuario)
         {
