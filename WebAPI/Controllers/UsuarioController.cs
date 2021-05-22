@@ -14,10 +14,10 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly UsuarioDBContext _context;
+        private readonly ApplicationDBContext _context;
         private readonly JwtService _jwtService;
        
-        public UsuarioController(UsuarioDBContext context, JwtService jwtService)
+        public UsuarioController(ApplicationDBContext context, JwtService jwtService)
         {
             _context = context;
             _jwtService = jwtService;

@@ -13,9 +13,9 @@ namespace WebAPI.Data
     }
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly UsuarioDBContext _context;
+        private readonly ApplicationDBContext _context;
 
-        public UsuarioRepository(UsuarioDBContext context)
+        public UsuarioRepository(ApplicationDBContext context)
         {
             _context = context;
         }
