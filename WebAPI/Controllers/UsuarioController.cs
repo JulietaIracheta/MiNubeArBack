@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Helpers;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -11,11 +14,14 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly UsuarioDBContext _context;
-
-        public UsuarioController(UsuarioDBContext context)
+        private readonly ApplicationDBContext _context;
+        private readonly JwtService _jwtService;
+       
+        public UsuarioController(ApplicationDBContext context, JwtService jwtService)
         {
             _context = context;
+            _jwtService = jwtService;
+            
         }
 
         // GET: api/Usuario
@@ -70,10 +76,28 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
         {
-            _context.Usuarios.Add(usuario);
-            await _context.SaveChangesAsync();
+            
+            var user = new Usuario
+            {
+                rol = usuario.rol,
+                nombre = usuario.nombre,
+                apellido = usuario.apellido,
+                email = usuario.email,
+                password = BCrypt.Net.BCrypt.HashPassword(usuario.password),
+                edad = usuario.edad
+            };
 
-            return CreatedAtAction("GetUsuario", new { id = usuario.id }, usuario);
+            _context.Usuarios.Add(user);
+
+            if (!EmailExists(user.email))
+            {
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetUsuario", new { id = usuario.id }, usuario);
+            }
+            else
+            {
+                return BadRequest(new { message = "Email ya existe en Base de Datos" });
+            }
         }
 
         // DELETE: api/Usuario/5
@@ -96,5 +120,65 @@ namespace WebAPI.Controllers
         {
             return _context.Usuarios.Any(e => e.id == id);
         }
+
+        private bool EmailExists(string email)
+        {
+            return _context.Usuarios.Any(e => e.email == email);
+        }
+
+
+        [HttpPost("login")]
+        public IActionResult Login(Usuario usuario)
+        {
+            var user = _context.Usuarios.FirstOrDefault(x => x.email == usuario.email);
+
+            if (user == null) return BadRequest(new { message = "Usuario invalido" });
+            
+            if(!BCrypt.Net.BCrypt.Verify(usuario.password, user.password))
+            {
+                return BadRequest(new { message = "Usuario invalido" });
+            }
+
+            var jwt = _jwtService.Generate(user.id);
+            Response.Cookies.Append("jwt", jwt, new CookieOptions
+            {
+                HttpOnly = true
+            }) ;
+            
+            return Ok(new { 
+                message = "sucess" });
+        }
+
+        [HttpGet("user")]
+        public IActionResult Usuario()
+        {
+            try
+            {
+                var jwt = Request.Cookies["jwt"];
+                var token = _jwtService.Verify(jwt);
+
+                int userId = int.Parse(token.Issuer);
+
+                var user = _context.Usuarios.FirstOrDefault(x => x.id == userId);
+                return Ok(user);
+
+            }
+            catch (Exception _)
+            {
+                return Unauthorized();
+            }
+
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("jwt");
+            return Ok(new
+            {
+                message = "sucess"
+            });
+        }
+
     }
 }

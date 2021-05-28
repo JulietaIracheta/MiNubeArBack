@@ -8,9 +8,9 @@ using WebAPI.Models;
 
 namespace WebAPI.Migrations
 {
-    [DbContext(typeof(UsuarioDBContext))]
-    [Migration("20210511000503_init2")]
-    partial class init2
+    [DbContext(typeof(ApplicationDBContext))]
+    [Migration("20210515194452_add1")]
+    partial class add1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,9 +30,6 @@ namespace WebAPI.Migrations
                     b.Property<string>("apellido")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("direccion")
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<int>("edad")
                         .HasColumnType("int");
 
@@ -40,6 +37,9 @@ namespace WebAPI.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("nombre")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("password")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("rol")

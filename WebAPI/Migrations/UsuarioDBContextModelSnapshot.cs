@@ -2,17 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Models;
 
 namespace WebAPI.Migrations
 {
-    [DbContext(typeof(UsuarioDBContext))]
-    [Migration("20210510225455_inicial")]
-    partial class inicial
+    [DbContext(typeof(ApplicationDBContext))]
+    partial class UsuarioDBContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,34 +18,34 @@ namespace WebAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebAPI.Models.DCandidate", b =>
+            modelBuilder.Entity("WebAPI.Models.Usuario", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("address")
+                    b.Property<string>("apellido")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("age")
+                    b.Property<int>("edad")
                         .HasColumnType("int");
-
-                    b.Property<string>("bloodGroup")
-                        .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("fullName")
+                    b.Property<string>("nombre")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("mobile")
-                        .HasColumnType("nvarchar(16)");
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("rol")
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("id");
 
-                    b.ToTable("DCandidates");
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }
