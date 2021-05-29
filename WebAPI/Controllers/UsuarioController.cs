@@ -14,10 +14,10 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
+        private readonly minubeDBContext _context;
         private readonly JwtService _jwtService;
        
-        public UsuarioController(ApplicationDBContext context, JwtService jwtService)
+        public UsuarioController(minubeDBContext context, JwtService jwtService)
         {
             _context = context;
             _jwtService = jwtService;
@@ -26,14 +26,14 @@ namespace WebAPI.Controllers
 
         // GET: api/Usuario
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
+        public async Task<ActionResult<IEnumerable<Usuarios>>> GetUsuarios()
         {
             return await _context.Usuarios.ToListAsync();
         }
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> GetUsuario(int id)
+        public async Task<ActionResult<Usuarios>> GetUsuario(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
 
@@ -47,9 +47,9 @@ namespace WebAPI.Controllers
 
         // PUT: api/usuario/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
+        public async Task<IActionResult> PutUsuario(int id, Usuarios usuario)
         {
-            usuario.id = id;
+            usuario.IdUsuario = id;
 
             _context.Entry(usuario).State = EntityState.Modified;
 
@@ -74,25 +74,22 @@ namespace WebAPI.Controllers
 
         // POST: api/Usuario
         [HttpPost]
-        public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
+        public async Task<ActionResult<Usuarios>> PostUsuario(Usuarios usuario)
         {
             
-            var user = new Usuario
+            var user = new Usuarios
             {
-                rol = usuario.rol,
-                nombre = usuario.nombre,
-                apellido = usuario.apellido,
-                email = usuario.email,
-                password = BCrypt.Net.BCrypt.HashPassword(usuario.password),
-                edad = usuario.edad
+                UsuarioNombre = usuario.UsuarioNombre,
+                IdPersona = usuario.IdPersona,
+                Password = usuario.Password
             };
 
             _context.Usuarios.Add(user);
 
-            if (!EmailExists(user.email))
+            if (!EmailExists(user.UsuarioNombre))
             {
                 await _context.SaveChangesAsync();
-                return CreatedAtAction("GetUsuario", new { id = usuario.id }, usuario);
+                return CreatedAtAction("GetUsuario", new { id = usuario.IdUsuario }, usuario);
             }
             else
             {
@@ -102,7 +99,7 @@ namespace WebAPI.Controllers
 
         // DELETE: api/Usuario/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Usuario>> DeleteUsuario(int id)
+        public async Task<ActionResult<Usuarios>> DeleteUsuario(int id)
         {
             var user = await _context.Usuarios.FindAsync(id);
             if (user == null)
@@ -118,28 +115,28 @@ namespace WebAPI.Controllers
 
         private bool UsuarioExists(int id)
         {
-            return _context.Usuarios.Any(e => e.id == id);
+            return _context.Usuarios.Any(e => e.IdUsuario == id);
         }
 
-        private bool EmailExists(string email)
+        private bool EmailExists(string usuarioNombre)
         {
-            return _context.Usuarios.Any(e => e.email == email);
+            return _context.Usuarios.Any(e => e.UsuarioNombre == usuarioNombre);
         }
 
 
         [HttpPost("login")]
-        public IActionResult Login(Usuario usuario)
+        public IActionResult Login(Usuarios usuario)
         {
-            var user = _context.Usuarios.FirstOrDefault(x => x.email == usuario.email);
+            var user = _context.Usuarios.Include(u=>u.IdPersonaNavigation).FirstOrDefault(x => x.IdPersonaNavigation.Email == usuario.UsuarioNombre);
 
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
-            
-            if(!BCrypt.Net.BCrypt.Verify(usuario.password, user.password))
+
+
+            /*if (!BCrypt.Net.BCrypt.Verify(usuario.UsuarioNombre, user.Password))
             {
                 return BadRequest(new { message = "Usuario invalido" });
-            }
-
-            var jwt = _jwtService.Generate(user.id);
+            }*/
+            var jwt = _jwtService.Generate(user.IdUsuario);
             Response.Cookies.Append("jwt", jwt, new CookieOptions
             {
                 HttpOnly = true
@@ -147,6 +144,31 @@ namespace WebAPI.Controllers
             
             return Ok(new { 
                 message = "sucess" });
+        }
+        [HttpPost("loginGoogle")]
+        public IActionResult LoginGoogle(string email)
+        {
+            var user = _context.Usuarios.Include(u => u.IdPersonaNavigation)
+                .Include(u=>u.UsuarioRol)
+                .FirstOrDefault(x => x.IdPersonaNavigation.Email == email);
+
+            if (user == null) return BadRequest(new { message = "Usuario invalido" });
+
+            /*if (!BCrypt.Net.BCrypt.Verify(email, user.Password))
+            {
+                return BadRequest(new { message = "Usuario invalido" });
+            }*/
+
+            var jwt = _jwtService.Generate(user.IdUsuario);
+            Response.Cookies.Append("jwt", jwt, new CookieOptions
+            {
+                HttpOnly = true
+            });
+
+            return Ok(new
+            {
+                message = "sucess"
+            });
         }
 
         [HttpGet("user")]
@@ -157,13 +179,13 @@ namespace WebAPI.Controllers
                 var jwt = Request.Cookies["jwt"];
                 var token = _jwtService.Verify(jwt);
 
-                int userId = int.Parse(token.Issuer);
+                var userId = Convert.ToInt32(token.Issuer);
 
-                var user = _context.Usuarios.FirstOrDefault(x => x.id == userId);
+                var user = _context.Usuarios.Include(u=>u.IdPersonaNavigation).FirstOrDefault(x => x.IdUsuario == userId);
                 return Ok(user);
 
             }
-            catch (Exception _)
+            catch (Exception e)
             {
                 return Unauthorized();
             }
