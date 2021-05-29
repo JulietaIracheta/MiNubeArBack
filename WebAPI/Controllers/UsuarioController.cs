@@ -127,15 +127,15 @@ namespace WebAPI.Controllers
         [HttpPost("login")]
         public IActionResult Login(Usuarios usuario)
         {
-            var user = _context.Usuarios.FirstOrDefault(x => x.UsuarioNombre == usuario.UsuarioNombre);
+            var user = _context.Usuarios.Include(u=>u.IdPersonaNavigation).FirstOrDefault(x => x.IdPersonaNavigation.Email == usuario.UsuarioNombre);
 
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
-            
-            if(!BCrypt.Net.BCrypt.Verify(usuario.UsuarioNombre, user.Password))
+
+
+            /*if (!BCrypt.Net.BCrypt.Verify(usuario.UsuarioNombre, user.Password))
             {
                 return BadRequest(new { message = "Usuario invalido" });
-            }
-
+            }*/
             var jwt = _jwtService.Generate(user.IdUsuario);
             Response.Cookies.Append("jwt", jwt, new CookieOptions
             {
