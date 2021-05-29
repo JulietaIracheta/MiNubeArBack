@@ -149,6 +149,7 @@ namespace WebAPI.Controllers
         public IActionResult LoginGoogle(string email)
         {
             var user = _context.Usuarios.Include(u => u.IdPersonaNavigation)
+                .Include(u=>u.UsuarioRol)
                 .FirstOrDefault(x => x.IdPersonaNavigation.Email == email);
 
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
@@ -178,9 +179,9 @@ namespace WebAPI.Controllers
                 var jwt = Request.Cookies["jwt"];
                 var token = _jwtService.Verify(jwt);
 
-                int userId = int.Parse(token.Issuer);
+                var userId = Convert.ToInt32(token.Issuer);
 
-                var user = _context.Usuarios.FirstOrDefault(x => x.IdUsuario == userId);
+                var user = _context.Usuarios.Include(u=>u.IdPersonaNavigation).FirstOrDefault(x => x.IdUsuario == userId);
                 return Ok(user);
 
             }
