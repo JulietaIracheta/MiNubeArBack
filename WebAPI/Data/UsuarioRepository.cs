@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using WebAPI.Models;
 
 namespace WebAPI.Data
@@ -9,20 +6,20 @@ namespace WebAPI.Data
 {
     public interface IUsuarioRepository
     {
-        Usuario GetByEmail(string email);
+        Usuarios GetByEmail(string email);
     }
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly ApplicationDBContext _context;
+        private readonly minubeDBContext _context;
 
-        public UsuarioRepository(ApplicationDBContext context)
+        public UsuarioRepository(minubeDBContext context)
         {
             _context = context;
         }
         
-        public Usuario GetByEmail(string email)
+        public Usuarios GetByEmail(string email)
         {
-            return _context.Usuarios.FirstOrDefault(x => x.email == email);
+            return _context.Usuarios.FirstOrDefault(x => x.UsuarioNombre == email);
         }
     }
 }

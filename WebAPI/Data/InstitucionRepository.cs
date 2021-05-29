@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebAPI.Models;
 
 namespace WebAPI.Data
@@ -9,20 +7,20 @@ namespace WebAPI.Data
 {
     public interface IInstitucionRepository
     {
-        Institucion GetById(int id);
+        Instituciones GetById(int id);
     }
     public class InstitucionRepository : IInstitucionRepository
     {
-        private readonly ApplicationDBContext _context;
+        private readonly minubeDBContext _context;
 
-        public InstitucionRepository(ApplicationDBContext context)
+        public InstitucionRepository(minubeDBContext context)
         {
             _context = context;
         }
         
-        public Institucion GetById(int id)
+        public Instituciones GetById(int id)
         {
-            return _context.Instituciones.FirstOrDefault(x => x.id == id);
+            return _context.Instituciones.FirstOrDefault(x => x.IdInstitucion == id);
         }
     }
 }

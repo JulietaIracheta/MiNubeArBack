@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebAPI.Helpers;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -14,9 +11,9 @@ namespace WebAPI.Controllers
     [ApiController]
     public class InstitucionController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
+        private readonly minubeDBContext _context;
 
-        public InstitucionController(ApplicationDBContext context)
+        public InstitucionController(minubeDBContext context)
         {
             _context = context;
 
@@ -24,14 +21,14 @@ namespace WebAPI.Controllers
 
         // GET: api/Instituciones
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Institucion>>> GetInstituciones()
+        public async Task<ActionResult<IEnumerable<Instituciones>>> GetInstituciones()
         {
             return await _context.Instituciones.ToListAsync();
         }
 
         // GET: api/Institucion/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Institucion>> GetInstitucion(int id)
+        public async Task<ActionResult<Instituciones>> GetInstitucion(int id)
         {
             var institucion = await _context.Instituciones.FindAsync(id);
 
@@ -45,9 +42,9 @@ namespace WebAPI.Controllers
 
         // PUT: api/Institucion/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInstitucion(int id, Institucion institucion)
+        public async Task<IActionResult> PutInstitucion(int id, Instituciones institucion)
         {
-            institucion.id = id;
+            institucion.IdInstitucion = id;
 
             _context.Entry(institucion).State = EntityState.Modified;
 
@@ -72,21 +69,22 @@ namespace WebAPI.Controllers
 
         // POST: api/Institucion
         [HttpPost]
-        public async Task<ActionResult<Institucion>> PostInstitucion(Institucion institucion)
+        public async Task<ActionResult<Instituciones>> PostInstitucion(Instituciones institucion)
         {
 
-            var user = new Institucion
+            var user = new Instituciones
             {
-                nombre = institucion.nombre,
-                email = institucion.email
+                Nombre = institucion.Nombre,
+                Email = institucion.Email,
+                Direccion = institucion.Direccion
             };
 
             _context.Instituciones.Add(user);
 
-            if (!EmailExists(user.email))
+            if (!EmailExists(user.Email))
             {
                 await _context.SaveChangesAsync();
-                return CreatedAtAction("GetInstitucion", new { id = institucion.id }, institucion);
+                return CreatedAtAction("GetInstitucion", new { id = institucion.IdInstitucion }, institucion);
             }
             else
             {
@@ -96,7 +94,7 @@ namespace WebAPI.Controllers
 
         // DELETE: api/institucion/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Institucion>> DeleteInstitucion(int id)
+        public async Task<ActionResult<Instituciones>> DeleteInstitucion(int id)
         {
             var user = await _context.Instituciones.FindAsync(id);
             if (user == null)
@@ -112,12 +110,12 @@ namespace WebAPI.Controllers
 
         private bool InstitucionExists(int id)
         {
-            return _context.Instituciones.Any(e => e.id == id);
+            return _context.Instituciones.Any(e => e.IdInstitucion == id);
         }
 
         private bool EmailExists(string email)
         {
-            return _context.Instituciones.Any(e => e.email == email);
+            return _context.Instituciones.Any(e => e.Email == email);
         }
 
 

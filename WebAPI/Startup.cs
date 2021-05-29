@@ -23,7 +23,7 @@ namespace WebAPI
         {
             services.AddCors();
 
-            services.AddDbContext<ApplicationDBContext>(options =>
+            services.AddDbContext<minubeDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services.AddControllers();
