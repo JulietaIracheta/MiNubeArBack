@@ -48,5 +48,16 @@ namespace WebAPI.Controllers
         {
             return personaRepository.GetAll();
         }
+        
+        [HttpGet("getPerfil/{id}")]
+        public PersonaDto GetPerfilDeEstudiante(int id)
+        {
+            return personaRepository.GetPersona(id);
+        }
+        [HttpGet("getEstudiantesAsignados/{id}")]
+        public List<PersonaDto> GetEstudiantesAsignados(int id)
+        {
+            return personaRepository.GetEstudiantesAsignados(id);
+        }
     }
 }
