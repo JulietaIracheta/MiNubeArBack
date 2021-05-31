@@ -79,7 +79,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuarios>> PostUsuario(PersonaDto usuario)
         {
-            var persona = new Personas {Apellido = usuario.Apellido, Email = usuario.Email, Nombre = usuario.Nombre};
+            var persona = new Personas {Apellido = usuario.Apellido, Email = usuario.Email, Nombre = usuario.Nombre, Telefono = usuario.Telefono};
 
             var user = new Usuarios
             {
