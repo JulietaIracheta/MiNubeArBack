@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using WebAPI.Dto;
 using WebAPI.Models;
 
 namespace WebAPI.Data
@@ -21,5 +24,18 @@ namespace WebAPI.Data
         {
             return _context.Usuarios.FirstOrDefault(x => x.UsuarioNombre == email);
         }
+
+        public List<UsuarioDto> GetAll()
+        {
+            var persona = _context.Usuarios.ToList();
+
+            var list = persona.Select(p => new UsuarioDto
+            {
+                IdUsuario = p.IdUsuario,               
+                UsuarioNombre = p.UsuarioNombre,
+                });
+            return list.ToList();
+        }
+
     }
 }

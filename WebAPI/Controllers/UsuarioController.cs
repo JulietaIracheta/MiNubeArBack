@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
+using WebAPI.Dto;
 using WebAPI.Helpers;
 using WebAPI.Models;
 
@@ -16,20 +18,15 @@ namespace WebAPI.Controllers
     {
         private readonly minubeDBContext _context;
         private readonly JwtService _jwtService;
-       
+        private readonly UsuarioRepository usuarioRepository;
+
         public UsuarioController(minubeDBContext context, JwtService jwtService)
         {
             _context = context;
             _jwtService = jwtService;
-            
+            usuarioRepository = new UsuarioRepository(context);
         }
 
-        // GET: api/Usuario
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuarios>>> GetUsuarios()
-        {
-            return await _context.Usuarios.ToListAsync();
-        }
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
@@ -43,6 +40,12 @@ namespace WebAPI.Controllers
             }
 
             return usuario;
+        }
+
+        [HttpGet]
+        public List<UsuarioDto> GetUsuarios()
+        {
+            return usuarioRepository.GetAll();
         }
 
         // PUT: api/usuario/5
@@ -74,22 +77,27 @@ namespace WebAPI.Controllers
 
         // POST: api/Usuario
         [HttpPost]
-        public async Task<ActionResult<Usuarios>> PostUsuario(Usuarios usuario)
+        public async Task<ActionResult<Usuarios>> PostUsuario(PersonaDto usuario)
         {
-            
+            var persona = new Personas {Apellido = usuario.Apellido, Email = usuario.Email, Nombre = usuario.Nombre};
+
             var user = new Usuarios
             {
-                UsuarioNombre = usuario.UsuarioNombre,
+                UsuarioNombre = persona.Email,
                 IdPersona = usuario.IdPersona,
-                Password = usuario.Password
+                Password = "1234",
+                IdPersonaNavigation = persona
             };
+            var usuarioRol = new UsuarioRol {IdRol = Convert.ToInt32(usuario.RolId), IdUsuarioNavigation = user,};
 
+            _context.Personas.Add(persona);
             _context.Usuarios.Add(user);
+            _context.UsuarioRol.Add(usuarioRol);
 
             if (!EmailExists(user.UsuarioNombre))
             {
                 await _context.SaveChangesAsync();
-                return CreatedAtAction("GetUsuario", new { id = usuario.IdUsuario }, usuario);
+                return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, usuario);
             }
             else
             {
@@ -102,12 +110,15 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<Usuarios>> DeleteUsuario(int id)
         {
             var user = await _context.Usuarios.FindAsync(id);
+          
             if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Usuarios.Remove(user);
+
+            user.FechaEliminacionLogico = DateTime.Now;
+            _context.Usuarios.Update(user);
             await _context.SaveChangesAsync();
 
             return user;

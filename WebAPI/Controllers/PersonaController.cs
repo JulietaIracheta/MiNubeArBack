@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
 using WebAPI.Dto;
 using WebAPI.Helpers;
 using WebAPI.Models;
@@ -14,12 +17,13 @@ namespace WebAPI.Controllers
     {
         private readonly minubeDBContext _context;
         private readonly JwtService _jwtService;
+        private readonly PersonaRepository personaRepository;
 
         public PersonaController(minubeDBContext context, JwtService jwtService)
         {
             _context = context;
             _jwtService = jwtService;
-
+            personaRepository = new PersonaRepository(context);
         }
 
         [HttpGet("getPersonaByUsuario")]
@@ -37,6 +41,12 @@ namespace WebAPI.Controllers
                 Nombre = persona.Nombre,
                 Telefono = persona.Telefono
             };
+        }
+        // GET: api/Usuario
+        [HttpGet]
+        public List<PersonaDto> GetUsuarios()
+        {
+            return personaRepository.GetAll();
         }
     }
 }
