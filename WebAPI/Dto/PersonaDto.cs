@@ -1,4 +1,6 @@
-﻿namespace WebAPI.Dto
+﻿using System;
+
+namespace WebAPI.Dto
 {
     public class PersonaDto
     {
@@ -11,5 +13,9 @@
         public int Telefono { get; set; }
         public string Rol { get; set; }
         public string RolId { get; set; }
+        public string Password { get; set; }
+        public int IdInstitucion { get; set; }
+
+
     }
 }

@@ -46,6 +46,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public List<PersonaDto> GetUsuarios()
         {
+
             return personaRepository.GetAll();
         }
         

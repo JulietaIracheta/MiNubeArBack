@@ -44,6 +44,7 @@
           "Serilog": "2.10.0",
           "Serilog.Sinks.Console": "3.1.1",
           "System.IdentityModel.Tokens.Jwt": "6.11.0",
+          "System.Linq.Expressions": "4.3.0",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.0.0.0",

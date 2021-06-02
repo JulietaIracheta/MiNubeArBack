@@ -8825,7 +8825,8 @@
       "Newtonsoft.Json >= 13.0.1",
       "Serilog >= 2.10.0",
       "Serilog.Sinks.Console >= 3.1.1",
-      "System.IdentityModel.Tokens.Jwt >= 6.11.0"
+      "System.IdentityModel.Tokens.Jwt >= 6.11.0",
+      "System.Linq.Expressions >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -8931,6 +8932,10 @@
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[6.11.0, )"
+          },
+          "System.Linq.Expressions": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

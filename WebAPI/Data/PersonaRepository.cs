@@ -34,9 +34,11 @@ namespace WebAPI.Data
                 Nombre = p.Nombre,
                 UsuarioNombre = p.Usuarios.First().UsuarioNombre,
                 Telefono = p.Telefono,
-                Rol = p.Usuarios.First().UsuarioRol.First().IdRolNavigation.Descripcion
-            });
-            return list.ToList();
+                Rol = p.Usuarios.First().UsuarioRol.First().IdRolNavigation.Descripcion,
+               }); 
+                
+                return list.ToList();
+            
         }
         public PersonaDto GetPersona(int id)
         {

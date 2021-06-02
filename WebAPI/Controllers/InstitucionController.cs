@@ -76,6 +76,7 @@ namespace WebAPI.Controllers
             {
                 Nombre = institucion.Nombre,
                 Email = institucion.Email,
+                Direccion = institucion.Direccion
             };
 
             _context.Instituciones.Add(user);
