@@ -103,11 +103,11 @@ namespace WebAPI.Controllers
                 _context.InstitucionDocente.Add(institucionDocente);
 
             }
-            if (usuario.RolId == "3")
+            /*if (usuario.RolId == "3")
             {
                 var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion, IdTutorNavigation = user };
                 _context.InstitucionTutor.Add(institucionTutor);
-            }
+            }*/
             _context.Personas.Add(persona);
             _context.Usuarios.Add(user);
             _context.UsuarioRol.Add(usuarioRol);
