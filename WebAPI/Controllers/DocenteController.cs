@@ -21,32 +21,28 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IQueryable<string>  GetInstitucionesDocente(int id)
+        public IQueryable<Instituciones> GetInstitucionesDocente(int id)
         {
-            var query = from inst in _context.Instituciones
-                        join idoc in _context.InstitucionDocente on inst.IdInstitucion equals idoc.IdInstitucion
-                        join usu in _context.Usuarios on idoc.IdDocente equals usu.IdUsuario
-                        where usu.IdUsuario == id
-                        select inst.Nombre;
 
-            return query;
+            var institucion = _context.InstitucionDocente.Where(x => x.IdDocente == id).Select(x => x.IdInstitucionNavigation);
+            
+
+            return institucion;
         }
 
 
         [HttpGet("getCursos/{id}")]
-        public IQueryable<string> GetCursosDocente(int id)
-        {
-            var query = from curso in _context.Cursos
-                        join cdoc in _context.CursoDocente on curso.IdCurso equals cdoc.IdCurso
-                        join usu in _context.Usuarios on cdoc.IdDocente equals usu.IdUsuario
-                        where usu.IdUsuario == id
-                        select curso.Nombre; 
-                        
+        
+            public IQueryable<Cursos> GetCursosDocente(int id)
+            {
 
-            return query;
+                var curso = _context.CursoDocente.Where(x => x.IdDocente == id).Select(x => x.IdCursoNavigation);
+
+
+                return curso;
+            }
+
+
+
         }
-
-
-
-    }
 }
