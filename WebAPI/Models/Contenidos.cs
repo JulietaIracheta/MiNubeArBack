@@ -15,6 +15,7 @@ namespace WebAPI.Models
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public int Unidad { get; set; }
+        public string Video { get; set; }
 
         public virtual ICollection<Comentarios> Comentarios { get; set; }
         public virtual ICollection<ContenidoMateriaCurso> ContenidoMateriaCurso { get; set; }
