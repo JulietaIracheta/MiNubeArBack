@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
             _env = env;
         }
 
-        [HttpPost]
+        [HttpPost("crearContenido")]
         public async Task<ActionResult<Contenidos>> CrearContenido(ContenidoDto contenido)
         {
             return contenidoRepository.Crear(contenido);
@@ -44,6 +44,12 @@ namespace WebAPI.Controllers
         }
         [HttpGet]
         public async Task<ActionResult<Contenidos>> GetContenidoById(int id)
+        {
+            return contenidoRepository.GetById(id);
+        }
+
+        [HttpGet("getContenidoByMateria/{id}")]
+        public async Task<ActionResult<Contenidos>> GetContenidoByMateria(int id)
         {
             return contenidoRepository.GetById(id);
         }
