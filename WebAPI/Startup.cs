@@ -28,7 +28,10 @@ namespace WebAPI
             services.AddDbContext<minubeDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
-            services.AddControllers();
+            services.AddControllersWithViews()
+     .AddNewtonsoftJson(options =>
+     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+ );
 
 
             services.AddScoped<JwtService>();

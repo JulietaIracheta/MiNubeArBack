@@ -85,7 +85,7 @@ namespace WebAPI.Controllers
             {
                 UsuarioNombre = persona.Email,
                 IdPersona = usuario.IdPersona,
-                Password = usuario.Password,
+                Password = BCrypt.Net.BCrypt.HashPassword(usuario.Password),
                 IdPersonaNavigation = persona,
                 FechaCreacion = DateTime.Now
             };
@@ -161,10 +161,11 @@ namespace WebAPI.Controllers
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
 
 
-            /*if (!BCrypt.Net.BCrypt.Verify(usuario.UsuarioNombre, user.Password))
+            
+            if (!BCrypt.Net.BCrypt.Verify(usuario.Password, user.Password))
             {
                 return BadRequest(new { message = "Usuario invalido" });
-            }*/
+            }
             var jwt = _jwtService.Generate(user.IdUsuario);
             Response.Cookies.Append("jwt", jwt, new CookieOptions
             {

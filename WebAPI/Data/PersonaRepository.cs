@@ -62,5 +62,14 @@ namespace WebAPI.Data
 
             return persona;
         }
+
+        public List<PersonaDto> GetEstudiantesCurso(int id)
+        {
+            var persona = _context.Personas.Where(p => p.Usuarios.First().EstudianteCurso.Any(ur => ur.IdCurso == id))
+                .Select(p => new PersonaDto {Apellido = p.Apellido, Nombre = p.Nombre, IdPersona = p.IdPersona})
+                .ToList();
+
+            return persona;
+        }
     }
 }

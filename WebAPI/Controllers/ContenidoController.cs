@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         {
             return contenidoRepository.GetById(id);
         }
-
+        
         [HttpGet("getContenidoByMateria/{id}")]
         public async Task<ActionResult<Contenidos>> GetContenidoByMateria(int id)
         {
