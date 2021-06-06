@@ -15,7 +15,7 @@ namespace WebAPI.Dto
         public string RolId { get; set; }
         public string Password { get; set; }
         public int IdInstitucion { get; set; }
-
+        public string Avatar { get; set; }
 
     }
 }
