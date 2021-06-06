@@ -103,7 +103,7 @@ namespace WebAPI.Controllers
                 _context.InstitucionDocente.Add(institucionDocente);
 
             }
-/*            if (usuario.RolId == "3")
+            /*if (usuario.RolId == "3")
             {
                 var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion, IdTutorNavigation = user };
                 _context.InstitucionTutor.Add(institucionTutor);
@@ -161,6 +161,7 @@ namespace WebAPI.Controllers
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
 
 
+            
             if (!BCrypt.Net.BCrypt.Verify(usuario.Password, user.Password))
             {
                 return BadRequest(new { message = "Usuario invalido" });

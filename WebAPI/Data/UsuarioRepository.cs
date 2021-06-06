@@ -22,12 +22,13 @@ namespace WebAPI.Data
         
         public Usuarios GetByEmail(string email)
         {
-            return _context.Usuarios.FirstOrDefault(x => x.UsuarioNombre == email);
+            return _context.Usuarios.FirstOrDefault(u =>
+                !u.FechaEliminacionLogico.HasValue && u.UsuarioNombre == email);
         }
 
         public List<UsuarioDto> GetAll()
         {
-            var persona = _context.Usuarios.ToList();
+            var persona = _context.Usuarios.Where(u=>!u.FechaEliminacionLogico.HasValue).ToList();
 
             var list = persona.Select(p => new UsuarioDto
             {

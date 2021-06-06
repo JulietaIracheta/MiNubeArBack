@@ -1,8 +1,10 @@
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using WebAPI.Helpers;
 using WebAPI.Models;
@@ -26,7 +28,10 @@ namespace WebAPI
             services.AddDbContext<minubeDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
-            services.AddControllers();
+            services.AddControllersWithViews()
+     .AddNewtonsoftJson(options =>
+     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+ );
 
 
             services.AddScoped<JwtService>();
@@ -43,6 +48,11 @@ namespace WebAPI
             .AllowCredentials())
             ;
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath,"videos")),
+                RequestPath = "/videos"
+            });
 
             if (env.IsDevelopment())
             {
