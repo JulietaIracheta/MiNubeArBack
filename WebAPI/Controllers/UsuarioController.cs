@@ -152,15 +152,16 @@ namespace WebAPI.Controllers
             return _context.Usuarios.Any(e => e.UsuarioNombre == usuarioNombre);
         }
 
-
         [HttpPost("login")]
-        public IActionResult Login(Usuarios usuario)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Usuarios))]
+        public ActionResult<PersonaDto> Login(Usuarios usuario)
         {
-            var user = _context.Usuarios.Include(u=>u.IdPersonaNavigation).FirstOrDefault(x => x.IdPersonaNavigation.Email == usuario.UsuarioNombre);
+            var user = _context.Usuarios.Include(u => u.IdPersonaNavigation)
+                .FirstOrDefault(x => x.IdPersonaNavigation.Email == usuario.UsuarioNombre);
 
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
 
-
+            
             
             if (!BCrypt.Net.BCrypt.Verify(usuario.Password, user.Password))
             {
@@ -171,9 +172,9 @@ namespace WebAPI.Controllers
             {
                 HttpOnly = true
             }) ;
-            
-            return Ok(new { 
-                message = "sucess" });
+
+            return new PersonaDto
+                {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre};
         }
         [HttpPost("loginGoogle")]
         public IActionResult LoginGoogle(string email)

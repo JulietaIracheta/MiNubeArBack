@@ -26,16 +26,15 @@ namespace WebAPI
             services.AddCors();
 
             services.AddDbContext<minubeDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services.AddControllersWithViews()
-     .AddNewtonsoftJson(options =>
-     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
- );
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
 
 
             services.AddScoped<JwtService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
