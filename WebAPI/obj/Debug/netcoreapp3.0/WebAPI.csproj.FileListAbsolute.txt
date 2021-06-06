@@ -480,3 +480,5 @@ C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.cspr
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.AssemblyReference.cache
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
