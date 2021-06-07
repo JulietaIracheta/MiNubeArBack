@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
         [HttpGet("getEstudiantesCurso/{id}")]
         public IQueryable<EstudianteCurso> GetEstudiantesCurso(int id)
         {
-            var user = _context.EstudianteCurso.Where(x => x.IdUsuario == id).Include(x=>x.IdUsuarioNavigation).ThenInclude(x=>x.IdPersonaNavigation);
+            var user = _context.EstudianteCurso.Where(x => x.IdCurso == id).Include(x=>x.IdUsuarioNavigation).ThenInclude(x=>x.IdPersonaNavigation);
            
             return user;
         }

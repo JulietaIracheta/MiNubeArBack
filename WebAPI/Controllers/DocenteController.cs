@@ -3,9 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using WebAPI.Dto;
+using WebAPI.Helpers;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -15,11 +14,13 @@ namespace WebAPI.Controllers
     public class DocenteController : ControllerBase
     {
         private readonly minubeDBContext _context;
+        private readonly JwtService _jwtService;
 
-        public DocenteController(minubeDBContext context)
+        public DocenteController(minubeDBContext context, JwtService jwtService)
         {
             _context = context;
-
+            _jwtService = jwtService;
+         
         }
 
         [HttpGet("{id}")]
@@ -37,7 +38,6 @@ namespace WebAPI.Controllers
         {
             var curso = _context.CursoDocente.Where(x => x.IdDocente == id).Select(x => x.IdCursoNavigation);
 
-
             return curso;
         }
         [HttpGet("getEstudiantesPorCurso/{id}")]
@@ -54,5 +54,15 @@ namespace WebAPI.Controllers
 
             return usuariosPorCursos.ToList();
         }
+
+        [HttpGet("getId")]
+        public int GetIDDocente()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var userId = Convert.ToInt32(token.Issuer);
+            return userId;
+        }
+       
     }
 }
