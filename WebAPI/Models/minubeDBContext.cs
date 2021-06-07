@@ -595,6 +595,12 @@ namespace WebAPI.Models
                     .HasColumnName("nombre")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Icon)
+                    .IsRequired()
+                    .HasColumnName("icon")
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<NivelEducativo>(entity =>

@@ -35,7 +35,8 @@ namespace WebAPI.Data
                                     select new EstudianteMateriasDto 
                                     { 
                                         IdMateria = m.IdMateria,
-                                        Nombre = m.Nombre
+                                        Nombre = m.Nombre,
+                                        Icon = m.Icon
                                     };
 
             return materias.ToList();

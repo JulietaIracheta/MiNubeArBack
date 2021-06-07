@@ -9,5 +9,6 @@ namespace WebAPI.Dto
     {
         public int IdMateria { get; set; }
         public string Nombre { get; set; }
+        public string Icon { get; set; }
     }
 }
