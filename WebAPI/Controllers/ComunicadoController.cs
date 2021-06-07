@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
 using WebAPI.Dto;
 using WebAPI.Models;
@@ -20,16 +21,15 @@ namespace WebAPI.Controllers
             comunicadoRepository = new ComunicadoRepository(context);
         }
         [HttpPost]
-        public async Task<ActionResult<Comunicados>> CrearComunicado (ComunicadoDto comunicado)
+        public async Task<ActionResult<List<Comunicados>>> CrearComunicado (ComunicadoDto comunicado)
         {
             return comunicadoRepository.Crear(comunicado);
         }
         [HttpGet("getComunicados")]
         public List<Comunicados> GetComunicados()
         {
-            var comunicados = _context.Comunicados;
-            
-            return comunicados.ToList();
+            return comunicadoRepository.GetAll();
         }
+        
     }
 }
