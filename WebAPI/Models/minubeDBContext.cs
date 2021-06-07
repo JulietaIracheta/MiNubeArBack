@@ -276,14 +276,20 @@ namespace WebAPI.Models
 
                 entity.Property(e => e.IdEvento).HasColumnName("idEvento");
 
-                entity.Property(e => e.Descripcion)
+                entity.Property(e => e.Title)
                     .IsRequired()
-                    .HasColumnName("descripcion")
+                    .HasColumnName("title")
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Fecha)
-                    .HasColumnName("fecha")
+                entity.Property(e => e.Url)
+                    .HasColumnName("url")
+                    .HasMaxLength(100);
+
+             
+
+                entity.Property(e => e.Start)
+                    .HasColumnName("start")
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.IdCurso).HasColumnName("idCurso");

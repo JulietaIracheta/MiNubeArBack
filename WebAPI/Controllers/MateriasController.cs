@@ -9,7 +9,9 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class MateriasController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class MateriasController : ControllerBase
     {
         private readonly minubeDBContext _context;
 
