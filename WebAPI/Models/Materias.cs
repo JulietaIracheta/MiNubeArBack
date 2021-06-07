@@ -15,6 +15,7 @@ namespace WebAPI.Models
 
         public int IdMateria { get; set; }
         public string Nombre { get; set; }
+        public string Icon { get; set; }
 
         public virtual ICollection<InstitucionMateria> InstitucionMateria { get; set; }
         public virtual ICollection<MateriaCurso> MateriaCurso { get; set; }

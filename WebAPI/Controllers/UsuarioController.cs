@@ -18,12 +18,14 @@ namespace WebAPI.Controllers
     {
         private readonly minubeDBContext _context;
         private readonly JwtService _jwtService;
+        private readonly PersonaRepository personaRepository;
         private readonly UsuarioRepository usuarioRepository;
 
         public UsuarioController(minubeDBContext context, JwtService jwtService)
         {
             _context = context;
             _jwtService = jwtService;
+            personaRepository = new PersonaRepository(context);
             usuarioRepository = new UsuarioRepository(context);
         }
 
@@ -231,6 +233,19 @@ namespace WebAPI.Controllers
             {
                 message = "sucess"
             });
+        }
+
+        [HttpGet("materias")]
+        public ActionResult<EstudianteMateriasDto> GetMaterias(string email)
+        {
+            List<EstudianteMateriasDto> materias = usuarioRepository.GetMaterias(email);
+
+            if (materias.Count() > 0)
+            {
+                return Ok(materias);
+            }
+
+            return Ok(new { message = "sin materias"});
         }
 
     }
