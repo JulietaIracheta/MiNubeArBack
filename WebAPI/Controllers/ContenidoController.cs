@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
             return contenidoRepository.Crear(contenido);
         }
         [HttpPost("cargarVideo")]
-        public async Task<ActionResult> Cargarvideo([FromForm]IFormFile file, [FromForm]string unidad)
+        public async Task<ActionResult> Cargarvideo([FromForm]IFormFile file)
         {
             if (file == null) return BadRequest();
             

@@ -8,6 +8,7 @@ namespace WebAPI.Dto
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
+        public IFormFile file { get; set; }
         public int Unidad { get; set; }
         public string Video { get; set; }
     }
