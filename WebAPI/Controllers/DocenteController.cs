@@ -26,7 +26,9 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public IQueryable<Instituciones> GetInstitucionesDocente(int id)
         {
-
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            id = Convert.ToInt32(token.Issuer);
             var institucion = _context.InstitucionDocente.Where(x => x.IdDocente == id).Select(x => x.IdInstitucionNavigation);
             
 
@@ -36,6 +38,10 @@ namespace WebAPI.Controllers
         [HttpGet("getCursos/{id}")]
         public IQueryable<Cursos> GetCursosDocente(int id)
         {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            id = Convert.ToInt32(token.Issuer);
+            
             var curso = _context.CursoDocente.Where(x => x.IdDocente == id).Select(x => x.IdCursoNavigation);
 
             return curso;

@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("crearContenido")]
-        public async Task<ActionResult<Contenidos>> CrearContenido(ContenidoDto contenido)
+        public async Task<ActionResult<Contenidos>> CrearContenido([FromForm] ContenidoDto contenido)
         {
-            return contenidoRepository.Crear(contenido);
+            return contenidoRepository.Crear(contenido, _env.ContentRootPath);
         }
         [HttpPost("cargarVideo")]
         public async Task<ActionResult> Cargarvideo([FromForm]IFormFile file)
@@ -49,9 +49,9 @@ namespace WebAPI.Controllers
         }
         
         [HttpGet("getContenidoByMateria/{id}")]
-        public async Task<ActionResult<Contenidos>> GetContenidoByMateria(int id)
+        public async Task<ActionResult<List<Contenidos>>> GetContenidoByMateria(int id)
         {
-            return contenidoRepository.GetById(id);
+            return contenidoRepository.GetByMateriaId(id);
         }
     }
 }

@@ -1,4 +1,5 @@
--- agrego url a evento y cambio nombres de campos
+-- agrego url a evento y cambio nombres de campo
+use minubeDB
 EXEC sp_rename 'evento.descripcion', 'title'
 EXEC sp_rename 'evento.fecha', 'start'
 alter table evento add url varchar(100)
@@ -22,10 +23,22 @@ insert into Personas(nombre,apellido,email,telefono) values('Carmen','Lopez','cl
 INSERT [dbo].[Usuarios] ([idPersona], [usuario_nombre], [password], [fecha_creacion], [fecha_modificacion],
 [fecha_eliminacion_logico]) 
 VALUES ( 2, N'clopez@gmail.com', N'$2b$10$AVDyfmT22arGYxbNeoEGz./uSVIdlOTcH5Ezni5aST7LW/U2UP4v2',NULL, NULL, null)
- 
- --usuario rol
-insert into Usuario_Rol (idUsuario,idRol) values(1,1),(2,2);
 
+insert into Personas(nombre,apellido,email,telefono) values('Romina','Soto','rsoto@gmail.com',15003231);
+INSERT [dbo].[Usuarios] ([idPersona], [usuario_nombre], [password], [fecha_creacion], [fecha_modificacion],
+[fecha_eliminacion_logico]) 
+VALUES ( 3, N'rsoto@gmail.com', N'$2b$10$AVDyfmT22arGYxbNeoEGz./uSVIdlOTcH5Ezni5aST7LW/U2UP4v2',NULL, NULL, null)
+
+insert into Personas(nombre,apellido,email,telefono) values('Admin','Admin','admin@gmail.com',15003231);
+INSERT [dbo].[Usuarios] ([idPersona], [usuario_nombre], [password], [fecha_creacion], [fecha_modificacion],
+[fecha_eliminacion_logico]) 
+VALUES ( 4, N'admin@gmail.com', N'$2b$10$AVDyfmT22arGYxbNeoEGz./uSVIdlOTcH5Ezni5aST7LW/U2UP4v2',NULL, NULL, null)
+ --usuario rol
+ 
+insert into Usuario_Rol (idUsuario,idRol) values (1,1),(2,2),(3,1),(4,4),(4,4);
+
+
+select * from usuarios
 --instituciones
 select * from Instituciones
 insert into Instituciones(nombre,direccion,email) values('Mariano Moreno','Urquiza 343','marianomoreno@gmail.com');
@@ -47,7 +60,11 @@ INSERT INTO minubeDB.dbo.Materia_Estudiante (idMateria,idUsuario) VALUES
 (1,1),
 (7,1),
 (2,1),
-(3,1);
+(3,1),
+(1,3),
+(2,3),
+(3,3),
+(4,3);
  
 -- Institucion por Materia
 insert into Institucion_Materia (idInstitucion,idMateria) values(1,1),(1,2),(1,3),(1,4),(1,5);
@@ -73,7 +90,7 @@ insert into Contenidos(titulo,descripcion,unidad,video) values('Clase presentaci
 insert into Contenido_Materia_Curso(idContenido,idMateriaCurso) values(1,1);
 
  
-insert into Estudiante_Curso (idUsuario,idCurso) values(1,1),(1,2);
+insert into Estudiante_Curso (idUsuario,idCurso) values(3,1),(1,1),(1,2);
 insert into Curso_Docente(idCurso,idDocente) values(1,2),(2,2);
 
 insert into Institucion_Docente(idInstitucion,idDocente) values(1,2),(2,2);
@@ -81,5 +98,3 @@ insert into Institucion_Curso (idInstitucion,idCurso)values(3,1);
 --idusuario
 
 insert into Materia_Docente (idMateria,idUsuario) values(1,2),(2,2),(3,2),(4,2);
-
-

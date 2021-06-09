@@ -10,6 +10,5 @@ namespace WebAPI.Dto
         public string Descripcion { get; set; }
         public IFormFile file { get; set; }
         public int Unidad { get; set; }
-        public string Video { get; set; }
     }
 }
