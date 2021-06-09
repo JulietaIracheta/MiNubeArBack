@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
+using WebAPI.Dto;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -14,10 +16,12 @@ namespace WebAPI.Controllers
     public class CursosController : ControllerBase
     {
         private readonly minubeDBContext _context;
+       
 
         public CursosController(minubeDBContext context)
         {
             _context = context;
+
         }
 
         // GET: api/Cursos
@@ -111,5 +115,7 @@ namespace WebAPI.Controllers
         {
             return _context.Cursos.Any(e => e.IdCurso == id);
         }
+
+      
     }
 }

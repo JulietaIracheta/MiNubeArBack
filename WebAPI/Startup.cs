@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using WebAPI.Data;
 using WebAPI.Helpers;
 using WebAPI.Models;
 
@@ -35,6 +36,7 @@ namespace WebAPI
 
 
             services.AddScoped<JwtService>();
+            services.AddScoped<IInstitucionCursoRepository, InstitucionCursoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

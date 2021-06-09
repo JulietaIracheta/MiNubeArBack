@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Globons\\Downloads\\UNLAM\\back\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\Sebas\\Desktop\\Proyecto Final\\MiNubeArBack\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Globons\\Downloads\\UNLAM\\back\\WebAPI\\WebAPI.csproj": {
+    "C:\\Users\\Sebas\\Desktop\\Proyecto Final\\MiNubeArBack\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Globons\\Downloads\\UNLAM\\back\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Sebas\\Desktop\\Proyecto Final\\MiNubeArBack\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\Users\\Globons\\Downloads\\UNLAM\\back\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\Globons\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Globons\\Downloads\\UNLAM\\back\\WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\Sebas\\Desktop\\Proyecto Final\\MiNubeArBack\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\Sebas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sebas\\Desktop\\Proyecto Final\\MiNubeArBack\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Globons\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,9 +27,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Globons/Datco/_packaging/Datco/nuget/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Interservices/_packaging/Interservices/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
@@ -145,7 +148,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
+using WebAPI.Dto;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -12,6 +14,7 @@ namespace WebAPI.Controllers
     public class InstitucionController : ControllerBase
     {
         private readonly minubeDBContext _context;
+       
 
         public InstitucionController(minubeDBContext context)
         {
@@ -91,6 +94,8 @@ namespace WebAPI.Controllers
                 return BadRequest(new { message = "Email ya existe en Base de Datos" });
             }
         }
+
+       
 
         // DELETE: api/institucion/5
         [HttpDelete("{id}")]
