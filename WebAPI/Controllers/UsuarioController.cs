@@ -204,20 +204,7 @@ namespace WebAPI.Controllers
             {
                 message = "sucess"
             });
-        }
-
-        [HttpGet("materias")]
-        public ActionResult<EstudianteMateriasDto> GetMaterias(string email)
-        {
-            List<EstudianteMateriasDto> materias = usuarioRepository.GetMaterias(email);
-
-            if (materias.Count() > 0)
-            {
-                return Ok(materias);
-            }
-
-            return Ok(new { message = "sin materias"});
-        }
+        }        
 
     }
 }
