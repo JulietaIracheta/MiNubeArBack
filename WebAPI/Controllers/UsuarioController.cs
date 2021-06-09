@@ -162,8 +162,6 @@ namespace WebAPI.Controllers
                 .FirstOrDefault(x => x.IdPersonaNavigation.Email == usuario.UsuarioNombre);
 
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
-
-            
             
             if (!BCrypt.Net.BCrypt.Verify(usuario.Password, user.Password))
             {
@@ -179,7 +177,7 @@ namespace WebAPI.Controllers
                 {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre};
         }
         [HttpPost("loginGoogle")]
-        public IActionResult LoginGoogle(string email)
+        public ActionResult<PersonaDto> LoginGoogle(string email)
         {
             var user = _context.Usuarios.Include(u => u.IdPersonaNavigation)
                 .Include(u=>u.UsuarioRol)
@@ -198,10 +196,8 @@ namespace WebAPI.Controllers
                 HttpOnly = true
             });
 
-            return Ok(new
-            {
-                message = "sucess"
-            });
+            return new PersonaDto
+                {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre};
         }
 
         [HttpGet("user")]

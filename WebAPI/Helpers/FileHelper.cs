@@ -9,7 +9,7 @@ namespace WebAPI.Helpers
 {
     public static class FileHelper
     {
-        public static void GuardarVideo(string contentRootPath, IFormFile file)
+        public static string GuardarVideo(string contentRootPath, IFormFile file)
         {
             var path = Path.Combine(contentRootPath, "videos\\");
 
@@ -19,6 +19,8 @@ namespace WebAPI.Helpers
 
             var stream = new FileStream(Path.Combine(path, fileName), FileMode.Create);
             file.CopyTo(stream);
+            
+            return fileName;
         }
        
     }

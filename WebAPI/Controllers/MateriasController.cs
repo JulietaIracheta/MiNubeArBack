@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Dto;
+using WebAPI.Helpers;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -14,9 +16,11 @@ namespace WebAPI.Controllers
     public class MateriasController : ControllerBase
     {
         private readonly minubeDBContext _context;
+        private readonly JwtService _jwtService;
 
-        public MateriasController(minubeDBContext context)
+        public MateriasController(minubeDBContext context, JwtService jwtService)
         {
+            _jwtService = jwtService;
             _context = context;
         }
 
@@ -75,7 +79,8 @@ namespace WebAPI.Controllers
 
             var user = new Materias
             {
-                Nombre = materia.Nombre
+                Nombre = materia.Nombre,
+                Icon = ""
             };
 
             _context.Materias.Add(user);
@@ -110,6 +115,28 @@ namespace WebAPI.Controllers
         private bool MateriaExists(int id)
         {
             return _context.Materias.Any(e => e.IdMateria == id);
+        }
+        [HttpGet("getMateriasDocente/{id}")]
+        public ActionResult<DocenteMateriasDto> GetMaterias(int id)
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Convert.ToInt32(token.Issuer);
+
+
+            var materias = _context.MateriaCurso.Include(m => m.IdMateriaNavigation).ThenInclude(e => e.MateriaDocente)
+                .Where(m => m.IdCurso == id &&
+                            m.IdMateriaNavigation.MateriaDocente.Any(e => e.IdUsuario == userId))
+                .Select(m => new DocenteMateriasDto
+                {
+                    Nombre = m.IdMateriaNavigation.Nombre,
+                    IdCurso = m.IdCurso,
+                    Icon = m.IdMateriaNavigation.Icon,
+                    IdMateria = m.IdMateria
+                }).ToList();
+
+            return materias.Any() ? Ok(materias) : Ok(new { message = "sin materias" });
         }
     }
 }
