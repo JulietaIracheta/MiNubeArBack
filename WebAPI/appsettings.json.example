@@ -6,9 +6,12 @@
       "Microsoft.Hosting.Lifetime": "Information"
     }
   },
- 
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DevConnection": "Server =DESKTOP-B3ADN09\\SQLEXPRESS; Database=miNubeDB; Trusted_Connection=True; MultipleActiveResultSets=True;"
+    "DevConnection": "Server =SERVER; Database=DBNAME; User Id =USER; Password=PASSWORD; Trusted_Connection=True; MultipleActiveResultSets=True"
   }
 }
+
+
+
+
