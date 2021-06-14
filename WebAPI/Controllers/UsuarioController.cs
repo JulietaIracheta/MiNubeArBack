@@ -244,5 +244,16 @@ namespace WebAPI.Controllers
             return Ok(new { message = "sin materias"});
         }
 
+        [HttpPost("modificarPassword")]
+        public async Task<ActionResult<Usuarios>> ModificarPassword(Usuarios user)
+        {
+            var usuario = _context.Usuarios.First(x => x.UsuarioNombre == user.UsuarioNombre);
+
+            usuario.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            _context.SaveChangesAsync();
+            return usuario;
+          
+        }
+
     }
 }

@@ -482,3 +482,11 @@ C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\MailKit.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\MimeKit.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\appsettings - copia.json

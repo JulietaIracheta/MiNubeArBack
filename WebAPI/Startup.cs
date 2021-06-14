@@ -43,6 +43,8 @@ namespace WebAPI
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
 
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
 
             services.AddScoped<JwtService>();
             services.AddScoped<IInstitucionCursoRepository, InstitucionCursoRepository>();
