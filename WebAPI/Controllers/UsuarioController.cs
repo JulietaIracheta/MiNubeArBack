@@ -95,15 +95,26 @@ namespace WebAPI.Controllers
 
             if (usuario.RolId == "1")
             {
-                var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion, IdUsuarioNavigation = user };
-                _context.InstitucionEstudiante.Add(institucionEstudiante);
+                // var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion, IdUsuarioNavigation = user };
+                // _context.InstitucionEstudiante.Add(institucionEstudiante);
 
             }
             if (usuario.RolId == "2")
             {
-                var institucionDocente = new InstitucionDocente { IdInstitucion = usuario.IdInstitucion, IdDocenteNavigation = user };
-                _context.InstitucionDocente.Add(institucionDocente);
+//                 var institucionDocente = new InstitucionDocente { IdInstitucion = usuario.IdInstitucion, IdDocenteNavigation = user };
+// -                _context.InstitucionDocente.Add(institucionDocente);
 
+                InstitucionDocente[] institucionDocenteList = new InstitucionDocente[usuario.IdInstitucion.Length] ;
+                var institucionDocente =  new InstitucionDocente();
+                // recorro el array de usuarioIdInstitucion
+                for (int i = 0; i < usuario.IdInstitucion.Length; i++)
+                {
+                    var idInstitucion = usuario.IdInstitucion[i];
+                    institucionDocenteList[i] = new InstitucionDocente { IdInstitucion = idInstitucion, IdDocenteNavigation = user };
+                }
+                foreach (var item in institucionDocenteList){
+                    _context.InstitucionDocente.Add(item);
+                }
             }
             /*if (usuario.RolId == "3")
             {
