@@ -1,0 +1,491 @@
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\appsettings.Development.json
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\appsettings.json
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.exe
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csprojAssemblyReference.cache
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.Manifest.cache
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.xml
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfoInputs.cache
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfo.cs
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.RazorTargetAssemblyInfo.cache
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.CopyComplete
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Data.SqlClient.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Relational.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Configuration.ConfigurationManager.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Runtime.Caching.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.ProtectedData.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-arm64\native\sni.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x64\native\sni.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x86\native\sni.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.deps.json
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.json
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.dev.json
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.pdb
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.pdb
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Razor.Language.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Razor.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Workspaces.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\dotnet-aspnet-codegenerator-design.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\NuGet.Frameworks.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.AttributedModel.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Convention.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Hosting.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Runtime.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.TypedParts.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\profession\CodAffection\React JS\CRUD with Asp.Net Core\project\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\appsettings.Development.json
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\appsettings.json
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.exe
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.deps.json
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.json
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.dev.json
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.pdb
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\NuGet.Frameworks.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.AttributedModel.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Convention.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Hosting.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Runtime.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.TypedParts.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Runtime.Caching.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x64\native\sni.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x86\native\sni.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csprojAssemblyReference.cache
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfoInputs.cache
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfo.cs
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.Manifest.cache
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.xml
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\scopedcss\bundle\WebAPI.styles.css
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.CopyComplete
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.dll
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.pdb
+C:\Users\Sebas\Desktop\React-CRUD-with-Asp.Net-Core-Web-API-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.genruntimeconfig.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\appsettings.Development.json
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.exe
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.deps.json
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.json
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.dev.json
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.pdb
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\NuGet.Frameworks.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.AttributedModel.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Convention.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Hosting.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Runtime.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.TypedParts.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Runtime.Caching.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x64\native\sni.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x86\native\sni.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfoInputs.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfo.cs
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.Manifest.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.xml
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\scopedcss\bundle\WebAPI.styles.css
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.CopyComplete
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.pdb
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.genruntimeconfig.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\BCrypt.Net-Core.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.Auth.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.Core.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Serilog.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Serilog.Sinks.Console.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Net.Http.Formatting.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Web.Http.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\appsettings.Development.json
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\appsettings.json
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.exe
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.deps.json
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.json
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.dev.json
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.pdb
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\BCrypt.Net-Core.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.Auth.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Google.Apis.Core.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Net.Http.Formatting.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Web.Http.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Data.SqlClient.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\NuGet.Frameworks.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Serilog.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Serilog.Sinks.Console.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.AttributedModel.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Convention.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Hosting.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.Runtime.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Composition.TypedParts.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Runtime.Caching.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x64\native\sni.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win-x86\native\sni.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfoInputs.cache
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.AssemblyInfo.cs
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.Manifest.cache
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\staticwebassets\WebAPI.StaticWebAssets.xml
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\scopedcss\bundle\WebAPI.styles.css
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.CopyComplete
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.pdb
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.genruntimeconfig.cache
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csprojAssemblyReference.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\obj\Debug\netcoreapp3.0\WebAPI.csproj.AssemblyReference.cache
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\MailKit.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\MimeKit.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\appsettings - copia.json

@@ -1,6 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +25,15 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+                .WithOrigins("http://localhost:3000");
+            }));
+            services.AddSignalR();
 
             services.AddDbContext<minubeDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
@@ -34,6 +43,8 @@ namespace WebAPI
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
 
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
 
             services.AddScoped<JwtService>();
             services.AddScoped<IInstitucionCursoRepository, InstitucionCursoRepository>();
@@ -42,12 +53,7 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options =>
-            options.WithOrigins("http://localhost:3000")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials())
-            ;
+            app.UseCors("CorsPolicy");
 
             app.UseStaticFiles(new StaticFileOptions
             {
@@ -67,6 +73,10 @@ namespace WebAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chatHub", options =>
+                {
+                    options.Transports = HttpTransportType.WebSockets;
+                });
             });
         }
     }
