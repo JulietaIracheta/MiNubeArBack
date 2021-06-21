@@ -50,19 +50,87 @@ namespace WebAPI.Controllers
             return usuarioRepository.GetAll();
         }
 
+
         // PUT: api/usuario/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, Usuarios usuario)
+        public async Task<IActionResult> PutUsuario(int id, UsuarioUpdateDto usuario)
         {
-            usuario.IdUsuario = id;
-
-            _context.Entry(usuario).State = EntityState.Modified;
-
             try
             {
+                // obtengo la persona actual y actualizo sus valores
+                var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdPersona);
+                personaAModificar.Nombre = usuario.Nombre; 
+                personaAModificar.Apellido = usuario.Apellido;
+                personaAModificar.Email = usuario.Email;
+                personaAModificar.Telefono = int.Parse(usuario.Telefono);
+
+                // obtengo las instituciones del docente 
+                var institucionesDelDocente = _context.InstitucionDocente.Where( row => row.IdDocente == usuario.IdUsuario);
+
+                int[] institucionDocenteList = new int[institucionesDelDocente.Count()] ;
+
+                int contador = 0;
+                foreach (var row in institucionesDelDocente)
+                {
+                    institucionDocenteList[contador] = row.IdInstitucion;
+                    contador++;                                                                        
+                }
+
+                // primero pregunto si tienen la misma cantidad de elementos comparo el tamaño de los arrays
+                // verifico si las que vienen por parametro son las mismas que las que se encuentran actualmente en la tabla
+                if(institucionDocenteList.Length == usuario.IdInstitucion.Length){
+                    
+                    int coincidencias = institucionDocenteList.Intersect(usuario.IdInstitucion).Count();
+                    
+                    // si los dos arrays tienen los mismo valores no hago nada
+                    if(!(coincidencias == usuario.IdInstitucion.Length)){
+                        // Si hay 0 coincidencias entonces modifico todo
+                        int index = 0;
+                        foreach (var row in institucionesDelDocente)
+                        {
+                            row.IdInstitucion = usuario.IdInstitucion[index];
+                            index++;
+                        }
+                    } 
+                // si las instituciones ingresadas superan a las actuales agrego la/s nueva/s
+                }else if(institucionDocenteList.Length < usuario.IdInstitucion.Length){ 
+                    // verifico si las que ya estan registradas forman parte de las ingresadas
+                    if(institucionDocenteList.Intersect(usuario.IdInstitucion).Count() == institucionDocenteList.Length){
+                        // identifico los id de instituciones ingresadas no registradas
+                        var idNoRegistradas = usuario.IdInstitucion.Except(institucionDocenteList);
+                        // agrego las restantes
+                        foreach (var idInstitucion in idNoRegistradas)
+                        {
+                            var institucionDocente = new InstitucionDocente {IdInstitucion = idInstitucion, IdDocente = usuario.IdPersona};
+                            _context.InstitucionDocente.Add(institucionDocente);
+                        }
+                    }
+                    
+                }else{
+                    // si las instituciones ingresadas es es menor a la existente entonces elimino las que ya no se encuentran
+                    // obtengo las que tienen que ser eliminadas
+                    var idAeliminar = institucionDocenteList.Except(usuario.IdInstitucion);
+
+                    foreach (var idInstitucion in idAeliminar)
+                    {
+                        var institucionDocente =  _context.InstitucionDocente.FirstOrDefault(item => item.IdInstitucion == idInstitucion && item.IdDocente == usuario.IdPersona);
+                        _context.InstitucionDocente.Remove(institucionDocente);
+                    }
+                    
+                    // identifico los id de instituciones ingresadas no registradas y las registro
+                    var idNoRegistradas = usuario.IdInstitucion.Except(institucionDocenteList);
+
+                    foreach (var idInstitucion in idNoRegistradas)
+                    {
+                        var institucionDocente = new InstitucionDocente {IdInstitucion = idInstitucion, IdDocente = usuario.IdPersona};
+                        _context.InstitucionDocente.Add(institucionDocente);
+                    }
+                }
+                // usuario.IdUsuario = id;
+                // _context.Entry(usuario).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException )
             {
                 if (!UsuarioExists(id))
                 {
@@ -73,8 +141,7 @@ namespace WebAPI.Controllers
                     throw;
                 }
             }
-
-            return NoContent();
+            return NoContent();                                                                   
         }
 
         // POST: api/Usuario
@@ -165,6 +232,7 @@ namespace WebAPI.Controllers
             return _context.Usuarios.Any(e => e.UsuarioNombre == usuarioNombre);
         }
 
+        
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Usuarios))]
         public ActionResult<PersonaDto> Login(Usuarios usuario)
@@ -187,6 +255,9 @@ namespace WebAPI.Controllers
             return new PersonaDto
                 {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre};
         }
+        
+        
+        
         [HttpPost("loginGoogle")]
         public ActionResult<PersonaDto> LoginGoogle(string email)
         {
