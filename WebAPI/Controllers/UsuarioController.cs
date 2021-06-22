@@ -58,7 +58,7 @@ namespace WebAPI.Controllers
             try
             {
                 // obtengo la persona actual y actualizo sus valores
-                var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdPersona);
+                var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdUsuario);
                 personaAModificar.Nombre = usuario.Nombre; 
                 personaAModificar.Apellido = usuario.Apellido;
                 personaAModificar.Email = usuario.Email;
@@ -128,7 +128,8 @@ namespace WebAPI.Controllers
                 }
                 // usuario.IdUsuario = id;
                 // _context.Entry(usuario).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
+                // await _context.SaveChangesAsync();
+                _context.SaveChanges(); // TODO: En el primer update despues de dar un alta el registro tira error 500
             }
             catch (DbUpdateConcurrencyException )
             {
@@ -148,59 +149,69 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuarios>> PostUsuario(PersonaDto usuario)
         {
-            var persona = new Personas {Apellido = usuario.Apellido, Email = usuario.Email, Nombre = usuario.Nombre, Telefono = usuario.Telefono};
-
-            var user = new Usuarios
+            try
             {
-                UsuarioNombre = persona.Email,
-                IdPersona = usuario.IdPersona,
-                Password = BCrypt.Net.BCrypt.HashPassword(usuario.Password),
-                IdPersonaNavigation = persona,
-                FechaCreacion = DateTime.Now
-            };
-            var usuarioRol = new UsuarioRol {IdRol = Convert.ToInt32(usuario.RolId), IdUsuarioNavigation = user,};
-
-            if (usuario.RolId == "1")
-            {
-                // var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion, IdUsuarioNavigation = user };
-                // _context.InstitucionEstudiante.Add(institucionEstudiante);
-
-            }
-            if (usuario.RolId == "2")
-            {
-//                 var institucionDocente = new InstitucionDocente { IdInstitucion = usuario.IdInstitucion, IdDocenteNavigation = user };
-// -                _context.InstitucionDocente.Add(institucionDocente);
-
-                InstitucionDocente[] institucionDocenteList = new InstitucionDocente[usuario.IdInstitucion.Length] ;
-                var institucionDocente =  new InstitucionDocente();
-                // recorro el array de usuarioIdInstitucion
-                for (int i = 0; i < usuario.IdInstitucion.Length; i++)
+                var persona = new Personas {Apellido = usuario.Apellido, Email = usuario.Email, Nombre = usuario.Nombre, Telefono = usuario.Telefono};
+ 
+                var user = new Usuarios
                 {
-                    var idInstitucion = usuario.IdInstitucion[i];
-                    institucionDocenteList[i] = new InstitucionDocente { IdInstitucion = idInstitucion, IdDocenteNavigation = user };
-                }
-                foreach (var item in institucionDocenteList){
-                    _context.InstitucionDocente.Add(item);
-                }
-            }
-            /*if (usuario.RolId == "3")
-            {
-                var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion, IdTutorNavigation = user };
-                _context.InstitucionTutor.Add(institucionTutor);
-            }*/
-            _context.Personas.Add(persona);
-            _context.Usuarios.Add(user);
-            _context.UsuarioRol.Add(usuarioRol);
+                    UsuarioNombre = persona.Email,
+                    IdPersona = usuario.IdPersona,
+                    Password = BCrypt.Net.BCrypt.HashPassword(usuario.Password),
+                    IdPersonaNavigation = persona,
+                    FechaCreacion = DateTime.Now
+                };
+                var usuarioRol = new UsuarioRol {IdRol = Convert.ToInt32(usuario.RolId), IdUsuarioNavigation = user,};
 
-            if (!EmailExists(user.UsuarioNombre))
-            {
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, usuario);
+                if (usuario.RolId == "1")
+                {
+                    var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion[0], IdUsuarioNavigation = user };
+                    _context.InstitucionEstudiante.Add(institucionEstudiante);
+
+                }
+                if (usuario.RolId == "2")
+                {
+
+                    InstitucionDocente[] institucionDocenteList = new InstitucionDocente[usuario.IdInstitucion.Length] ;
+                    var institucionDocente =  new InstitucionDocente();
+                    // recorro el array de usuarioIdInstitucion
+                    for (int i = 0; i < usuario.IdInstitucion.Length; i++)
+                    {
+                        var idInstitucion = usuario.IdInstitucion[i];
+                        institucionDocenteList[i] = new InstitucionDocente { IdInstitucion = idInstitucion, IdDocenteNavigation = user };
+                    }
+                    foreach (var item in institucionDocenteList){
+                        _context.InstitucionDocente.Add(item);
+                    }
+                }
+                if (usuario.RolId == "3")
+                {
+                    var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion[0], IdTutorNavigation = user };
+                    _context.InstitucionTutor.Add(institucionTutor);
+                }
+                _context.Personas.Add(persona);
+                _context.Usuarios.Add(user);
+                _context.UsuarioRol.Add(usuarioRol);
+
+                if (!EmailExists(user.UsuarioNombre))
+                {
+                    await _context.SaveChangesAsync();
+                    _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdPersona);
+                    var usuario_aux = _context.Usuarios.FirstOrDefault(item => item.UsuarioNombre == usuario.Email );
+                    usuario.IdUsuario = usuario_aux.IdUsuario;
+                    return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, usuario);
+                }
+                else
+                {
+                    return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, new Personas {Email = ""});
+                    // return BadRequest(new { message = "Email ya existe en Base de Datos" });
+                }
             }
-            else
+            catch (Exception e)
             {
                 return BadRequest(new { message = "Email ya existe en Base de Datos" });
             }
+            
         }
 
         // DELETE: api/Usuario/5
