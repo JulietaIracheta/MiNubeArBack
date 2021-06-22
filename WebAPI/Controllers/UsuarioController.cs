@@ -126,23 +126,14 @@ namespace WebAPI.Controllers
                         _context.InstitucionDocente.Add(institucionDocente);
                     }
                 }
-                // usuario.IdUsuario = id;
-                // _context.Entry(usuario).State = EntityState.Modified;
-                // await _context.SaveChangesAsync();
-                _context.SaveChanges(); // TODO: En el primer update despues de dar un alta el registro tira error 500
+  
+                _context.SaveChanges(); 
+                return NoContent();
             }
-            catch (DbUpdateConcurrencyException )
+            catch (Exception e)
             {
-                if (!UsuarioExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(new { message = "Problema al intentar modificar al usuario " + usuario.Nombre });
             }
-            return NoContent();                                                                   
         }
 
         // POST: api/Usuario
