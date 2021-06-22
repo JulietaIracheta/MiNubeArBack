@@ -46,5 +46,6 @@ namespace WebAPI.Models
         public virtual ICollection<TutorEstudiante> TutorEstudianteIdUsuarioEstudianteNavigation { get; set; }
         public virtual ICollection<TutorEstudiante> TutorEstudianteIdUsuarioTutorNavigation { get; set; }
         public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
+        public virtual ICollection<Boletin> Boletin { get; set; }
     }
 }

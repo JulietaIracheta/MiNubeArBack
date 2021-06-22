@@ -47,6 +47,7 @@ namespace WebAPI.Models
         public virtual DbSet<TutorEstudiante> TutorEstudiante { get; set; }
         public virtual DbSet<UsuarioRol> UsuarioRol { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Boletin> Boletin { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -103,9 +104,54 @@ namespace WebAPI.Models
                     .HasColumnName("titulo")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+              
+
             });
 
-            modelBuilder.Entity<Comentarios>(entity =>
+            modelBuilder.Entity<Boletin>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Año)
+                    .IsRequired()
+                    .HasColumnName("año");
+
+                entity.Property(e => e.IdEstudiante)
+                .IsRequired()
+                .HasColumnName("idEstudiante");
+
+                entity.Property(e => e.Materia)
+                    .IsRequired()
+                    .HasColumnName("materia")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.T1)
+                .IsRequired()
+                .HasColumnName("T1")
+                .HasMaxLength(20);
+
+                entity.Property(e => e.T2)
+                .IsRequired()
+                .HasColumnName("T2")
+                .HasMaxLength(20);
+
+                entity.Property(e => e.T3)
+                .IsRequired()
+                .HasColumnName("T3")
+                .HasMaxLength(20);
+
+                entity.HasOne(d => d.IdEstudianteNavigation)
+                   .WithMany(p => p.Boletin)
+                   .HasForeignKey(d => d.IdEstudiante)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("FK_Boletin_Usuarios");
+
+            });
+
+                modelBuilder.Entity<Comentarios>(entity =>
             {
                 entity.HasKey(e => e.IdComentario)
                     .HasName("PK__Comentar__C74515DA148A1AB7");
