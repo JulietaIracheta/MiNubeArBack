@@ -57,77 +57,16 @@ namespace WebAPI.Controllers
         {
             try
             {
-                // obtengo la persona actual y actualizo sus valores
-                var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdUsuario);
-                personaAModificar.Nombre = usuario.Nombre; 
-                personaAModificar.Apellido = usuario.Apellido;
-                personaAModificar.Email = usuario.Email;
-                personaAModificar.Telefono = int.Parse(usuario.Telefono);
-
-                // obtengo las instituciones del docente 
-                var institucionesDelDocente = _context.InstitucionDocente.Where( row => row.IdDocente == usuario.IdUsuario);
-
-                int[] institucionDocenteList = new int[institucionesDelDocente.Count()] ;
-
-                int contador = 0;
-                foreach (var row in institucionesDelDocente)
-                {
-                    institucionDocenteList[contador] = row.IdInstitucion;
-                    contador++;                                                                        
+                switch(usuario.Rol){
+                    case "Docente":
+                        usuarioRepository.UpdateDocente(id,usuario);
+                        break;
+                    case "Estudiante":
+                        usuarioRepository.UpdateEstudiante(id,usuario);
+                        break;
+                    default:
+                        break;
                 }
-
-                // primero pregunto si tienen la misma cantidad de elementos comparo el tamaño de los arrays
-                // verifico si las que vienen por parametro son las mismas que las que se encuentran actualmente en la tabla
-                if(institucionDocenteList.Length == usuario.IdInstitucion.Length){
-                    
-                    int coincidencias = institucionDocenteList.Intersect(usuario.IdInstitucion).Count();
-                    
-                    // si los dos arrays tienen los mismo valores no hago nada
-                    if(!(coincidencias == usuario.IdInstitucion.Length)){
-                        // Si hay 0 coincidencias entonces modifico todo
-                        int index = 0;
-                        foreach (var row in institucionesDelDocente)
-                        {
-                            row.IdInstitucion = usuario.IdInstitucion[index];
-                            index++;
-                        }
-                    } 
-                // si las instituciones ingresadas superan a las actuales agrego la/s nueva/s
-                }else if(institucionDocenteList.Length < usuario.IdInstitucion.Length){ 
-                    // verifico si las que ya estan registradas forman parte de las ingresadas
-                    if(institucionDocenteList.Intersect(usuario.IdInstitucion).Count() == institucionDocenteList.Length){
-                        // identifico los id de instituciones ingresadas no registradas
-                        var idNoRegistradas = usuario.IdInstitucion.Except(institucionDocenteList);
-                        // agrego las restantes
-                        foreach (var idInstitucion in idNoRegistradas)
-                        {
-                            var institucionDocente = new InstitucionDocente {IdInstitucion = idInstitucion, IdDocente = usuario.IdPersona};
-                            _context.InstitucionDocente.Add(institucionDocente);
-                        }
-                    }
-                    
-                }else{
-                    // si las instituciones ingresadas es es menor a la existente entonces elimino las que ya no se encuentran
-                    // obtengo las que tienen que ser eliminadas
-                    var idAeliminar = institucionDocenteList.Except(usuario.IdInstitucion);
-
-                    foreach (var idInstitucion in idAeliminar)
-                    {
-                        var institucionDocente =  _context.InstitucionDocente.FirstOrDefault(item => item.IdInstitucion == idInstitucion && item.IdDocente == usuario.IdPersona);
-                        _context.InstitucionDocente.Remove(institucionDocente);
-                    }
-                    
-                    // identifico los id de instituciones ingresadas no registradas y las registro
-                    var idNoRegistradas = usuario.IdInstitucion.Except(institucionDocenteList);
-
-                    foreach (var idInstitucion in idNoRegistradas)
-                    {
-                        var institucionDocente = new InstitucionDocente {IdInstitucion = idInstitucion, IdDocente = usuario.IdPersona};
-                        _context.InstitucionDocente.Add(institucionDocente);
-                    }
-                }
-  
-                _context.SaveChanges(); 
                 return NoContent();
             }
             catch (Exception e)
@@ -156,8 +95,20 @@ namespace WebAPI.Controllers
 
                 if (usuario.RolId == "1")
                 {
-                    var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion[0], IdUsuarioNavigation = user };
-                    _context.InstitucionEstudiante.Add(institucionEstudiante);
+                  
+                    InstitucionEstudiante[] institucionEstudianteList = new InstitucionEstudiante[usuario.IdInstitucion.Length] ;
+                    // var institucionDocente =  new InstitucionEstudiante();
+                    // recorro el array de usuarioIdInstitucion
+                    for (int i = 0; i < usuario.IdInstitucion.Length; i++)
+                    {
+                        var idInstitucion = usuario.IdInstitucion[i];                                          
+                        institucionEstudianteList[i] = new InstitucionEstudiante { IdInstitucion = idInstitucion, IdUsuarioNavigation = user };
+                    }
+                    foreach (var item in institucionEstudianteList){
+                        _context.InstitucionEstudiante.Add(item);
+                    }
+                    // var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion, IdUsuarioNavigation = user };
+                    // _context.InstitucionEstudiante.Add(institucionEstudiante);
 
                 }
                 if (usuario.RolId == "2")
@@ -175,11 +126,11 @@ namespace WebAPI.Controllers
                         _context.InstitucionDocente.Add(item);
                     }
                 }
-                if (usuario.RolId == "3")
-                {
-                    var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion[0], IdTutorNavigation = user };
-                    _context.InstitucionTutor.Add(institucionTutor);
-                }
+                // if (usuario.RolId == "3")
+                // {
+                //     var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion, IdTutorNavigation = user };
+                //     _context.InstitucionTutor.Add(institucionTutor);
+                // }
                 _context.Personas.Add(persona);
                 _context.Usuarios.Add(user);
                 _context.UsuarioRol.Add(usuarioRol);

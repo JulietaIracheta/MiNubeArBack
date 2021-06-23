@@ -40,7 +40,6 @@ namespace WebAPI.Controllers
         public List<Instituciones> getInstitucionesDeUnDocente(int id)
         {
             var institucion = _context.InstitucionDocente.Where(x => x.IdDocente == id).Select(x => x.IdInstitucionNavigation).ToList();
-            var institucion2 = _context.InstitucionDocente.Where(x => x.IdDocente == id).Select(x => x.IdInstitucion).ToArray();
             return institucion;
         }
 

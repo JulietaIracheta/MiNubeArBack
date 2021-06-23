@@ -87,6 +87,8 @@ namespace WebAPI.Controllers
             if (!EmailExists(user.Email))
             {
                 await _context.SaveChangesAsync();
+                var institucionAgregada = _context.Instituciones.FirstOrDefault( item => item.Email == institucion.Email);
+                institucion.IdInstitucion = institucionAgregada.IdInstitucion;
                 return CreatedAtAction("GetInstitucion", new { id = institucion.IdInstitucion }, institucion);
             }
             else
@@ -111,6 +113,14 @@ namespace WebAPI.Controllers
             await _context.SaveChangesAsync();
 
             return user;
+        }
+
+
+        [HttpGet("getInstitucionesDeUnEstudiante/{id}")]
+        public List<Instituciones> getInstitucionesDeUnEstudiante(int id)
+        {
+            var institucion = _context.InstitucionEstudiante.Where(x => x.IdUsuario == id).Select(x => x.IdInstitucionNavigation).ToList();
+            return institucion;
         }
 
         private bool InstitucionExists(int id)
