@@ -17,5 +17,10 @@ namespace WebAPI.Models
         public int Telefono { get; set; }
 
         public virtual ICollection<Usuarios> Usuarios { get; set; }
+
+        public string GetNombreApellido()
+        {
+            return $"{Nombre} {Apellido}";
+        }
     }
 }

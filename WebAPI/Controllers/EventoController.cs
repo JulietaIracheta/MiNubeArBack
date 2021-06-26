@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -13,10 +14,11 @@ namespace WebAPI.Controllers
     public class EventoController : ControllerBase
     {
         private readonly minubeDBContext _context;
-
+        private readonly IEventoRepository _eventoRepository;
         public EventoController(minubeDBContext context)
         {
             _context = context;
+            _eventoRepository = new EventoRepository(context);
         }
 
         // GET: api/Evento
@@ -54,7 +56,7 @@ namespace WebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EventoExists(id))
+                if (!_eventoRepository.EventoExists(id))
                 {
                     return NotFound();
                 }
@@ -71,28 +73,9 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Evento>> PostEvento(Evento evento)
         {
-
-            var user = new Evento
-            {
-                Title = evento.Title,
-                Start = evento.Start,
-                IdCurso = 1,
-                Url = evento.Url,
-                
-               
-            };
-
-            _context.Evento.Add(user);
-            if (!EventoExists(user.IdEvento))
-            {
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetEvento", new { id = evento.IdEvento }, evento);
-            }
-            else
-            {
-                return BadRequest(new { message = "Evento ya existe en Base de Datos" });
-            }
-
+            var noExisteEvento = await _eventoRepository.Crear(evento);
+            return noExisteEvento ? (ActionResult<Evento>) CreatedAtAction("GetEvento", new {id = evento.IdEvento}, evento)
+                : BadRequest(new {message = "Evento ya existe en Base de Datos"});
         }
 
         // DELETE: api/evento/5
@@ -111,10 +94,7 @@ namespace WebAPI.Controllers
             return evento;
         }
 
-        private bool EventoExists(int id)
-        {
-            return _context.Evento.Any(e => e.IdEvento == id);
-        }
+       
     }
 }
 

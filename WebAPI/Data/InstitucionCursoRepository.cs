@@ -6,11 +6,11 @@ using WebAPI.Dto;
 using WebAPI.Models;
 
 namespace WebAPI.Data
-{ 
-     public interface IInstitucionCursoRepository
 {
-    List<InstitucionCurso> Crear(InstitucionCursoDto institucionCurso);
-}
+    public interface IInstitucionCursoRepository
+    {
+        List<InstitucionCurso> Crear(InstitucionCursoDto institucionCurso);
+    }
 
 
     public class InstitucionCursoRepository : IInstitucionCursoRepository

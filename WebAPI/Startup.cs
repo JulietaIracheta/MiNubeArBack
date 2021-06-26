@@ -77,6 +77,10 @@ namespace WebAPI
                 {
                     options.Transports = HttpTransportType.WebSockets;
                 });
+                endpoints.MapHub<NotificacionesHub>("/notificaciones", options =>
+                {
+                    options.Transports = HttpTransportType.WebSockets;
+                });
             });
         }
     }

@@ -1,11 +1,24 @@
 -- agrego url a evento y cambio nombres de campo
 use minubeDB
+
 EXEC sp_rename 'evento.descripcion', 'title'
 EXEC sp_rename 'evento.fecha', 'start'
 alter table evento add url varchar(100)
 alter table Materias add icon varchar(100)
 alter table usuarios alter column password varchar(100);
 alter table Contenidos add  video varchar(255);
+
+--creo tabla de notificaciones
+create table Notificacion(
+	idNotificacion int primary key IDENTITY(1,1) NOT NULL,
+	mensaje varchar(100) not null,
+	descripcion varchar(255) not null,
+	fecha datetime not null,
+	tipoNotificacion int not null,
+	idDestinatario int not null,
+	CONSTRAINT fk_destinatario FOREIGN KEY (idDestinatario) REFERENCES Usuarios (idUsuario)
+)
+
 
 insert into Roles (descripcion)values('Estudiante');
 insert into Roles (descripcion)values('Docente');

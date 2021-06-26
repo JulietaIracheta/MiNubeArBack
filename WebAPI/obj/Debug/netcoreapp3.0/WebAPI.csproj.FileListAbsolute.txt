@@ -348,7 +348,6 @@ C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\System.Web.Http.dll
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
 C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\appsettings.Development.json
-C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\appsettings.json
 C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.exe
 C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.deps.json
 C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\WebAPI.runtimeconfig.json
@@ -489,3 +488,11 @@ C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\bin\Debug\netcoreapp3.0\appsettings - copia.json
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\appsettings - copia.json
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\MailKit.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\MimeKit.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Globons\Downloads\UNLAM\back\WebAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll

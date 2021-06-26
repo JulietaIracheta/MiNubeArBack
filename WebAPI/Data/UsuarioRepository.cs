@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Dto;
 using WebAPI.Models;
 
@@ -37,6 +38,10 @@ namespace WebAPI.Data
             return list.ToList();
         }
 
+        public Usuarios GetById(int id)
+        {
+            return _context.Usuarios.Include(u=>u.IdPersonaNavigation).First(u => u.IdUsuario == id);
+        }
         public List<EstudianteMateriasDto> GetMaterias(string email)
         {
 
