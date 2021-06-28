@@ -10,6 +10,7 @@ namespace WebAPI.Data
     public interface IUsuarioRepository
     {
         Usuarios GetByEmail(string email);
+        List<PersonaDto> GetEstudiantes();
     }
     public class UsuarioRepository : IUsuarioRepository
     {
@@ -83,5 +84,24 @@ namespace WebAPI.Data
 
             return listaCursos;
         }
+    
+    public List<PersonaDto> GetEstudiantes()
+    {
+
+        IQueryable<PersonaDto> usuarios = from u in _context.Usuarios
+                                                     join ur in _context.UsuarioRol on u.IdUsuario equals ur.IdUsuario
+                                                     where ur.IdRol == 1
+                                                     select  new PersonaDto
+                                                     {
+                                                         IdUsuario = u.IdUsuario,
+                                                         Nombre = u.IdPersonaNavigation.Nombre,
+                                                         Apellido = u.IdPersonaNavigation.Apellido
+                                                     } 
+                                                     ;
+
+        return usuarios.ToList();
     }
+    
+    }
+
 }

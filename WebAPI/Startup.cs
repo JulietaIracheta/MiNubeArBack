@@ -52,6 +52,7 @@ namespace WebAPI
 
             services.AddScoped<JwtService>();
             services.AddScoped<IInstitucionCursoRepository, InstitucionCursoRepository>();
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
