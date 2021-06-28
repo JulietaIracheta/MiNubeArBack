@@ -255,5 +255,23 @@ namespace WebAPI.Controllers
           
         }
 
+        [HttpGet("getUsuarioChatEstudiante")]
+        public string ObtenerUsuarioChat()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var userId = Convert.ToInt32(token.Issuer);
+            
+            return usuarioRepository.ObtenerUsuarioChat(userId);
+        }
+        [HttpGet("getChatsDocente")]
+        public List<string> ObtenerChatsDocente()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var userId = Convert.ToInt32(token.Issuer);
+            
+            return usuarioRepository.ObtenerChatsDocente(userId);
+        }
     }
 }

@@ -8,14 +8,7 @@ namespace WebAPI.Data
 {
     public class NotificacionesHub : Hub
     {
-        public async Task MessageNotificacion(NotificacionMsg message)
-        {
-            await Clients.Others.SendAsync("enviarNotificacion", message);
-        }
-        public string GetConnectionId()
-        {
-            return Context.ConnectionId;
-        }
+       
     }
     public class NotificacionMsg
     {

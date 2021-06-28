@@ -58,5 +58,30 @@ namespace WebAPI.Data
 
             return materias.ToList();
         }
+
+        public string ObtenerUsuarioChat(int userId)
+        {
+            if (!_context.EstudianteCurso.Any(e => e.IdUsuario == userId))
+                return string.Empty;
+            var curso = _context.EstudianteCurso.Include(e => e.IdCursoNavigation).First(e => e.IdUsuario == userId);
+            var nombreSala = curso.IdCursoNavigation.Nombre + curso.IdCurso;
+            var sala = nombreSala.Replace(" ", "");
+            return sala;
+        }
+
+        public List<string> ObtenerChatsDocente(int userId)
+        {
+            var curso = _context.CursoDocente.Include(e => e.IdCursoNavigation).Where(e => e.IdDocente == userId);
+            var listaCursos = new List<string>();
+
+            foreach (var c in curso)
+            {
+                var sala = c.IdCursoNavigation.Nombre + c.IdCurso;
+                sala = sala.Replace(" ", "");
+                listaCursos.Add(sala);
+            }
+
+            return listaCursos;
+        }
     }
 }
