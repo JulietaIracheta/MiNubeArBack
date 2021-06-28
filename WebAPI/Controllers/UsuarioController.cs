@@ -50,6 +50,12 @@ namespace WebAPI.Controllers
             return usuarioRepository.GetAll();
         }
 
+        [HttpGet("estudiantes")]
+        public List<PersonaDto> GetEstudiantes()
+        {
+            return usuarioRepository.GetEstudiantes();
+        }
+
         // PUT: api/usuario/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuario(int id, Usuarios usuario)

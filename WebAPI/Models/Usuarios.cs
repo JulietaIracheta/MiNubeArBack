@@ -21,6 +21,7 @@ namespace WebAPI.Models
             TutorEstudianteIdUsuarioEstudianteNavigation = new HashSet<TutorEstudiante>();
             TutorEstudianteIdUsuarioTutorNavigation = new HashSet<TutorEstudiante>();
             UsuarioRol = new HashSet<UsuarioRol>();
+            PuntajeActividades = new HashSet<PuntajeActividad>();
         }
 
         public int IdUsuario { get; set; }
@@ -47,5 +48,6 @@ namespace WebAPI.Models
         public virtual ICollection<TutorEstudiante> TutorEstudianteIdUsuarioTutorNavigation { get; set; }
         public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
         public virtual ICollection<Boletin> Boletin { get; set; }
+        public virtual ICollection<PuntajeActividad> PuntajeActividades { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using WebAPI.Models;
+using WebAPI.Models.Quiz;
 
 namespace WebAPI.Models
 {
@@ -41,6 +43,7 @@ namespace WebAPI.Models
         public virtual DbSet<NivelEducativoEstudiante> NivelEducativoEstudiante { get; set; }
         public virtual DbSet<Permisos> Permisos { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
+        public virtual DbSet<PuntajeActividad> PuntajeActividades { get; set; }
         public virtual DbSet<RolInstitucion> RolInstitucion { get; set; }
         public virtual DbSet<RolPermiso> RolPermiso { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
@@ -48,6 +51,9 @@ namespace WebAPI.Models
         public virtual DbSet<UsuarioRol> UsuarioRol { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Boletin> Boletin { get; set; }
+        public virtual DbSet<Answer> Answers { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -86,12 +92,15 @@ namespace WebAPI.Models
                     .HasConstraintName("fk_Actividad_Curso");
             });
 
+
             modelBuilder.Entity<Actividades>(entity =>
             {
                 entity.HasKey(e => e.IdActividad)
                     .HasName("PK__Activida__327F9BED3F8973ED");
 
                 entity.Property(e => e.IdActividad).HasColumnName("idActividad");
+
+                entity.Property(e => e.IdMateria).HasColumnName("idMateria");
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
@@ -107,6 +116,21 @@ namespace WebAPI.Models
 
               
 
+            });
+            modelBuilder.Entity<Answer>(entity =>
+            {
+                entity.HasOne(d => d.Question)
+                .WithMany(p => p.Answers)
+                 .HasForeignKey(d => d.QuestionId)
+                .HasConstraintName("FK_Answer_Question");
+            });
+
+            modelBuilder.Entity<Question>(entity =>
+            {
+                entity.HasOne(a => a.ActividadesQuiz)
+                .WithMany(q => q.Questions)
+                .HasForeignKey(d => d.ActividadesId)
+                .HasConstraintName("FK_Question_Actividades");
             });
 
             modelBuilder.Entity<Boletin>(entity =>
@@ -735,6 +759,47 @@ namespace WebAPI.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Telefono).HasColumnName("telefono");
+            });
+
+            modelBuilder.Entity<PuntajeActividad>(entity =>
+            {
+                entity.HasKey(e => e.IdActividadEstudianteMateriaPuntaje)
+                    .HasName("PK_Puntaje_Actividad");
+
+                entity.ToTable("Puntaje_Actividad");
+
+                entity.Property(e => e.IdActividadEstudianteMateriaPuntaje).HasColumnName("idActividad_Estudiante_Materia_Puntaje");
+
+                entity.Property(e => e.IdActividad).HasColumnName("idActividad");
+                entity.Property(e => e.Puntaje).HasColumnName("puntaje");
+                entity.Property(e => e.IdCurso).HasColumnName("idCurso");
+                entity.Property(e => e.IdMateria).HasColumnName("idMateria");
+                entity.Property(e => e.IdEstudiante).HasColumnName("idEstudiante");
+
+
+                entity.HasOne(d => d.IdActividadPuntajeNavigation)
+                    .WithMany(p => p.PuntajeActividades)
+                    .HasForeignKey(d => d.IdActividad)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Actividad_Puntaje_Actividad");
+
+                entity.HasOne(d => d.IdCursoPuntajeNavigation)
+                    .WithMany(p => p.PuntajeActividades)
+                    .HasForeignKey(d => d.IdCurso)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Curso_Puntaje_Actividad");
+
+                entity.HasOne(d => d.IdUsuarioPuntajeNavigation)
+                    .WithMany(p => p.PuntajeActividades)
+                    .HasForeignKey(d => d.IdEstudiante)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Estudiante_Puntaje_Actividad");
+
+                entity.HasOne(d => d.IdMateriaPuntajeNavigation)
+                    .WithMany(p => p.PuntajeActividades)
+                    .HasForeignKey(d => d.IdMateria)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Materia_Puntaje_Actividad");
             });
 
             modelBuilder.Entity<RolInstitucion>(entity =>

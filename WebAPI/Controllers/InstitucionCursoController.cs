@@ -34,7 +34,19 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<List<InstitucionCurso>>> PostInstitucionCurso(InstitucionCursoDto institucion)
         {
 
-            return _institucionCursoRepository.Crear(institucion);
+            InstitucionCurso[] institucionCursoList = new InstitucionCurso[institucion.IdCurso.Length];
+            for (int i = 0; i < institucion.IdCurso.Length; i++)
+            {
+                var IdCurso = institucion.IdCurso[i];
+                institucionCursoList[i] = new InstitucionCurso {  IdCurso = IdCurso, IdInstitucion = institucion.IdInstitucion };
+            }
+            foreach (var item in institucionCursoList)
+            {
+                _context.InstitucionCurso.Add(item);
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok();
 
         }
     }

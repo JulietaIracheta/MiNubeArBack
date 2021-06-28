@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
+using WebAPI.Dto;
 using WebAPI.Models;
 using WebAPI.Models.Quiz;
 
@@ -13,42 +15,61 @@ namespace WebAPI.Controllers
     [ApiController]
     public class QuestionController : Controller
     {
-        private QuizDataContext db = new QuizDataContext();
+        private readonly minubeDBContext _context;
+        private readonly QuestionRepository _questionRepository;
+
+        public QuestionController(minubeDBContext context)
+        {
+            _context = context;
+            _questionRepository =new QuestionRepository(context);
+
+        }
 
         [HttpGet]
         public List<Question> GetQuestions()
         {
-            return db.Questions.Include(p => p.Answers).ToList();
+            return _context.Questions.Include(p => p.Answers).ToList();
         }
-
-        [HttpGet("answers/{qid}")]
-        public List<Answer> GetAnswers(int qid)
+        [HttpGet("{id}")]
+        public List<Question> GetQuestionsById(int id)
         {
-            var answers =  db.Answers.Where(a => a.QuestionId == qid);
-            return answers.ToList();
+            return _context.Questions.Include(p => p.Answers).Where(a=>a.ActividadesQuiz.Unidad == id).ToList();
         }
 
+        [HttpGet("{curso}/{unidad}")]
+        public List<QuestionDto> GetQuestionsByU(int curso, int unidad)
+        {
+            return _questionRepository.GeActividadestByCurso(curso, unidad);
+        }
+        
         [HttpPost]
         public Question CreateQuestion(Question pregunta)
         {
-            
+            var act = new Actividades
+            {
+                Unidad = pregunta.ActividadesQuiz.Unidad,
+                Titulo = pregunta.ActividadesQuiz.Titulo,
+                Descripcion = pregunta.ActividadesQuiz.Descripcion,
+                IdMateria = pregunta.ActividadesQuiz.IdMateria
+            };
+           
 
-            var a = new List<Answer>();
+            var answer = new List<Answer>();
             foreach (var i in pregunta.Answers)
             {
-                a.Add(i);
+                answer.Add(i);
             }
-            var q = new Question
+            var question = new Question
             {
                 Content = pregunta.Content,
-                Answers = a
+                Answers = answer,
+                ActividadesQuiz = act
             };
 
-            
-            db.Questions.Add(q);
-         
-            db.SaveChanges();
-            return q;
+            _context.Actividades.Add(act);
+            _context.Questions.Add(question);
+            _context.SaveChanges();
+            return question;
         }
 
 

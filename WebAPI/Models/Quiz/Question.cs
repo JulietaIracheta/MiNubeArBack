@@ -17,6 +17,9 @@ namespace WebAPI.Models.Quiz
 
         public int Id { get; set; }
         public string Content { get; set; }
+        public int? ActividadesId { get; set; }
+
+        public virtual Actividades ActividadesQuiz { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }
        

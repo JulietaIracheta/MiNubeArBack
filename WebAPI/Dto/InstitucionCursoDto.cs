@@ -8,7 +8,7 @@ namespace WebAPI.Dto
     public class InstitucionCursoDto
     {
         public int IdInstitucion { get; set; }
-        public int IdCurso { get; set; }
-        public List<int> IdInstCurso { get; set; }
+        public int[] IdCurso { get; set; }
+        
     }
 }
