@@ -9,6 +9,7 @@ namespace WebAPI.Dto
         public string Email { get; set; }
         public string Telefono { get; set; }
         public int[] IdInstitucion { get; set; }
+        public int[] IdEstudiantes { get; set; }
         public string Rol { get; set; }
     }
 }

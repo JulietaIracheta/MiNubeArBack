@@ -50,8 +50,21 @@ namespace WebAPI.Controllers
             return usuarioRepository.GetAll();
         }
 
+        [HttpGet("getEstudiantesDeUnTutor/{id}")]
+        public List<Usuarios> getEstudiantesDeUnTutor(int id)
+        {
+            var estudiante = _context.TutorEstudiante.Where(x => x.IdUsuarioTutor == id).Select(x => x.IdUsuarioEstudianteNavigation).ToList();
+            return estudiante;
+        }
 
-        // PUT: api/usuario/5
+        [HttpGet("getEstudiantes/")]
+        public List<Usuarios> getEstudiantes()
+        {
+            var estudiantes = _context.UsuarioRol.Where( row => row.IdRol == 1).Select( x => x.IdUsuarioNavigation ).ToList();
+            return estudiantes;
+        }
+
+        // PUT: api/usuario/5 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuario(int id, UsuarioUpdateDto usuario)
         {
@@ -63,6 +76,9 @@ namespace WebAPI.Controllers
                         break;
                     case "Estudiante":
                         usuarioRepository.UpdateEstudiante(id,usuario);
+                        break;
+                    case "Tutor":
+                        usuarioRepository.UpdateTutor(id,usuario);
                         break;
                     default:
                         break;
@@ -97,7 +113,6 @@ namespace WebAPI.Controllers
                 {
                   
                     InstitucionEstudiante[] institucionEstudianteList = new InstitucionEstudiante[usuario.IdInstitucion.Length] ;
-                    // var institucionDocente =  new InstitucionEstudiante();
                     // recorro el array de usuarioIdInstitucion
                     for (int i = 0; i < usuario.IdInstitucion.Length; i++)
                     {
@@ -107,8 +122,6 @@ namespace WebAPI.Controllers
                     foreach (var item in institucionEstudianteList){
                         _context.InstitucionEstudiante.Add(item);
                     }
-                    // var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion, IdUsuarioNavigation = user };
-                    // _context.InstitucionEstudiante.Add(institucionEstudiante);
 
                 }
                 if (usuario.RolId == "2")
@@ -126,11 +139,21 @@ namespace WebAPI.Controllers
                         _context.InstitucionDocente.Add(item);
                     }
                 }
-                // if (usuario.RolId == "3")
-                // {
-                //     var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion, IdTutorNavigation = user };
-                //     _context.InstitucionTutor.Add(institucionTutor);
-                // }
+
+                if (usuario.RolId == "3")
+                {
+                    TutorEstudiante[] tutorEstudianteList = new TutorEstudiante[usuario.IdEstudiantes.Length] ;
+                    // recorro el array de usuarioIdIEstudiantes
+                    for (int i = 0; i < usuario.IdEstudiantes.Length; i++)
+                    {
+                        var idEstudiante = usuario.IdEstudiantes[i];
+                        tutorEstudianteList[i] = new TutorEstudiante { IdUsuarioEstudiante = idEstudiante, IdUsuarioTutorNavigation = user };
+                    }
+                    foreach (var item in tutorEstudianteList){
+                        _context.TutorEstudiante.Add(item);
+                    }
+                }
+
                 _context.Personas.Add(persona);
                 _context.Usuarios.Add(user);
                 _context.UsuarioRol.Add(usuarioRol);
@@ -138,7 +161,7 @@ namespace WebAPI.Controllers
                 if (!EmailExists(user.UsuarioNombre))
                 {
                     await _context.SaveChangesAsync();
-                    _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdPersona);
+                    // _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdPersona);
                     var usuario_aux = _context.Usuarios.FirstOrDefault(item => item.UsuarioNombre == usuario.Email );
                     usuario.IdUsuario = usuario_aux.IdUsuario;
                     return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, usuario);

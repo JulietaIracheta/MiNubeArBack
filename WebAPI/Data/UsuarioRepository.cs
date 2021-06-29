@@ -129,7 +129,6 @@ namespace WebAPI.Data
                 _context.SaveChanges();
         }
 
-
         public async void UpdateEstudiante(int id, UsuarioUpdateDto usuario){
               // obtengo la persona actual y actualizo sus valores
                 var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdUsuario);
@@ -198,6 +197,92 @@ namespace WebAPI.Data
                     {
                         var institucionEstudiante = new InstitucionEstudiante {IdInstitucion = idInstitucion, IdUsuario = usuario.IdPersona};
                         _context.InstitucionEstudiante.Add(institucionEstudiante);
+                    }
+                }
+  
+                _context.SaveChanges();
+        }
+
+        public async void UpdateTutor(int id, UsuarioUpdateDto usuario){
+              // obtengo la persona actual y actualizo sus valores
+                var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdUsuario);
+                personaAModificar.Nombre = usuario.Nombre; 
+                personaAModificar.Apellido = usuario.Apellido;
+                personaAModificar.Email = usuario.Email;
+                personaAModificar.Telefono = int.Parse(usuario.Telefono);
+                
+                // obtengo los estudiantes del tutor
+                var estudiantesDelDocente = _context.TutorEstudiante.Where( row => row.IdUsuarioTutor == usuario.IdUsuario);
+
+                int[] estudianteTutorList = new int[estudiantesDelDocente.Count()] ;
+
+                int contador = 0;
+                foreach (var row in estudiantesDelDocente)
+                {
+                    estudianteTutorList[contador] = row.IdUsuarioEstudiante;
+                    contador++;                                                                        
+                }
+
+                // primero pregunto si tienen la misma cantidad de elementos comparo el tamaño de los arrays
+                // verifico si las que vienen por parametro son las mismas que las que se encuentran actualmente en la tabla
+                if(estudianteTutorList.Length == usuario.IdEstudiantes.Length){
+                    
+                    int coincidencias = estudianteTutorList.Intersect(usuario.IdEstudiantes).Count();
+                    
+                    // si los dos arrays tienen los mismo valores no hago nada
+                    if(!(coincidencias == usuario.IdEstudiantes.Length)){
+                        // Si hay 0 coincidencias entonces modifico todo
+                        int index = 0;
+                        foreach (var row in estudiantesDelDocente)
+                        {
+                            row.IdUsuarioEstudiante = usuario.IdEstudiantes[index];
+                            index++;
+                        }
+                    } 
+                // si los estudiantes asignados superan a las actuales agrego la/s nueva/s
+                }else if(estudianteTutorList.Length < usuario.IdEstudiantes.Length){ 
+                    // verifico si las que ya estan registradas forman parte de las ingresadas
+                    if(estudianteTutorList.Intersect(usuario.IdEstudiantes).Count() == estudianteTutorList.Length){
+                        // identifico los id de estudiantes asignados no registradas
+                        var idNoRegistradas = usuario.IdEstudiantes.Except(estudianteTutorList);
+                        // agrego las restantes
+                        foreach (var idEstudiante in idNoRegistradas)
+                        {
+                            var estudianteTutor = new TutorEstudiante {IdUsuarioEstudiante = idEstudiante, IdUsuarioTutor = usuario.IdPersona};
+                            _context.TutorEstudiante.Add(estudianteTutor);
+                        }
+                    }else{
+                        // si las que ya estan registradas no forman parte de las ingresadas entonces elimino lo que esta y agrego lo nuevo
+                        for (int i = 0; i < estudianteTutorList.Length; i++)
+                        {
+                            var estudianteTutor =  _context.TutorEstudiante.FirstOrDefault(item => item.IdUsuarioEstudiante == estudianteTutorList[i] && item.IdUsuarioTutor == usuario.IdPersona);
+                            _context.TutorEstudiante.Remove(estudianteTutor);
+                        }
+                        for (int i = 0; i < usuario.IdEstudiantes.Length; i++)
+                        {
+                            var estudianteTutor = new TutorEstudiante {IdUsuarioEstudiante =  usuario.IdEstudiantes[i], IdUsuarioTutor = usuario.IdPersona};
+                            _context.TutorEstudiante.Add(estudianteTutor);
+                        }
+                    }
+                    
+                }else{
+                    // si los estudiantes asignados es es menor a la existente entonces elimino las que ya no se encuentran
+                    // obtengo las que tienen que ser eliminadas
+                    var idAeliminar = estudianteTutorList.Except(usuario.IdEstudiantes);
+
+                    foreach (var idEstudiante in idAeliminar)
+                    {
+                        var estudianteTutor =  _context.TutorEstudiante.FirstOrDefault(item => item.IdUsuarioEstudiante == idEstudiante && item.IdUsuarioTutor == usuario.IdPersona);
+                        _context.TutorEstudiante.Remove(estudianteTutor);
+                    }
+                    
+                    // identifico los id de los estudiantes ingresados no registradas y las registro
+                    var idNoRegistradas = usuario.IdEstudiantes.Except(estudianteTutorList);
+
+                    foreach (var idEstudiante in idNoRegistradas)
+                    {
+                        var estudianteTutor = new TutorEstudiante {IdUsuarioEstudiante = idEstudiante, IdUsuarioTutor = usuario.IdPersona};
+                        _context.TutorEstudiante.Add(estudianteTutor);
                     }
                 }
   
