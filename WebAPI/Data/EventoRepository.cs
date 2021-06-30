@@ -31,8 +31,7 @@ namespace WebAPI.Data
 
             foreach (var estudiante in listaEstudiantes)
             {
-                var tutor = _context.TutorEstudiante.First(e => e.IdUsuarioEstudiante == estudiante.IdUsuario)
-                    .IdUsuarioTutor;
+                var tutor = _context.TutorEstudiante.FirstOrDefault(e => e.IdUsuarioEstudiante == estudiante.IdUsuario)?.IdUsuarioTutor;
                 listaDeNotificaciones.Add(new Notificacion
                 {
                     Descripcion = "Nuevo Evento",
@@ -42,15 +41,16 @@ namespace WebAPI.Data
                     Mensaje = $"Se ha creado un nuevo evento {DateTime.Now:g}",
                     TipoNotificacion = (int) TipoNotificacion.Evento
                 });
-                listaDeNotificaciones.Add(new Notificacion
-                {
-                    Descripcion = "Nuevo Evento",
-                    Fecha = DateTime.Now,
-                    IdDestinatario = tutor,
-                    IdNotificacion = 0,
-                    Mensaje = $"Se ha creado un nuevo evento {DateTime.Now:g}",
-                    TipoNotificacion = (int)TipoNotificacion.Evento
-                });
+                if(tutor.HasValue)
+                    listaDeNotificaciones.Add(new Notificacion
+                    {
+                        Descripcion = "Nuevo Evento",
+                        Fecha = DateTime.Now,
+                        IdDestinatario = tutor.Value,
+                        IdNotificacion = 0,
+                        Mensaje = $"Se ha creado un nuevo evento {DateTime.Now:g}",
+                        TipoNotificacion = (int)TipoNotificacion.Evento
+                    });
             }
 
             _context.Evento.Add(user);

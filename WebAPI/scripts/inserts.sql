@@ -2,11 +2,90 @@
 use minubeDB
 
 EXEC sp_rename 'evento.descripcion', 'title'
+
 EXEC sp_rename 'evento.fecha', 'start'
+
 alter table evento add url varchar(100)
 alter table Materias add icon varchar(100)
 alter table usuarios alter column password varchar(100);
 alter table Contenidos add  video varchar(255);
+
+alter table Comunicados add idDocente int;
+alter table Comunicados add CONSTRAINT fk_docente FOREIGN KEY (idDocente) 
+REFERENCES Usuarios (idUsuario)
+
+alter table Comunicados add fecha datetime;
+
+CREATE TABLE [dbo].[Answer](
+	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[content] [nvarchar](250) NOT NULL,
+	[correct] [bit] NOT NULL,
+	[questionId] [int] NOT NULL
+)
+CREATE TABLE [dbo].[Boletin](
+	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[año] [int] NOT NULL,
+	[idEstudiante] [int] NOT NULL,
+	[materia] [nvarchar](50) NOT NULL,
+	[T1] [varchar](20) NULL,
+	[T2] [varchar](20) NULL,
+	[T3] [varchar](20) NULL,
+)
+
+CREATE TABLE [dbo].[Puntaje_Actividad](
+	[idMateria] [int] NOT NULL,
+	[puntaje] [int] NULL,
+	[idActividad] [int] NOT NULL,
+	[idActividad_Estudiante_Materia_Puntaje] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[idCurso] [int] NULL,
+	[idEstudiante] [int] NULL,
+)
+
+CREATE TABLE [dbo].[Question](
+	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[content] [nvarchar](250) NOT NULL,
+	[actividadesId] [int] NULL,
+)
+
+ALTER TABLE [dbo].[Question]  WITH NOCHECK ADD  CONSTRAINT [FK_Question_Actividades] FOREIGN KEY([actividadesId])
+REFERENCES [dbo].[Actividades] ([idActividad])
+
+ALTER TABLE [dbo].[Answer]  WITH CHECK ADD  CONSTRAINT [FK_Answer_Question] FOREIGN KEY([questionId])
+REFERENCES [dbo].[Question] ([id])
+
+ALTER TABLE [dbo].[Boletin]  WITH CHECK ADD  CONSTRAINT [FK_Boletin_Usuarios] FOREIGN KEY([idEstudiante])
+REFERENCES [dbo].[Usuarios] ([idUsuario])
+
+ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Actividad_Puntaje_Actividad] FOREIGN KEY([idActividad])
+REFERENCES [dbo].[Actividades] ([idActividad])
+
+ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Curso_Puntaje_Actividad] FOREIGN KEY([idCurso])
+REFERENCES [dbo].[Cursos] ([idCurso])
+
+ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Estudiante_Puntaje_Actividad] FOREIGN KEY([idEstudiante])
+REFERENCES [dbo].[Usuarios] ([idUsuario])
+
+ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Materia_Puntaje_Actividad] FOREIGN KEY([idMateria])
+REFERENCES [dbo].[Materias] ([idMateria])
+
+-- agrego url a evento y cambio nombres de campos
+
+ALTER TABLE Actividades ADD unidad int 
+alter table Actividades add idMateria int
+ 
+-- agrego actividades y quiz
+Create table Quiz_Preguntas(
+idQuiz_Pregunta int primary key IDENTITY(1,1) NOT NULL,
+idActividad int, 
+pregunta varchar(200)
+CONSTRAINT fk_Actividad_Quiz FOREIGN KEY (idActividad) REFERENCES Actividades (idActividad)
+);
+Create table Quiz_Respuestas(
+idQuiz_Respuesta int primary key IDENTITY(1,1) NOT NULL,
+idQuiz_Pregunta int, 
+respuesta varchar(200)
+CONSTRAINT fk_Actividad_Quiz_Respuesta FOREIGN KEY (idQuiz_Pregunta) REFERENCES Quiz_Preguntas (idQuiz_Pregunta)
+);
 
 --creo tabla de notificaciones
 create table Notificacion(
@@ -47,11 +126,25 @@ INSERT [dbo].[Usuarios] ([idPersona], [usuario_nombre], [password], [fecha_creac
 [fecha_eliminacion_logico]) 
 VALUES ( 4, N'admin@gmail.com', N'$2b$10$AVDyfmT22arGYxbNeoEGz./uSVIdlOTcH5Ezni5aST7LW/U2UP4v2',NULL, NULL, null)
  --usuario rol
+
+--estudiante
+insert into Personas(nombre,apellido,email,telefono) values('Sofia','Acevedo','sacevedo@gmail.com',15003231);
+INSERT [dbo].[Usuarios] ([idPersona], [usuario_nombre], [password], [fecha_creacion], [fecha_modificacion],
+[fecha_eliminacion_logico]) 
+VALUES ( 5, N'sacevedo@gmail.com', N'$2b$10$AVDyfmT22arGYxbNeoEGz./uSVIdlOTcH5Ezni5aST7LW/U2UP4v2',NULL, NULL, null)
+
+ --tutor
+insert into Personas(nombre,apellido,email,telefono) values('Ramiro','Acevedo','racevedo@gmail.com',15003231);
+INSERT [dbo].[Usuarios] ([idPersona], [usuario_nombre], [password], [fecha_creacion], [fecha_modificacion],
+[fecha_eliminacion_logico]) 
+VALUES ( 6, N'racevedo@gmail.com', N'$2b$10$AVDyfmT22arGYxbNeoEGz./uSVIdlOTcH5Ezni5aST7LW/U2UP4v2',NULL, NULL, null)
+
+insert into Usuario_Rol (idUsuario,idRol) values (1,1),(2,2),(3,1),(4,4),(4,4),(5,1),(6,3);
+
  
-insert into Usuario_Rol (idUsuario,idRol) values (1,1),(2,2),(3,1),(4,4),(4,4);
+insert into Tutor_Estudiante(idUsuarioTutor,idUsuarioEstudiante) values(6,1),(6,5);
 
-
-select * from usuarios
+select * from Usuario_Rol
 --instituciones
 select * from Instituciones
 insert into Instituciones(nombre,direccion,email) values('Mariano Moreno','Urquiza 343','marianomoreno@gmail.com');
