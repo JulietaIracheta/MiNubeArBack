@@ -56,79 +56,134 @@ namespace WebAPI.Controllers
             return usuarioRepository.GetEstudiantes();
         }
 
-        // PUT: api/usuario/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, Usuarios usuario)
+ 
+        [HttpGet("getEstudiantesDeUnTutor/{id}")]
+        public List<Usuarios> getEstudiantesDeUnTutor(int id)
         {
-            usuario.IdUsuario = id;
+            var estudiante = _context.TutorEstudiante.Where(x => x.IdUsuarioTutor == id).Select(x => x.IdUsuarioEstudianteNavigation).ToList();
+            return estudiante;
+        }
 
-            _context.Entry(usuario).State = EntityState.Modified;
+        [HttpGet("getEstudiantes/")]
+        public List<Usuarios> getEstudiantes()
+        {
+            var estudiantes = _context.UsuarioRol.Where( row => row.IdRol == 1).Select( x => x.IdUsuarioNavigation ).ToList();
+            return estudiantes;
+        }
 
+        // PUT: api/usuario/5 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUsuario(int id, UsuarioUpdateDto usuario)
+        {
             try
             {
-                await _context.SaveChangesAsync();
+                switch(usuario.Rol){
+                    case "Docente":
+                        usuarioRepository.UpdateDocente(id,usuario);
+                        break;
+                    case "Estudiante":
+                        usuarioRepository.UpdateEstudiante(id,usuario);
+                        break;
+                    case "Tutor":
+                        usuarioRepository.UpdateTutor(id,usuario);
+                        break;
+                    default:
+                        break;
+                }
+                return NoContent();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                if (!UsuarioExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(new { message = "Problema al intentar modificar al usuario " + usuario.Nombre });
             }
-
-            return NoContent();
         }
 
         // POST: api/Usuario
         [HttpPost]
         public async Task<ActionResult<Usuarios>> PostUsuario(PersonaDto usuario)
         {
-            var persona = new Personas {Apellido = usuario.Apellido, Email = usuario.Email, Nombre = usuario.Nombre, Telefono = usuario.Telefono};
-
-            var user = new Usuarios
+            try
             {
-                UsuarioNombre = persona.Email,
-                IdPersona = usuario.IdPersona,
-                Password = BCrypt.Net.BCrypt.HashPassword(usuario.Password),
-                IdPersonaNavigation = persona,
-                FechaCreacion = DateTime.Now
-            };
-            var usuarioRol = new UsuarioRol {IdRol = Convert.ToInt32(usuario.RolId), IdUsuarioNavigation = user,};
+                var persona = new Personas {Apellido = usuario.Apellido, Email = usuario.Email, Nombre = usuario.Nombre, Telefono = usuario.Telefono};
+ 
+                var user = new Usuarios
+                {
+                    UsuarioNombre = persona.Email,
+                    IdPersona = usuario.IdPersona,
+                    Password = BCrypt.Net.BCrypt.HashPassword(usuario.Password),
+                    IdPersonaNavigation = persona,
+                    FechaCreacion = DateTime.Now
+                };
+                var usuarioRol = new UsuarioRol {IdRol = Convert.ToInt32(usuario.RolId), IdUsuarioNavigation = user,};
 
-            if (usuario.RolId == "1")
-            {
-                var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = usuario.IdInstitucion, IdUsuarioNavigation = user };
-                _context.InstitucionEstudiante.Add(institucionEstudiante);
+                if (usuario.RolId == "1")
+                {
+                  
+                    InstitucionEstudiante[] institucionEstudianteList = new InstitucionEstudiante[usuario.IdInstitucion.Length] ;
+                    // recorro el array de usuarioIdInstitucion
+                    for (int i = 0; i < usuario.IdInstitucion.Length; i++)
+                    {
+                        var idInstitucion = usuario.IdInstitucion[i];                                          
+                        institucionEstudianteList[i] = new InstitucionEstudiante { IdInstitucion = idInstitucion, IdUsuarioNavigation = user };
+                    }
+                    foreach (var item in institucionEstudianteList){
+                        _context.InstitucionEstudiante.Add(item);
+                    }
 
+                }
+                if (usuario.RolId == "2")
+                {
+
+                    InstitucionDocente[] institucionDocenteList = new InstitucionDocente[usuario.IdInstitucion.Length] ;
+                    var institucionDocente =  new InstitucionDocente();
+                    // recorro el array de usuarioIdInstitucion
+                    for (int i = 0; i < usuario.IdInstitucion.Length; i++)
+                    {
+                        var idInstitucion = usuario.IdInstitucion[i];
+                        institucionDocenteList[i] = new InstitucionDocente { IdInstitucion = idInstitucion, IdDocenteNavigation = user };
+                    }
+                    foreach (var item in institucionDocenteList){
+                        _context.InstitucionDocente.Add(item);
+                    }
+                }
+
+                if (usuario.RolId == "3")
+                {
+                    TutorEstudiante[] tutorEstudianteList = new TutorEstudiante[usuario.IdEstudiantes.Length] ;
+                    // recorro el array de usuarioIdIEstudiantes
+                    for (int i = 0; i < usuario.IdEstudiantes.Length; i++)
+                    {
+                        var idEstudiante = usuario.IdEstudiantes[i];
+                        tutorEstudianteList[i] = new TutorEstudiante { IdUsuarioEstudiante = idEstudiante, IdUsuarioTutorNavigation = user };
+                    }
+                    foreach (var item in tutorEstudianteList){
+                        _context.TutorEstudiante.Add(item);
+                    }
+                }
+
+                _context.Personas.Add(persona);
+                _context.Usuarios.Add(user);
+                _context.UsuarioRol.Add(usuarioRol);
+
+                if (!EmailExists(user.UsuarioNombre))
+                {
+                    await _context.SaveChangesAsync();
+                    // _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdPersona);
+                    var usuario_aux = _context.Usuarios.FirstOrDefault(item => item.UsuarioNombre == usuario.Email );
+                    usuario.IdUsuario = usuario_aux.IdUsuario;
+                    return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, usuario);
+                }
+                else
+                {
+                    return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, new Personas {Email = ""});
+                    // return BadRequest(new { message = "Email ya existe en Base de Datos" });
+                }
             }
-            if (usuario.RolId == "2")
-            {
-                var institucionDocente = new InstitucionDocente { IdInstitucion = usuario.IdInstitucion, IdDocenteNavigation = user };
-                _context.InstitucionDocente.Add(institucionDocente);
-
-            }
-            /*if (usuario.RolId == "3")
-            {
-                var institucionTutor = new InstitucionTutor { IdInstitucion = usuario.IdInstitucion, IdTutorNavigation = user };
-                _context.InstitucionTutor.Add(institucionTutor);
-            }*/
-            _context.Personas.Add(persona);
-            _context.Usuarios.Add(user);
-            _context.UsuarioRol.Add(usuarioRol);
-
-            if (!EmailExists(user.UsuarioNombre))
-            {
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetUsuario", new { id = user.IdUsuario }, usuario);
-            }
-            else
+            catch (Exception e)
             {
                 return BadRequest(new { message = "Email ya existe en Base de Datos" });
             }
+            
         }
 
         // DELETE: api/Usuario/5
@@ -160,6 +215,7 @@ namespace WebAPI.Controllers
             return _context.Usuarios.Any(e => e.UsuarioNombre == usuarioNombre);
         }
 
+        
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Usuarios))]
         public ActionResult<PersonaDto> Login(Usuarios usuario)
@@ -182,6 +238,9 @@ namespace WebAPI.Controllers
             return new PersonaDto
                 {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre};
         }
+        
+        
+        
         [HttpPost("loginGoogle")]
         public ActionResult<PersonaDto> LoginGoogle(string email)
         {

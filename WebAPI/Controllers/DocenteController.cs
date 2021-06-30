@@ -13,6 +13,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class DocenteController : ControllerBase
     {
+        private const string V = "getInstitucionesDeUnDocente/{id}";
         private readonly minubeDBContext _context;
         private readonly JwtService _jwtService;
 
@@ -32,6 +33,13 @@ namespace WebAPI.Controllers
             var institucion = _context.InstitucionDocente.Where(x => x.IdDocente == id).Select(x => x.IdInstitucionNavigation);
             
 
+            return institucion;
+        }
+        
+        [HttpGet(V)]
+        public List<Instituciones> getInstitucionesDeUnDocente(int id)
+        {
+            var institucion = _context.InstitucionDocente.Where(x => x.IdDocente == id).Select(x => x.IdInstitucionNavigation).ToList();
             return institucion;
         }
 

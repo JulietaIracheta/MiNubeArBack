@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -74,25 +75,34 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Instituciones>> PostInstitucion(Instituciones institucion)
         {
+            try{
+                var user = new Instituciones
+                {
+                    Nombre = institucion.Nombre,
+                    Email = institucion.Email,
+                    Direccion = institucion.Direccion
+                };
 
-            var user = new Instituciones
-            {
-                Nombre = institucion.Nombre,
-                Email = institucion.Email,
-                Direccion = institucion.Direccion
-            };
+                _context.Instituciones.Add(user);
 
-            _context.Instituciones.Add(user);
+                if (!EmailExists(user.Email))
+                {
+                    await _context.SaveChangesAsync();
+                    var institucionAgregada = _context.Instituciones.FirstOrDefault( item => item.Email == institucion.Email);
+                    institucion.IdInstitucion = institucionAgregada.IdInstitucion;
+                    return CreatedAtAction("GetInstitucion", new { id = institucion.IdInstitucion }, institucion);
+                }
+                else
+                {
+                    institucion.Email = "";
+                    return CreatedAtAction("GetInstitucion", new { id = institucion.IdInstitucion }, institucion);
 
-            if (!EmailExists(user.Email))
-            {
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetInstitucion", new { id = institucion.IdInstitucion }, institucion);
+                }
             }
-            else
+            catch (Exception e)
             {
                 return BadRequest(new { message = "Email ya existe en Base de Datos" });
-            }
+            }   
         }
 
        
@@ -111,6 +121,14 @@ namespace WebAPI.Controllers
             await _context.SaveChangesAsync();
 
             return user;
+        }
+
+
+        [HttpGet("getInstitucionesDeUnEstudiante/{id}")]
+        public List<Instituciones> getInstitucionesDeUnEstudiante(int id)
+        {
+            var institucion = _context.InstitucionEstudiante.Where(x => x.IdUsuario == id).Select(x => x.IdInstitucionNavigation).ToList();
+            return institucion;
         }
 
         private bool InstitucionExists(int id)

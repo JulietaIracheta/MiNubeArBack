@@ -1,8 +1,10 @@
 # Configuración del proyecto
 
--  Renombrar el archivo appsettings.json.example por appsettings.json
+-  Duplicar el archivo appsettings.json.example y renombrarlo como appsettings.json
 
-- cambiar los siguiente valores por los correspondientes a su base de datos:
+- Abro el archivo appsettings.json con su editor de texto favorito y realizo los siguientes cambios:
+
+- Cambiar los siguiente valores por los correspondientes a su base de datos:
 ```
     - SERVER
     - DBNAME
