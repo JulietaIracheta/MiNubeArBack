@@ -1,27 +1,31 @@
 -- agrego url a evento y cambio nombres de campo
 use minubeDB
-
+go
 EXEC sp_rename 'evento.descripcion', 'title'
-
+go
 EXEC sp_rename 'evento.fecha', 'start'
-
+go
 alter table evento add url varchar(100)
+go
 alter table Materias add icon varchar(100)
+go
 alter table usuarios alter column password varchar(100);
+go
 alter table Contenidos add  video varchar(255);
-
+go
 alter table Comunicados add idDocente int;
-alter table Comunicados add CONSTRAINT fk_docente FOREIGN KEY (idDocente) 
-REFERENCES Usuarios (idUsuario)
-
+go
+alter table Comunicados add CONSTRAINT fk_docente FOREIGN KEY (idDocente) REFERENCES Usuarios (idUsuario)
+go
 alter table Comunicados add fecha datetime;
-
+go
 CREATE TABLE [dbo].[Answer](
 	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[content] [nvarchar](250) NOT NULL,
 	[correct] [bit] NOT NULL,
 	[questionId] [int] NOT NULL
 )
+go
 CREATE TABLE [dbo].[Boletin](
 	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[año] [int] NOT NULL,
@@ -31,7 +35,7 @@ CREATE TABLE [dbo].[Boletin](
 	[T2] [varchar](20) NULL,
 	[T3] [varchar](20) NULL,
 )
-
+go
 CREATE TABLE [dbo].[Puntaje_Actividad](
 	[idMateria] [int] NOT NULL,
 	[puntaje] [int] NULL,
@@ -40,39 +44,40 @@ CREATE TABLE [dbo].[Puntaje_Actividad](
 	[idCurso] [int] NULL,
 	[idEstudiante] [int] NULL,
 )
-
+go
 CREATE TABLE [dbo].[Question](
 	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[content] [nvarchar](250) NOT NULL,
 	[actividadesId] [int] NULL,
 )
-
+go
 ALTER TABLE [dbo].[Question]  WITH NOCHECK ADD  CONSTRAINT [FK_Question_Actividades] FOREIGN KEY([actividadesId])
 REFERENCES [dbo].[Actividades] ([idActividad])
-
+go
 ALTER TABLE [dbo].[Answer]  WITH CHECK ADD  CONSTRAINT [FK_Answer_Question] FOREIGN KEY([questionId])
 REFERENCES [dbo].[Question] ([id])
-
+go
 ALTER TABLE [dbo].[Boletin]  WITH CHECK ADD  CONSTRAINT [FK_Boletin_Usuarios] FOREIGN KEY([idEstudiante])
 REFERENCES [dbo].[Usuarios] ([idUsuario])
-
+go
 ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Actividad_Puntaje_Actividad] FOREIGN KEY([idActividad])
 REFERENCES [dbo].[Actividades] ([idActividad])
-
+go
 ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Curso_Puntaje_Actividad] FOREIGN KEY([idCurso])
 REFERENCES [dbo].[Cursos] ([idCurso])
-
+go
 ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Estudiante_Puntaje_Actividad] FOREIGN KEY([idEstudiante])
 REFERENCES [dbo].[Usuarios] ([idUsuario])
-
+go
 ALTER TABLE [dbo].[Puntaje_Actividad]  WITH CHECK ADD  CONSTRAINT [FK_Materia_Puntaje_Actividad] FOREIGN KEY([idMateria])
 REFERENCES [dbo].[Materias] ([idMateria])
 
 -- agrego url a evento y cambio nombres de campos
-
+go
 ALTER TABLE Actividades ADD unidad int 
+go
 alter table Actividades add idMateria int
- 
+ go
 -- agrego actividades y quiz
 Create table Quiz_Preguntas(
 idQuiz_Pregunta int primary key IDENTITY(1,1) NOT NULL,
@@ -80,13 +85,14 @@ idActividad int,
 pregunta varchar(200)
 CONSTRAINT fk_Actividad_Quiz FOREIGN KEY (idActividad) REFERENCES Actividades (idActividad)
 );
+go
 Create table Quiz_Respuestas(
 idQuiz_Respuesta int primary key IDENTITY(1,1) NOT NULL,
 idQuiz_Pregunta int, 
 respuesta varchar(200)
 CONSTRAINT fk_Actividad_Quiz_Respuesta FOREIGN KEY (idQuiz_Pregunta) REFERENCES Quiz_Preguntas (idQuiz_Pregunta)
 );
-
+go
 --creo tabla de notificaciones
 create table Notificacion(
 	idNotificacion int primary key IDENTITY(1,1) NOT NULL,
@@ -97,7 +103,7 @@ create table Notificacion(
 	idDestinatario int not null,
 	CONSTRAINT fk_destinatario FOREIGN KEY (idDestinatario) REFERENCES Usuarios (idUsuario)
 )
-
+go
 
 insert into Roles (descripcion)values('Estudiante');
 insert into Roles (descripcion)values('Docente');
