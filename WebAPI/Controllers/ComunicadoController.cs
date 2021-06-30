@@ -52,5 +52,13 @@ namespace WebAPI.Controllers
             var id = Convert.ToInt32(token.Issuer);
             return comunicadoRepository.GetAllByEstudiante(id);
         }
+        [HttpGet("getComunicadosByTutor")]
+        public List<ComunicadoDto> GetComunicadosDeTutor()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var id = Convert.ToInt32(token.Issuer);
+            return comunicadoRepository.GetAllComunicadosDeTutor(id);
+        }
     }
 }

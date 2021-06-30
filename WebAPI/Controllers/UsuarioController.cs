@@ -176,7 +176,7 @@ namespace WebAPI.Controllers
             var jwt = _jwtService.Generate(user.IdUsuario);
             Response.Cookies.Append("jwt", jwt, new CookieOptions
             {
-                HttpOnly = true
+                HttpOnly = false
             }) ;
 
             return new PersonaDto
@@ -199,7 +199,7 @@ namespace WebAPI.Controllers
             var jwt = _jwtService.Generate(user.IdUsuario);
             Response.Cookies.Append("jwt", jwt, new CookieOptions
             {
-                HttpOnly = true
+                HttpOnly = false
             });
 
             return new PersonaDto

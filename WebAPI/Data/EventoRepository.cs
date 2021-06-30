@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Enums;
@@ -24,16 +25,33 @@ namespace WebAPI.Data
         {
             var user = new Evento {Title = evento.Title, Start = evento.Start, IdCurso = 1, Url = evento.Url};
 
-            var listaDeNotificaciones = _context.EstudianteCurso.Where(c => c.IdCurso == 1).Select(b => new Notificacion
+            
+            var listaEstudiantes=_context.EstudianteCurso.Where(c => c.IdCurso == 1).ToList();
+            var listaDeNotificaciones = new List<Notificacion>();
+
+            foreach (var estudiante in listaEstudiantes)
+            {
+                var tutor = _context.TutorEstudiante.First(e => e.IdUsuarioEstudiante == estudiante.IdUsuario)
+                    .IdUsuarioTutor;
+                listaDeNotificaciones.Add(new Notificacion
                 {
                     Descripcion = "Nuevo Evento",
                     Fecha = DateTime.Now,
-                    IdDestinatario = b.IdUsuario,
+                    IdDestinatario = estudiante.IdUsuario,
+                    IdNotificacion = 0,
+                    Mensaje = $"Se ha creado un nuevo evento {DateTime.Now:g}",
+                    TipoNotificacion = (int) TipoNotificacion.Evento
+                });
+                listaDeNotificaciones.Add(new Notificacion
+                {
+                    Descripcion = "Nuevo Evento",
+                    Fecha = DateTime.Now,
+                    IdDestinatario = tutor,
                     IdNotificacion = 0,
                     Mensaje = $"Se ha creado un nuevo evento {DateTime.Now:g}",
                     TipoNotificacion = (int)TipoNotificacion.Evento
-            })
-                .ToList();
+                });
+            }
 
             _context.Evento.Add(user);
             _context.Notificacion.AddRange(listaDeNotificaciones);
