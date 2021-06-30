@@ -53,18 +53,37 @@ namespace WebAPI.Controllers
             return boletin.ToList();
         }
 
+        [HttpGet("estudiante/{id}")]
+        public List<Boletin> GetBoletinesEstudiantes(int id)
+        {
+
+            IQueryable<Boletin> boletin = from b in _context.Boletin
+                                          where b.IdEstudiante == id
+                                          select new Boletin
+                                          {
+                                              IdEstudiante = id,
+                                              Año = b.Año,
+                                              Materia = b.Materia,
+                                              T1 = b.T1,
+                                              T2 = b.T2,
+                                              T3 = b.T3,
+                                          };
+
+            return boletin.ToList();
+        }
+
         [HttpGet("tutor/{id}")]
         public List<BoletinDto> GetBoletinEstudianteTutor(int id)
         {
                 var jwt = Request.Cookies["jwt"];
               var token = _jwtService.Verify(jwt);
                 id = Convert.ToInt32(token.Issuer);
-            
+
             IQueryable<BoletinDto> boletin = from b in _context.Boletin
                                              join u in _context.Usuarios on b.IdEstudiante equals u.IdUsuario
                                              join t in _context.TutorEstudiante on u.IdUsuario equals t.IdUsuarioEstudiante
                                              where t.IdUsuarioTutor == id
-                                          
+                                             
                                              select new BoletinDto
                                           {
                                             
