@@ -6,15 +6,9 @@
       "Microsoft.Hosting.Lifetime": "Information"
     }
   },
-<<<<<<< HEAD:WebAPI/appsettings.json.example
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "DevConnection": "Server =SERVER; Database=DBNAME; User Id =USER; Password=PASSWORD; Trusted_Connection=True; MultipleActiveResultSets=True"
-=======
-
-  "AllowedHosts": "*",
-  "ConnectionStrings": {
-    "DevConnection": "Server =DESKTOP-B3ADN09\\SQLEXPRESS; Database=miNubeDB; Trusted_Connection=True; MultipleActiveResultSets=True;"
   },
   "MailSettings": {
     "Mail": "minubearg@gmail.com",
@@ -22,7 +16,6 @@
     "Password": "minubeargentina",
     "Host": "smtp.gmail.com",
     "Port": 587
->>>>>>> actividades:WebAPI/appsettings.json
   }
 }
 
