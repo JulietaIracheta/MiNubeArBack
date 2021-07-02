@@ -35,7 +35,6 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<Usuarios>> GetUsuario(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
-
             if (usuario == null)
             {
                 return NotFound();
@@ -43,7 +42,61 @@ namespace WebAPI.Controllers
 
             return usuario;
         }
+        
+        [HttpGet("getCuentaUsuario")]
+        public ActionResult<CuentaUsuarioDto> GetCuentaUsuario()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var id = Convert.ToInt32(token.Issuer);
 
+            var usuario = _context.Usuarios.Include(u => u.IdPersonaNavigation).First(e => e.IdUsuario == id);
+
+            if (usuario == null) return NotFound();
+
+            return new CuentaUsuarioDto
+            {
+                IdPersona = usuario.IdPersona.GetValueOrDefault(),
+                IdUsuario = usuario.IdUsuario,
+                Nombre = usuario.IdPersonaNavigation.Nombre,
+                Apellido = usuario.IdPersonaNavigation.Apellido,
+                Email = usuario.IdPersonaNavigation.Email,
+                UsuarioNombre = usuario.UsuarioNombre,
+                Telefono = usuario.IdPersonaNavigation.Telefono,
+                Password = string.Empty
+            };
+        }
+        
+        [HttpPost("actualizarCuentaUsuario")]
+        public ActionResult ActualizarCuentaUsuario([FromForm]  CuentaUsuarioDto cuentaUsuario)
+        {
+            var usuario = _context.Usuarios.First(e => e.IdUsuario == cuentaUsuario.IdUsuario);
+            var persona = _context.Personas.First(e => e.IdPersona == cuentaUsuario.IdPersona);
+
+            usuario.UsuarioNombre = cuentaUsuario.UsuarioNombre;
+            
+            if(!string.IsNullOrEmpty(cuentaUsuario.Password))
+                usuario.Password = BCrypt.Net.BCrypt.HashPassword(cuentaUsuario.Password);
+            usuario.FechaModificacion = DateTime.Now;
+
+            persona.Apellido = cuentaUsuario.Apellido;
+            persona.Nombre = cuentaUsuario.Nombre;
+            persona.Email = cuentaUsuario.Email;
+            persona.Telefono = cuentaUsuario.Telefono;
+            
+            var flag = true;
+            
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                flag = false;
+            }
+
+            return flag ? (ActionResult) Ok() : BadRequest();
+        }
         [HttpGet]
         public List<UsuarioDto> GetUsuarios()
         {
