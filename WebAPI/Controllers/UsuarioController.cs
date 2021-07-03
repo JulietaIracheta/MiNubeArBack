@@ -181,17 +181,8 @@ namespace WebAPI.Controllers
 
                 if (usuario.RolId == "1")
                 {
-                  
-                    InstitucionEstudiante[] institucionEstudianteList = new InstitucionEstudiante[usuario.IdInstitucion.Length] ;
-                    // recorro el array de usuarioIdInstitucion
-                    for (int i = 0; i < usuario.IdInstitucion.Length; i++)
-                    {
-                        var idInstitucion = usuario.IdInstitucion[i];                                          
-                        institucionEstudianteList[i] = new InstitucionEstudiante { IdInstitucion = idInstitucion, IdUsuarioNavigation = user };
-                    }
-                    foreach (var item in institucionEstudianteList){
-                        _context.InstitucionEstudiante.Add(item);
-                    }
+                    var institucionEstudiante = new InstitucionEstudiante {IdInstitucion = usuario.IdInstitucionEstudiante, IdUsuarioNavigation = user};
+                    _context.InstitucionEstudiante.Add(institucionEstudiante);
 
                 }
                 if (usuario.RolId == "2")

@@ -11,5 +11,6 @@ namespace WebAPI.Dto
         public int[] IdInstitucion { get; set; }
         public int[] IdEstudiantes { get; set; }
         public string Rol { get; set; }
+        public int IdInstitucionEstudiante { get; set; }
     }
 }
