@@ -15,6 +15,7 @@ namespace WebAPI.Models
             Informes = new HashSet<Informes>();
             InstitucionCurso = new HashSet<InstitucionCurso>();
             MateriaCurso = new HashSet<MateriaCurso>();
+            PuntajeActividades = new HashSet<PuntajeActividad>();
         }
 
         public int IdCurso { get; set; }
@@ -28,5 +29,6 @@ namespace WebAPI.Models
         public virtual ICollection<Informes> Informes { get; set; }
         public virtual ICollection<InstitucionCurso> InstitucionCurso { get; set; }
         public virtual ICollection<MateriaCurso> MateriaCurso { get; set; }
+        public virtual ICollection<PuntajeActividad> PuntajeActividades { get; set; }
     }
 }

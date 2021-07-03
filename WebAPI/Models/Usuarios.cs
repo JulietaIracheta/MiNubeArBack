@@ -7,7 +7,8 @@ namespace WebAPI.Models
     {
         public Usuarios()
         {
-            Comunicados = new HashSet<Comunicados>();
+            ComunicadosIdDocenteNavigation = new HashSet<Comunicados>();
+            ComunicadosIdUsuarioNavigation = new HashSet<Comunicados>();
             CursoDocente = new HashSet<CursoDocente>();
             EstudianteCurso = new HashSet<EstudianteCurso>();
             Historiales = new HashSet<Historiales>();
@@ -18,9 +19,11 @@ namespace WebAPI.Models
             MateriaDocente = new HashSet<MateriaDocente>();
             MateriaEstudiante = new HashSet<MateriaEstudiante>();
             NivelEducativoEstudiante = new HashSet<NivelEducativoEstudiante>();
+            Notificacion = new HashSet<Notificacion>();
             TutorEstudianteIdUsuarioEstudianteNavigation = new HashSet<TutorEstudiante>();
             TutorEstudianteIdUsuarioTutorNavigation = new HashSet<TutorEstudiante>();
             UsuarioRol = new HashSet<UsuarioRol>();
+            PuntajeActividades = new HashSet<PuntajeActividad>();
         }
 
         public int IdUsuario { get; set; }
@@ -32,7 +35,9 @@ namespace WebAPI.Models
         public DateTime? FechaEliminacionLogico { get; set; }
 
         public virtual Personas IdPersonaNavigation { get; set; }
-        public virtual ICollection<Comunicados> Comunicados { get; set; }
+        public string Avatar { get; set; }
+        public virtual ICollection<Comunicados> ComunicadosIdDocenteNavigation { get; set; }
+        public virtual ICollection<Comunicados> ComunicadosIdUsuarioNavigation { get; set; }
         public virtual ICollection<CursoDocente> CursoDocente { get; set; }
         public virtual ICollection<EstudianteCurso> EstudianteCurso { get; set; }
         public virtual ICollection<Historiales> Historiales { get; set; }
@@ -43,8 +48,11 @@ namespace WebAPI.Models
         public virtual ICollection<MateriaDocente> MateriaDocente { get; set; }
         public virtual ICollection<MateriaEstudiante> MateriaEstudiante { get; set; }
         public virtual ICollection<NivelEducativoEstudiante> NivelEducativoEstudiante { get; set; }
+        public virtual ICollection<Notificacion> Notificacion { get; set; }
         public virtual ICollection<TutorEstudiante> TutorEstudianteIdUsuarioEstudianteNavigation { get; set; }
         public virtual ICollection<TutorEstudiante> TutorEstudianteIdUsuarioTutorNavigation { get; set; }
         public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
+        public virtual ICollection<Boletin> Boletin { get; set; }
+        public virtual ICollection<PuntajeActividad> PuntajeActividades { get; set; }
     }
 }

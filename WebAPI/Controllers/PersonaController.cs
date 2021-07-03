@@ -48,7 +48,28 @@ namespace WebAPI.Controllers
         [HttpGet]
         public List<PersonaDto> GetUsuarios()
         {
+
             return personaRepository.GetAll();
         }
+        
+        [HttpGet("getPerfil/{id}")]
+        public PersonaDto GetPerfilDeEstudiante(int id)
+        {
+            return personaRepository.GetPersona(id);
+        }
+        [HttpGet("getEstudiantesAsignados/{id}")]
+        public List<PersonaDto> GetEstudiantesAsignados(int id)
+        {
+            return personaRepository.GetEstudiantesAsignados(id);
+        }
+
+        [HttpGet("getEstudiantesCurso/{id}")]
+        public IQueryable<EstudianteCurso> GetEstudiantesCurso(int id)
+        {
+            var user = _context.EstudianteCurso.Where(x => x.IdCurso == id).Include(x=>x.IdUsuarioNavigation).ThenInclude(x=>x.IdPersonaNavigation);
+           
+            return user;
+        }
+
     }
 }

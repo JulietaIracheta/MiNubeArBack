@@ -2,8 +2,8 @@
 {
     public class UsuarioDto
     {
-        public int UsuarioId { get; set; }
-        public string Email { get; set; }
+        public int IdUsuario { get; set; }
+        public string UsuarioNombre { get; set; }
         public PersonaDto Persona { get; set; }
     }
 }
