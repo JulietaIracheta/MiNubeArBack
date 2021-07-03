@@ -35,6 +35,7 @@ namespace WebAPI.Models
         public DateTime? FechaEliminacionLogico { get; set; }
 
         public virtual Personas IdPersonaNavigation { get; set; }
+        public string Avatar { get; set; }
         public virtual ICollection<Comunicados> ComunicadosIdDocenteNavigation { get; set; }
         public virtual ICollection<Comunicados> ComunicadosIdUsuarioNavigation { get; set; }
         public virtual ICollection<CursoDocente> CursoDocente { get; set; }

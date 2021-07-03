@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,13 +21,16 @@ namespace WebAPI.Controllers
         private readonly JwtService _jwtService;
         private readonly PersonaRepository personaRepository;
         private readonly UsuarioRepository usuarioRepository;
+        private readonly IHostingEnvironment _env;
 
-        public UsuarioController(minubeDBContext context, JwtService jwtService)
+
+        public UsuarioController(minubeDBContext context, JwtService jwtService, IHostingEnvironment env)
         {
             _context = context;
             _jwtService = jwtService;
             personaRepository = new PersonaRepository(context);
             usuarioRepository = new UsuarioRepository(context);
+            _env = env;
         }
 
 
@@ -63,15 +67,21 @@ namespace WebAPI.Controllers
                 Email = usuario.IdPersonaNavigation.Email,
                 UsuarioNombre = usuario.UsuarioNombre,
                 Telefono = usuario.IdPersonaNavigation.Telefono,
-                Password = string.Empty
+                Password = string.Empty,
+                Avatar = usuario.Avatar
             };
         }
         
         [HttpPost("actualizarCuentaUsuario")]
-        public ActionResult ActualizarCuentaUsuario([FromForm]  CuentaUsuarioDto cuentaUsuario)
+        public ActionResult  ActualizarCuentaUsuario([FromForm]  CuentaUsuarioDto cuentaUsuario)
         {
             var usuario = _context.Usuarios.First(e => e.IdUsuario == cuentaUsuario.IdUsuario);
             var persona = _context.Personas.First(e => e.IdPersona == cuentaUsuario.IdPersona);
+
+
+            usuario.Avatar = cuentaUsuario.File == null
+                ? usuario.Avatar
+                : FileHelper.GuardarAvatar(_env.ContentRootPath, cuentaUsuario.File);
 
             usuario.UsuarioNombre = cuentaUsuario.UsuarioNombre;
             
@@ -95,7 +105,7 @@ namespace WebAPI.Controllers
                 flag = false;
             }
 
-            return flag ? (ActionResult) Ok() : BadRequest();
+            return flag ? (ActionResult) Ok(usuario.Avatar) : BadRequest();
         }
         [HttpGet]
         public List<UsuarioDto> GetUsuarios()
@@ -289,7 +299,10 @@ namespace WebAPI.Controllers
             }) ;
 
             return new PersonaDto
-                {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre};
+            {
+                Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre,
+                Avatar = user.Avatar
+            };
         }
         
         

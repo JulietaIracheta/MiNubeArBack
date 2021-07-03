@@ -13,5 +13,7 @@ namespace WebAPI.Dto
         public string Apellido { get; set; }
         public int Telefono { get; set; }
         public IFormFile File { get; set; }
+        public string Avatar { get; set; }
+
     }
 }

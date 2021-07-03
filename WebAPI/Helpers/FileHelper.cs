@@ -22,6 +22,19 @@ namespace WebAPI.Helpers
             
             return fileName;
         }
-       
+        public static string GuardarAvatar(string contentRootPath, IFormFile file)
+        {
+            var path = Path.Combine(contentRootPath, "Avatares\\");
+
+            var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"), file.FileName);
+
+            var fileName = Path.GetFileName(nombreConHoras);
+
+            var stream = new FileStream(Path.Combine(path, fileName), FileMode.Create);
+            file.CopyTo(stream);
+
+            return fileName;
+        }
+
     }
 }

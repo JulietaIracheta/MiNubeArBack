@@ -990,6 +990,11 @@ namespace WebAPI.Models
                     .HasColumnName("fecha_modificacion")
                     .HasColumnType("datetime");
 
+                entity.Property(e => e.Avatar)
+                    .HasColumnName("avatar")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+                
                 entity.Property(e => e.IdPersona).HasColumnName("idPersona");
 
                 entity.Property(e => e.Password)

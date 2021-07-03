@@ -15,6 +15,9 @@ alter table Contenidos add  video varchar(255);
 go
 alter table Comunicados add idDocente int;
 go
+alter table Usuarios add avatar varchar(255);
+
+go
 alter table Comunicados add CONSTRAINT fk_docente FOREIGN KEY (idDocente) REFERENCES Usuarios (idUsuario)
 go
 alter table Comunicados add fecha datetime;

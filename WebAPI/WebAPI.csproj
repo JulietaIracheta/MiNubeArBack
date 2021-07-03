@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\EntityPrueba\" />
+    <Folder Include="Avatares\" />
     <Folder Include="videos\" />
   </ItemGroup>
 
