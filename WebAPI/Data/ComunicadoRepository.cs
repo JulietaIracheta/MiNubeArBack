@@ -141,16 +141,19 @@ namespace WebAPI.Data
             }).ToList();
         }
 
-        public List<ComunicadosDocenteDto> GetAll(int id)
+        public List<ComunicadosDocenteDto> GetAll(int idInstitucion, int idCurso)
         {
             var comunicados = _context.Comunicados.Include(c => c.IdUsuarioNavigation)
-                .ThenInclude(u => u.IdPersonaNavigation).OrderByDescending(c => c.IdComunicado).Where(i=>i.IdDocente==id).Select(c=>new ComunicadosDocenteDto
-                {
-                    IdComunicado = c.IdComunicado,
-                    Descripcion = c.Descripcion,
-                    Fecha = c.Fecha.ToString("g"),
-                    NombreApellidoEstudiante = c.IdUsuarioNavigation.IdPersonaNavigation.GetNombreApellido()
-                });
+                .ThenInclude(u => u.IdPersonaNavigation).OrderByDescending(c => c.IdComunicado)
+                .Where(i => i.IdUsuarioNavigation.EstudianteCurso.Any(e => e.IdCurso == idCurso) &&
+                            i.IdUsuarioNavigation.InstitucionEstudiante.Any(e => e.IdInstitucion == idInstitucion)).Select(c =>
+                    new ComunicadosDocenteDto
+                    {
+                        IdComunicado = c.IdComunicado,
+                        Descripcion = c.Descripcion,
+                        Fecha = c.Fecha.ToString("g"),
+                        NombreApellidoEstudiante = c.IdUsuarioNavigation.IdPersonaNavigation.GetNombreApellido()
+                    });
 
             return comunicados.ToList();
         }
