@@ -32,16 +32,21 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("materias")]
-        public ActionResult<EstudianteMateriasDto> GetMaterias(string email)
+        public ActionResult<EstudianteMateriasDto> GetMaterias()
         {
-            List<EstudianteMateriasDto> materias = estudianteRepository.GetMaterias(email);
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Convert.ToInt32(token.Issuer);
+
+            List<EstudianteMateriasDto> materias = estudianteRepository.GetMaterias(userId);
 
             if (materias.Count() > 0)
             {
                 return Ok(materias);
             }
 
-            return Ok(new { message = "sin materias" });
+            return NotFound("Sin materias");
         }
     }
 }

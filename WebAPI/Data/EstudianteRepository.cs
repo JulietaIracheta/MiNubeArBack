@@ -16,13 +16,13 @@ namespace WebAPI.Data
             _context = context;
         }
 
-        public List<EstudianteMateriasDto> GetMaterias(string email)
+        public List<EstudianteMateriasDto> GetMaterias(int id)
         {
 
             IQueryable<EstudianteMateriasDto> materias = from u in _context.Usuarios
                                                          join me in _context.MateriaEstudiante on u.IdUsuario equals me.IdUsuario
                                                          join m in _context.Materias on me.IdMateria equals m.IdMateria
-                                                         where u.UsuarioNombre == email
+                                                         where u.IdUsuario == id
                                                          select new EstudianteMateriasDto
                                                          {
                                                              IdMateria = m.IdMateria,

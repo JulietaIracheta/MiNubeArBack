@@ -37,7 +37,9 @@ namespace WebAPI.Controllers
                 .IdPersonaNavigation;
             return new PersonaDto
             {
-                Apellido = persona.Apellido, Email = persona.Email, IdPersona = persona.IdPersona,
+                Apellido = persona.Apellido, 
+                Email = persona.Email, 
+                IdPersona = persona.IdPersona,
                 Nombre = persona.Nombre,
                 Telefono = persona.Telefono
             };
