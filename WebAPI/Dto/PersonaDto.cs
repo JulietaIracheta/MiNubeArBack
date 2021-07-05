@@ -18,5 +18,6 @@ namespace WebAPI.Dto
         public string Avatar { get; set; }
         public int[] IdEstudiantes { get; set; }
 
+        public string Jwt { get; set; }
     }
 }

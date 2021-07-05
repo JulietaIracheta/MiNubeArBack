@@ -23,11 +23,9 @@ namespace WebAPI.Controllers
         }
         
         [HttpGet("getRolByUsuario")]
-        public int GetRol()
+        public int GetRol(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
-
             var userId = Convert.ToInt32(token.Issuer);
             return _context.UsuarioRol.First(ur => ur.IdUsuario == userId).IdRol;
         }

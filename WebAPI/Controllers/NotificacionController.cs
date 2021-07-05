@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getByUsuario")]
-        public List<NotificacionDto> GetNotificacionesByUsuario()
+        public List<NotificacionDto> GetNotificacionesByUsuario(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
             return _notificacionRepository.GetNotificacionByUsuario(id);

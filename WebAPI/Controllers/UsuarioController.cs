@@ -48,9 +48,9 @@ namespace WebAPI.Controllers
         }
         
         [HttpGet("getCuentaUsuario")]
-        public ActionResult<CuentaUsuarioDto> GetCuentaUsuario()
+        public ActionResult<CuentaUsuarioDto> GetCuentaUsuario(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
 
@@ -301,7 +301,7 @@ namespace WebAPI.Controllers
             return new PersonaDto
             {
                 Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre,
-                Avatar = user.Avatar
+                Avatar = user.Avatar, Jwt=jwt
             };
         }
         
@@ -332,11 +332,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("user")]
-        public IActionResult Usuario()
+        public IActionResult Usuario(string jwt)
         {
             try
             {
-                var jwt = Request.Cookies["jwt"];
+                //var jwt = Request.Cookies["jwt"];
                 var token = _jwtService.Verify(jwt);
 
                 var userId = Convert.ToInt32(token.Issuer);
@@ -387,18 +387,18 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getUsuarioChatEstudiante")]
-        public string ObtenerUsuarioChat()
+        public string ObtenerUsuarioChat(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var userId = Convert.ToInt32(token.Issuer);
             
             return usuarioRepository.ObtenerUsuarioChat(userId);
         }
         [HttpGet("getChatsDocente")]
-        public List<string> ObtenerChatsDocente()
+        public List<string> ObtenerChatsDocente(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var userId = Convert.ToInt32(token.Issuer);
             

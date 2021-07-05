@@ -31,12 +31,12 @@ namespace WebAPI.Controllers
             return await _context.Boletin.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public List<Boletin> GetBoletinEstudiante(int id)
+        [HttpGet]
+        public List<Boletin> GetBoletinEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
-            id = Convert.ToInt32(token.Issuer);
+            var id = Convert.ToInt32(token.Issuer);
 
             IQueryable<Boletin> boletin = from b in _context.Boletin
                                     where b.IdEstudiante == id
@@ -73,11 +73,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("tutor/{id}")]
-        public List<BoletinDto> GetBoletinEstudianteTutor(int id)
+        public List<BoletinDto> GetBoletinEstudianteTutor(string jwt)
         {
-                var jwt = Request.Cookies["jwt"];
+                //var jwt = Request.Cookies["jwt"];
               var token = _jwtService.Verify(jwt);
-                id = Convert.ToInt32(token.Issuer);
+              var id = Convert.ToInt32(token.Issuer);
 
             IQueryable<BoletinDto> boletin = from b in _context.Boletin
                                              join u in _context.Usuarios on b.IdEstudiante equals u.IdUsuario

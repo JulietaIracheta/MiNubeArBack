@@ -36,26 +36,26 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getComunicados/{idInstitucion}/{idCurso}")]
-        public List<ComunicadosDocenteDto> GetComunicados(int idInstitucion,int idCurso)
+        public List<ComunicadosDocenteDto> GetComunicados(int idInstitucion,int idCurso, string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
             return comunicadoRepository.GetAll(idInstitucion, idCurso);
         }
 
         [HttpGet("getComunicadosByEstudiante")]
-        public List<ComunicadoDto> GetComunicadosDeEstudiante()
+        public List<ComunicadoDto> GetComunicadosDeEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
             return comunicadoRepository.GetAllByEstudiante(id);
         }
         [HttpGet("getComunicadosByTutor")]
-        public List<ComunicadoDto> GetComunicadosDeTutor()
+        public List<ComunicadoDto> GetComunicadosDeTutor(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
             return comunicadoRepository.GetAllComunicadosDeTutor(id);
