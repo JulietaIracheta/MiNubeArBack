@@ -131,6 +131,13 @@ namespace WebAPI.Controllers
             return institucion;
         }
 
+        [HttpGet("getInstitucionDeUnEstudiante/{id}")]
+        public InstitucionEstudiante getInstitucionDeUnEstudiante(int id)
+        {
+            var institucion = _context.InstitucionEstudiante.FirstOrDefault(x => x.IdUsuario == id);
+            return institucion;
+        }
+
         private bool InstitucionExists(int id)
         {
             return _context.Instituciones.Any(e => e.IdInstitucion == id);

@@ -176,74 +176,15 @@ namespace WebAPI.Data
 
         public async void UpdateEstudiante(int id, UsuarioUpdateDto usuario) {
             // obtengo la persona actual y actualizo sus valores
-            var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdUsuario);
+            var personaAModificar = _context.Personas.FirstOrDefault(item => item.IdPersona == usuario.IdPersona);
             personaAModificar.Nombre = usuario.Nombre;
             personaAModificar.Apellido = usuario.Apellido;
             personaAModificar.Email = usuario.Email;
             personaAModificar.Telefono = int.Parse(usuario.Telefono);
 
-            // obtengo las instituciones del estudiante 
-            var institucionesDelEstudiante = _context.InstitucionEstudiante.Where(row => row.IdUsuario == usuario.IdUsuario);
-
-            int[] institucionEstudianteList = new int[institucionesDelEstudiante.Count()];
-
-            int contador = 0;
-            foreach (var row in institucionesDelEstudiante)
-            {
-                institucionEstudianteList[contador] = row.IdInstitucion;
-                contador++;
-            }
-
-            // primero pregunto si tienen la misma cantidad de elementos comparo el tamaño de los arrays
-            // verifico si las que vienen por parametro son las mismas que las que se encuentran actualmente en la tabla
-            if (institucionEstudianteList.Length == usuario.IdInstitucion.Length) {
-
-                int coincidencias = institucionEstudianteList.Intersect(usuario.IdInstitucion).Count();
-
-                // si los dos arrays tienen los mismo valores no hago nada
-                if (!(coincidencias == usuario.IdInstitucion.Length)) {
-                    // Si hay 0 coincidencias entonces modifico todo
-                    int index = 0;
-                    foreach (var row in institucionesDelEstudiante)
-                    {
-                        row.IdInstitucion = usuario.IdInstitucion[index];
-                        index++;
-                    }
-                }
-                // si las instituciones ingresadas superan a las actuales agrego la/s nueva/s
-            } else if (institucionEstudianteList.Length < usuario.IdInstitucion.Length) {
-                // verifico si las que ya estan registradas forman parte de las ingresadas
-                if (institucionEstudianteList.Intersect(usuario.IdInstitucion).Count() == institucionEstudianteList.Length) {
-                    // identifico los id de instituciones ingresadas no registradas
-                    var idNoRegistradas = usuario.IdInstitucion.Except(institucionEstudianteList);
-                    // agrego las restantes
-                    foreach (var idInstitucion in idNoRegistradas)
-                    {
-                        var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = idInstitucion, IdUsuario = usuario.IdPersona };
-                        _context.InstitucionEstudiante.Add(institucionEstudiante);
-                    }
-                }
-
-            } else {
-                // si las instituciones ingresadas es es menor a la existente entonces elimino las que ya no se encuentran
-                // obtengo las que tienen que ser eliminadas
-                var idAeliminar = institucionEstudianteList.Except(usuario.IdInstitucion);
-
-                foreach (var idInstitucion in idAeliminar)
-                {
-                    var institucionEstudiante = _context.InstitucionEstudiante.FirstOrDefault(item => item.IdInstitucion == idInstitucion && item.IdUsuario == usuario.IdPersona);
-                    _context.InstitucionEstudiante.Remove(institucionEstudiante);
-                }
-
-                // identifico los id de instituciones ingresadas no registradas y las registro
-                var idNoRegistradas = usuario.IdInstitucion.Except(institucionEstudianteList);
-
-                foreach (var idInstitucion in idNoRegistradas)
-                {
-                    var institucionEstudiante = new InstitucionEstudiante { IdInstitucion = idInstitucion, IdUsuario = usuario.IdPersona };
-                    _context.InstitucionEstudiante.Add(institucionEstudiante);
-                }
-            }
+            // obtengo la institucione del estudiante 
+            var institucionDelEstudiante = _context.InstitucionEstudiante.FirstOrDefault(row => row.IdUsuario == usuario.IdUsuario);
+            institucionDelEstudiante.IdInstitucion = usuario.IdInstitucionEstudiante;
 
             _context.SaveChanges();
         }
