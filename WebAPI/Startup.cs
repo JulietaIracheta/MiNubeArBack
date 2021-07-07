@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -65,6 +66,14 @@ namespace WebAPI
                 FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath,"videos")),
                 RequestPath = "/videos"
             });
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+             Path.Combine(Directory.GetCurrentDirectory(), @"informes")),
+                RequestPath = new PathString("/informes")
+            });
+
 
             if (env.IsDevelopment())
             {

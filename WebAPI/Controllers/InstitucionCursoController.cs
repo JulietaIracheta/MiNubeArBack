@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,11 @@ namespace WebAPI.Controllers
             return await _context.Cursos.ToListAsync();
         }
 
+        [HttpGet("cursos/{id}")]
+        public async Task<ActionResult<IEnumerable<Cursos>>> GetCursosInstitucion(int id)
+        {
+            return  _context.Cursos.Where(c => c.InstitucionCurso.Any(p => p.IdInstitucionNavigation.IdInstitucion == id)).ToList();
+        }
 
         [HttpPost]
         public async Task<ActionResult<List<InstitucionCurso>>> PostInstitucionCurso(InstitucionCursoDto institucion)

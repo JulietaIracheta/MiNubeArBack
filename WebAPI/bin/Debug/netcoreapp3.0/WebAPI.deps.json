@@ -8,7 +8,13 @@
       "TRACE",
       "DEBUG",
       "NETCOREAPP",
-      "NETCOREAPP3_0"
+      "NETCOREAPP3_0",
+      "NETCOREAPP1_0_OR_GREATER",
+      "NETCOREAPP1_1_OR_GREATER",
+      "NETCOREAPP2_0_OR_GREATER",
+      "NETCOREAPP2_1_OR_GREATER",
+      "NETCOREAPP2_2_OR_GREATER",
+      "NETCOREAPP3_0_OR_GREATER"
     ],
     "languageVersion": "8.0",
     "platform": "",
@@ -29,6 +35,7 @@
           "MailKit": "2.12.0",
           "Microsoft.AspNet.WebApi.Core": "5.2.7",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.0.0",
+          "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "3.0.0",
           "Microsoft.AspNetCore.Cors": "2.2.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.0.0",
           "Microsoft.EntityFrameworkCore": "3.0.0",
@@ -42,6 +49,7 @@
           "Serilog.Sinks.Console": "3.1.1",
           "System.IdentityModel.Tokens.Jwt": "6.11.0",
           "System.Linq.Expressions": "4.3.0",
+          "System.Net.Http": "4.3.0",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.0.0.0",
@@ -445,6 +453,17 @@
         },
         "compile": {
           "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.MicrosoftAccount/3.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.19.46502"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cors/2.2.0": {
@@ -4122,6 +4141,13 @@
       "sha512": "sha512-FrlxgBG6+FKlYr1IVxXNXSK7jpxiIYf036VNR1UgopKSIUNjaK2zvkhfVgFZVavagitQ/+UZ8Snnm6axyAVRNg==",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/3.0.0",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.3.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.MicrosoftAccount/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/jsxXwNO0i9nXQfpYfjARXXPkpajniHMZAFDd/nduJ+LYX2SF1cF13o9b74X/WNmGv3LuAeQ/OW1NZ63L5Mseg==",
+      "path": "microsoft.aspnetcore.authentication.microsoftaccount/3.0.0",
+      "hashPath": "microsoft.aspnetcore.authentication.microsoftaccount.3.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cors/2.2.0": {
       "type": "package",
