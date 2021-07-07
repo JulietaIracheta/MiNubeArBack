@@ -20,6 +20,7 @@ namespace WebAPI.Models
         public int IdMateria { get; set; }
 
         public virtual ICollection<ActividadCurso> ActividadCurso { get; set; }
+        public virtual ICollection<ActividadMateriaUnidad> ActividadMateriaUnidad { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<PuntajeActividad> PuntajeActividades { get; set; }
 

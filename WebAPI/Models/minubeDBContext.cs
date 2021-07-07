@@ -21,6 +21,7 @@ namespace WebAPI.Models
 
         public virtual DbSet<ActividadCurso> ActividadCurso { get; set; }
         public virtual DbSet<Actividades> Actividades { get; set; }
+        public virtual DbSet<ActividadMateriaUnidad> ActividadMateriaUnidad { get; set; }
         public virtual DbSet<Comentarios> Comentarios { get; set; }
         public virtual DbSet<Comunicados> Comunicados { get; set; }
         public virtual DbSet<ContenidoMateriaCurso> ContenidoMateriaCurso { get; set; }
@@ -120,6 +121,40 @@ namespace WebAPI.Models
               
 
             });
+
+            modelBuilder.Entity<ActividadMateriaUnidad>(entity =>
+            {
+                entity.HasKey(e => e.IdActividadMateriaUnidad);
+
+                entity.ToTable("Actividad_Materia_Unidad");
+
+                entity.Property(e => e.IdActividadMateriaUnidad).HasColumnName("idActividad_Materia_Unidad");
+
+                entity.Property(e => e.IdActividad).HasColumnName("idActividad");
+
+                entity.Property(e => e.IdMateria).HasColumnName("idMateria");
+
+                entity.Property(e => e.Titulo)
+                    .IsRequired()
+                    .HasColumnName("titulo")
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Unidad).HasColumnName("unidad");
+
+                entity.HasOne(d => d.IdActividadNavigation)
+                    .WithMany(p => p.ActividadMateriaUnidad)
+                    .HasForeignKey(d => d.IdActividad)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Actividad_Materia_Unidad_Actividades");
+
+                entity.HasOne(d => d.IdMateriaNavigation)
+                    .WithMany(p => p.ActividadMateriaUnidad)
+                    .HasForeignKey(d => d.IdMateria)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Actividad_Materia_Unidad_Materias");
+            });
+
             modelBuilder.Entity<Answer>(entity =>
             {
                 entity.HasOne(d => d.Question)
