@@ -284,10 +284,6 @@ namespace WebAPI.Controllers
                 return BadRequest(new { message = "Usuario invalido" });
             }
             var jwt = _jwtService.Generate(user.IdUsuario);
-            Response.Cookies.Append("jwt", jwt, new CookieOptions
-            {
-                HttpOnly = false
-            }) ;
 
             return new PersonaDto
             {

@@ -39,14 +39,14 @@ namespace WebAPI
                 .AllowCredentials()
                 .WithOrigins("http://localhost:3000");
             }));
-            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            /*services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
                     .WithOrigins("https://minubeardeploytest.web.app");
-            }));
+            }));*/
             services.AddSignalR();
 
             services.AddDbContext<minubeDBContext>(options =>
@@ -71,7 +71,6 @@ namespace WebAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors("CorsPolicy");
-
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath,"videos")),

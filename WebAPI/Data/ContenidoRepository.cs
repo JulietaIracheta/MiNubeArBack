@@ -26,7 +26,7 @@ namespace WebAPI.Data
         public List<Contenidos> GetByMateriaId(int cursoId)
         {
             return _context.Contenidos
-                .Where(c => c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == cursoId))
+                .Where(c => c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == cursoId)).OrderBy(e=>e.Unidad)
                 .ToList();
         }
         public Contenidos Crear(ContenidoDto contenido, string contentRootPath)
