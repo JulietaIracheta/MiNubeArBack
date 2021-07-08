@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
             var id = Convert.ToInt32(token.Issuer);
 
             IQueryable<Boletin> boletin = from b in _context.Boletin
-                                    where b.IdEstudiante == id
+                                    where b.IdEstudiante == id && b.Año == DateTime.Today.Year
                                     select new Boletin
                                     {
                                         IdEstudiante = id,
@@ -52,6 +52,57 @@ namespace WebAPI.Controllers
 
             return boletin.ToList();
         }
+
+        [HttpGet("trayectoria/{anio}")]
+        public List<Boletin> GettrayectoriaEstudiante(int anio)
+        {
+            DateTime año = DateTime.Today;
+
+            var a = año.Year;
+
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var id = Convert.ToInt32(token.Issuer);
+           
+            IQueryable<Boletin> boletin = from b in _context.Boletin
+                                          where b.IdEstudiante ==id && b.Año == anio
+                                          select new Boletin
+                                          {
+                                              IdEstudiante = id,
+                                              Año = b.Año,
+                                              Materia = b.Materia,
+                                              T1 = b.T1,
+                                              T2 = b.T2,
+                                              T3 = b.T3,
+                                          };
+
+            return boletin.ToList();
+        }
+
+        [HttpGet("año")]
+        public List<int> GettrayectoriaAño()
+        {
+            DateTime año = DateTime.Today;
+
+            var a = año.Year;
+
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var id = Convert.ToInt32(token.Issuer);
+
+            var añoT = _context.Boletin.Where(p => p.Año != a && p.IdEstudiante == id).Select(p => p.Año).Distinct();
+/*            IQueryable<Boletin> boletin = from b in _context.Boletin
+                                          where b.IdEstudiante == id && b.Año != a
+                                          select new Boletin
+                                          {
+                                              Año = b.Año,
+                                          };
+
+            return boletin.ToList();
+  */
+            return añoT.ToList();
+            }
+
 
         [HttpGet("estudiante/{id}")]
         public List<Boletin> GetBoletinesEstudiantes(int id)

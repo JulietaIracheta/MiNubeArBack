@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Google.Apis.Requests;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Connections;
-using Microsoft.AspNetCore.Http.Features;   
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -83,6 +81,13 @@ namespace WebAPI
                 RequestPath = "/Avatares"
             });
             
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+             Path.Combine(Directory.GetCurrentDirectory(), @"informes")),
+                RequestPath = new PathString("/informes")
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

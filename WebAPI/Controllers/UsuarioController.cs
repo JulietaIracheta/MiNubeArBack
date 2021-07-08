@@ -303,20 +303,30 @@ namespace WebAPI.Controllers
 
             if (user == null) return BadRequest(new { message = "Usuario invalido" });
 
-            /*if (!BCrypt.Net.BCrypt.Verify(email, user.Password))
-            {
-                return BadRequest(new { message = "Usuario invalido" });
-            }*/
 
             var jwt = _jwtService.Generate(user.IdUsuario);
-            Response.Cookies.Append("jwt", jwt, new CookieOptions
-            {
-                HttpOnly = false
-            });
+            
 
             return new PersonaDto
-                {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre};
+                {Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre, Jwt = jwt};
         }
+
+        [HttpPost("loginMicrosoft")]
+        public ActionResult<PersonaDto> LoginMicrosoft(string email)
+        {
+            var user = _context.Usuarios.Include(u => u.IdPersonaNavigation)
+                .Include(u => u.UsuarioRol)
+                .FirstOrDefault(x => x.IdPersonaNavigation.Email == email);
+
+            if (user == null) return BadRequest(new { message = "Usuario invalido" });
+
+            var jwt = _jwtService.Generate(user.IdUsuario);
+
+            return new PersonaDto
+            { Apellido = user.IdPersonaNavigation.Apellido, Nombre = user.IdPersonaNavigation.Nombre, Jwt = jwt};
+        }
+
+
 
         [HttpGet("user")]
         public IActionResult Usuario(string jwt)
@@ -342,7 +352,7 @@ namespace WebAPI.Controllers
         [HttpPost("logout")]
         public IActionResult Logout()
         {
-            Response.Cookies.Delete("jwt");
+            Response.Cookies.Delete("jwt");           
             return Ok(new
             {
                 message = "sucess"

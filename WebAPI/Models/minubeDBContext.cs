@@ -63,7 +63,7 @@ namespace WebAPI.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-HOQKQ7D\\SQLEXPRESS2019;Database=minubeDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-B3ADN09\\SQLEXPRESS; Database=minubeDB;Trusted_Connection=True;");
             }
         }
 
@@ -420,7 +420,7 @@ namespace WebAPI.Models
 
                 entity.Property(e => e.IdInforme).HasColumnName("idInforme");
 
-                entity.Property(e => e.Descripcion)
+                entity.Property(e => e.Informe)
                     .IsRequired()
                     .HasColumnName("descripcion")
                     .HasMaxLength(1000)
