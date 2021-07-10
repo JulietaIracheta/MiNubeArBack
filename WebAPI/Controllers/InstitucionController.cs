@@ -138,6 +138,13 @@ namespace WebAPI.Controllers
             return institucion;
         }
 
+        [HttpGet("getEstudiantesDeUnaInstitucion/{id}")]
+        public List<Usuarios> getEstudiantesDeUnaInstitucion(int id)
+        {
+            var estudiantes = _context.InstitucionEstudiante.Where(x => x.IdInstitucion == id).Select(x => x.IdUsuarioNavigation).ToList();
+            return estudiantes;
+        }
+
         private bool InstitucionExists(int id)
         {
             return _context.Instituciones.Any(e => e.IdInstitucion == id);

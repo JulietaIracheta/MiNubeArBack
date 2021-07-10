@@ -116,6 +116,30 @@ namespace WebAPI.Controllers
             return _context.Cursos.Any(e => e.IdCurso == id);
         }
 
+        [HttpGet("getCursosDeUnaInstitucion/{id}")]
+        public List<Cursos> getCursosDeUnaInstitucion(int id){
+            var cursos = _context.InstitucionCurso.Where(x => x.IdInstitucion == id).Select( x => x.IdCursoNavigation ).ToList();
+            return cursos;
+        }
+
+
+        [HttpPost("AsignaEstudiandesAcurso")]
+        public async Task<ActionResult<EstudiantesDeUnCursoDto>> AsignaEstudiandesAcurso(EstudiantesDeUnCursoDto data)
+        {
+            try
+            {
+                for (int i = 0; i < data.IdEstudiantes.Length ; i++)
+                {
+                    _context.EstudianteCurso.Add(new EstudianteCurso{IdCurso = data.IdCurso, IdUsuario = data.IdEstudiantes[i]});
+                }
+                await _context.SaveChangesAsync();
+                return data;
+            }
+            catch (System.Exception)
+            {
+               return NotFound();
+            }
+        }
       
     }
 }
