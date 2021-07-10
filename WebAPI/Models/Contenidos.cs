@@ -7,6 +7,7 @@ namespace WebAPI.Models
     {
         public Contenidos()
         {
+            Actividades = new HashSet<Actividades>();
             Comentarios = new HashSet<Comentarios>();
             ContenidoMateriaCurso = new HashSet<ContenidoMateriaCurso>();
         }
@@ -17,6 +18,7 @@ namespace WebAPI.Models
         public int Unidad { get; set; }
         public string Video { get; set; }
 
+        public virtual ICollection<Actividades> Actividades { get; set; }
         public virtual ICollection<Comentarios> Comentarios { get; set; }
         public virtual ICollection<ContenidoMateriaCurso> ContenidoMateriaCurso { get; set; }
     }

@@ -16,9 +16,13 @@ go
 alter table Comunicados add idDocente int;
 go
 alter table Usuarios add avatar varchar(255);
-
 go
 alter table Comunicados add CONSTRAINT fk_docente FOREIGN KEY (idDocente) REFERENCES Usuarios (idUsuario)
+go
+alter table Actividades add idContenido int;
+go
+
+alter table Actividades add CONSTRAINT fk_contenido FOREIGN KEY (idContenido) REFERENCES Contenidos (idContenido)
 go
 alter table Comunicados add fecha datetime;
 go

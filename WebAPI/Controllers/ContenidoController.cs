@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
 using WebAPI.Dto;
 using WebAPI.Helpers;
@@ -52,6 +53,31 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<List<Contenidos>>> GetContenidoByMateria(int id)
         {
             return contenidoRepository.GetByMateriaId(id);
+        }
+        [HttpDelete]
+        public ActionResult Eliminar(int id)
+        {
+            var flag = true;
+            var contenido = _context.Contenidos.Include(e => e.ContenidoMateriaCurso).First(e => e.IdContenido == id);
+            var contenidoMateriaCurso = _context.ContenidoMateriaCurso.First(e => e.IdContenido == id);
+            var contenidoActividad = _context.Actividades.First(e => e.IdContenido == id);
+            var questionActividad = _context.Questions.First(e => e.ActividadesId == contenidoActividad.IdActividad);
+            var answerQuestion = _context.Answers.Where(a => a.QuestionId == questionActividad.Id);
+            try
+            {
+                _context.Answers.RemoveRange(answerQuestion);
+                _context.Questions.Remove(questionActividad);
+                _context.Actividades.Remove(contenidoActividad);
+                _context.ContenidoMateriaCurso.Remove(contenidoMateriaCurso);
+                _context.Contenidos.Remove(contenido);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                flag = false;
+            }
+
+            return flag ? (ActionResult) Ok() : BadRequest();
         }
     }
 }

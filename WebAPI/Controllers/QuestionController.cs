@@ -50,7 +50,8 @@ namespace WebAPI.Controllers
                 Unidad = pregunta.ActividadesQuiz.Unidad,
                 Titulo = pregunta.ActividadesQuiz.Titulo,
                 Descripcion = pregunta.ActividadesQuiz.Descripcion,
-                IdMateria = pregunta.ActividadesQuiz.IdMateria
+                IdMateria = pregunta.ActividadesQuiz.IdMateria,
+                IdContenido = pregunta.ActividadesQuiz.IdContenido
             };
            
 

@@ -169,6 +169,78 @@ namespace WebAPI.Controllers
             return bol;
         }
 
+        [HttpGet("getBoletinesEstudiante/{id}")]
+        public dto GetBoletinesEstudiante(int id)
+        {
+            var list = _context.Boletin.Include(e => e.IdEstudianteNavigation).ThenInclude(e => e.InstitucionEstudiante)
+                .ThenInclude(e => e.IdInstitucionNavigation).Include(e=>e.IdEstudianteNavigation).ThenInclude(e=>e.IdPersonaNavigation);
+            
+            double mejorPromedio = 0;
+            double peorPromedio = 0;
+            double promedioAnual = 0;
+            double promedioTotal = 0;
+            var estudianteMejorPromedio = "";
+            var institucionMejorPromedio = "";
+            var institucionPeorPromedio = "";
+            bool flag = true;
+            
+            foreach (var v in list)
+            {
+                if (v.Año == DateTime.Now.Year)
+                {
+                    double promedioAñoActual = ((Convert.ToDouble(v.T1) + Convert.ToDouble(v.T2) + Convert.ToDouble(v.T3)) / 3);
+                    promedioAnual = promedioAñoActual + promedioAnual;
+                }
 
+                double promedioActual = ((Convert.ToDouble(v.T1) + Convert.ToDouble(v.T2) + Convert.ToDouble(v.T3))/3);
+
+                if (flag)
+                {
+                    peorPromedio = promedioActual;
+                    flag = false;
+                }
+
+                if (promedioActual > mejorPromedio)
+                {
+                    mejorPromedio = promedioActual;
+                    estudianteMejorPromedio = v.IdEstudianteNavigation.IdPersonaNavigation.GetNombreApellido();
+                    institucionMejorPromedio = v.IdEstudianteNavigation.InstitucionEstudiante.First()
+                        .IdInstitucionNavigation.Nombre;
+                }
+                if (promedioActual < peorPromedio)
+                {
+                    peorPromedio = promedioActual;
+                }
+                promedioTotal = promedioActual + promedioTotal;
+            }
+          
+            var totalEstudiantes = _context.InstitucionEstudiante.Select(e => e.IdUsuario).Count();
+            var totalDocentes= _context.InstitucionDocente.Select(e => e.IdDocente).Distinct().Count();
+            var totalInstituciones= _context.Instituciones.Select(e => e.IdInstitucion).Count();
+            var totalTutores= _context.TutorEstudiante.Select(e => e.IdTutorEstudiante).Distinct().Count();
+
+
+            return new dto
+            {
+                estudiante = estudianteMejorPromedio,
+                mejorPromedio = Math.Round(mejorPromedio, 2),
+                colegioMejorPromedio = institucionMejorPromedio,
+                totalEstudiantes = totalEstudiantes,
+                totalDocentes = totalDocentes,
+                totalInstituciones = totalInstituciones,
+                totalTutores = totalTutores
+            };
         }
     }
+
+    public class dto
+    {
+        public string colegioMejorPromedio { get; set; }
+        public int totalEstudiantes { get; set; }
+        public int totalDocentes { get; set; }
+        public int totalTutores { get; set; }
+        public int totalInstituciones { get; set; }
+        public string estudiante { get; set; }
+        public double mejorPromedio { get; set; }
+    }
+}

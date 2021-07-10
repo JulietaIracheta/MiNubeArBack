@@ -111,6 +111,7 @@ namespace WebAPI.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.IdContenido).HasColumnName("idContenido");
                 entity.Property(e => e.Titulo)
                     .IsRequired()
                     .HasColumnName("titulo")
@@ -119,6 +120,10 @@ namespace WebAPI.Models
 
               
 
+                entity.HasOne(d => d.IdContenidoNavigation)
+                    .WithMany(p => p.Actividades)
+                    .HasForeignKey(d => d.IdContenido)
+                    .HasConstraintName("fk_contenido");
             });
             modelBuilder.Entity<Answer>(entity =>
             {

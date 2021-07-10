@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Dto;
 using WebAPI.Helpers;
 using WebAPI.Models;
@@ -23,15 +24,17 @@ namespace WebAPI.Data
         {
             return _context.Contenidos.FirstOrDefault(x => x.IdContenido == id);
         }
-        public List<Contenidos> GetByMateriaId(int cursoId)
+        public List<Contenidos> GetByMateriaId(int materiaId)
         {
-            return _context.Contenidos
-                .Where(c => c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == cursoId)).OrderBy(e=>e.Unidad)
+            return _context.Contenidos.Include(e => e.Actividades).ThenInclude(e => e.Questions)
+                .ThenInclude(e => e.Answers)
+                .Where(c => c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == materiaId))
+                .OrderBy(e => e.Unidad)
                 .ToList();
         }
         public Contenidos Crear(ContenidoDto contenido, string contentRootPath)
         {
-            var nombreVideo=FileHelper.GuardarVideo(contentRootPath, contenido.file);
+            var nombreVideo= contenido.file == null ? string.Empty : FileHelper.GuardarVideo(contentRootPath, contenido.file);
             
             var contenidos= new Contenidos
             {
