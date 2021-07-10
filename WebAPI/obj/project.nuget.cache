@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/Rb5aCnB7LurdbggUxZmFHc+BB8qW7EhCxipukpWGoom8DoZB4ThZjFh9u3jmWvx5x5L5rs9nlHxQ/PxMwGBmA==",
+  "dgSpecHash": "fPzD0lKGPAINSsvPnJ7xo3dB97mqhsyu25zv9M2z3jTIR2vWCJrrMuWSHpSdhvm8+0+oK294I+dTpFYqGG+I/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sebas\\Desktop\\Proyecto Final\\MiNubeArBack\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sebas\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
+    "C:\\Users\\Sebas\\.nuget\\packages\\choetl\\1.2.1.18\\choetl.1.2.1.18.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\google.apis.core\\1.51.0\\google.apis.core.1.51.0.nupkg.sha512",
@@ -100,6 +101,7 @@
     "C:\\Users\\Sebas\\.nuget\\packages\\serilog.sinks.console\\3.1.1\\serilog.sinks.console.3.1.1.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Sebas\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.collections.immutable\\1.6.0\\system.collections.immutable.1.6.0.nupkg.sha512",
@@ -117,6 +119,7 @@
     "C:\\Users\\Sebas\\.nuget\\packages\\system.composition.typedparts\\1.0.31\\system.composition.typedparts.1.0.31.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.configuration.configurationmanager\\4.5.0\\system.configuration.configurationmanager.4.5.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
+    "C:\\Users\\Sebas\\.nuget\\packages\\system.data.sqlclient\\4.4.3\\system.data.sqlclient.4.4.3.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.6.0\\system.diagnostics.diagnosticsource.4.6.0.nupkg.sha512",
     "C:\\Users\\Sebas\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",

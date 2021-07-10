@@ -82,6 +82,27 @@ namespace WebAPI.Controllers
 
             return boletin.ToList();
         }
+        [HttpGet("trayectoria")]
+        public List<Boletin> GetTrayectoria()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var id = Convert.ToInt32(token.Issuer);
+
+            IQueryable<Boletin> boletin = from b in _context.Boletin
+                                          where b.IdEstudiante == id
+                                          select new Boletin
+                                          {
+                                              IdEstudiante = id,
+                                              Año = b.Año,
+                                              Materia = b.Materia,
+                                              T1 = b.T1,
+                                              T2 = b.T2,
+                                              T3 = b.T3,
+                                          };
+
+            return boletin.ToList();
+        }
 
         [HttpGet("año")]
         public List<int> GettrayectoriaAño()

@@ -48,6 +48,14 @@ namespace WebAPI.Data
             return inf;
 
         }
+        public List<InformeTrayectoria> GetInformeTrayectoriaEstudiante(int estudianteId)
+        {
+
+            var inf = _context.InformeTrayectoria
+                .Where(c => c.IdEstudiante == estudianteId).OrderBy(x=>x.Año).ToList();
+            return inf;
+
+        }
 
         public Informes Crear(InformeDto informe, string contentRootPath)
         {
@@ -63,6 +71,34 @@ namespace WebAPI.Data
             _context.Informes.Add(informes);
             _context.SaveChanges();
             return informes;
+        }
+
+        public InformeTrayectoria CrearInformeTrayectoria(InformeTrayectoria informe)
+        {
+
+            var informes = new InformeTrayectoria
+            {
+                IdEstudiante = informe.IdEstudiante,
+                Curso = informe.Curso,
+                Año = informe.Año,
+                Institucion = informe.Institucion,
+                Matematica = informe.Matematica,
+                Lengua = informe.Lengua,
+                Sociales = informe.Sociales,
+                Naturales = informe.Naturales,
+                Promedio = Promedio(informe.IdEstudiante, informe.Año)
+
+            };
+
+            _context.InformeTrayectoria.Add(informes);
+            _context.SaveChanges();
+            return informes;
+        }
+
+        public decimal Promedio(int est, int año)
+        {
+            return _context.Boletin.Where(z=>z.IdEstudiante == est && z.Año == año).GroupBy(m => new { m.IdEstudiante, m.Año}).Select(m =>m.Sum(i => i.Prom)/4).FirstOrDefault();
+                           
         }
     }
 }
