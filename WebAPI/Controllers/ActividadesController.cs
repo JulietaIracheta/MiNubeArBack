@@ -54,5 +54,27 @@ namespace WebAPI.Controllers
             var userId = Convert.ToInt32(token.Issuer);
             return actividadesRepository.calcularAvanceActividadesMateria(userId, idMateria);
         }
+
+        [HttpGet("getActidades/{idMateria}/{unidad}")]
+        public List<ActividadDto> GetActividades(int idMateria, int unidad)
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Convert.ToInt32(token.Issuer);
+
+            return actividadesRepository.getActividades(userId, unidad, idMateria);
+        }
+
+        [HttpGet("getActidades/{idMateria}")]
+        public List<ActividadMateriaDto> GetActividadesMateria(int idMateria)
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Convert.ToInt32(token.Issuer);
+
+            return actividadesRepository.getActividadMateria(userId,  idMateria);
+        }
     }
 }
