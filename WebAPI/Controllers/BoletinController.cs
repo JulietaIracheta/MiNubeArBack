@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
 using WebAPI.Dto;
+using WebAPI.Enums;
 using WebAPI.Helpers;
 using WebAPI.Models;
 
@@ -31,7 +32,7 @@ namespace WebAPI.Controllers
             return await _context.Boletin.ToListAsync();
         }
 
-        [HttpGet]
+        [HttpGet("estudiante")]
         public List<Boletin> GetBoletinEstudiante(string jwt)
         {
             //var jwt = Request.Cookies["jwt"];
@@ -52,7 +53,24 @@ namespace WebAPI.Controllers
 
             return boletin.ToList();
         }
+        [HttpGet("getByEstudianteId/{id}")]
+        public List<Boletin> GetBoletinEstudiante(int id)
+        {
 
+            var boletin = from b in _context.Boletin
+                where b.IdEstudiante == id && b.Año == DateTime.Today.Year
+                select new Boletin
+                {
+                    IdEstudiante = id,
+                    Año = b.Año,
+                    Materia = b.Materia,
+                    T1 = b.T1,
+                    T2 = b.T2,
+                    T3 = b.T3,
+                };
+
+            return boletin.ToList();
+        }
         [HttpGet("trayectoria/{anio}")]
         public List<Boletin> GettrayectoriaEstudiante(int anio)
         {
@@ -163,7 +181,34 @@ namespace WebAPI.Controllers
                 T2 = boletin.T2,
                 T3 = boletin.T3,
             };
-
+            Notificacion notificacionTutor;
+            Notificacion notificacionEstudiante;
+            
+            var tutor = _context.TutorEstudiante.FirstOrDefault(e => e.IdUsuarioEstudiante == boletin.IdEstudiante)?.IdUsuarioTutor;
+            if (tutor.HasValue)
+            {
+                notificacionTutor = new Notificacion
+                {
+                    Descripcion = "Nuevo comunicado",
+                    Fecha = DateTime.Now,
+                    IdDestinatario = tutor.Value,
+                    IdNotificacion = 0,
+                    Mensaje = "Han cargado la calificación de " + boletin.Materia + $"{DateTime.Now:g}",
+                    TipoNotificacion = (int)TipoNotificacion.Calificacion
+                };
+                _context.Notificacion.Add(notificacionTutor);
+            }
+            notificacionEstudiante = new Notificacion
+            {
+                Descripcion = "Nuevo comunicado",
+                Fecha = DateTime.Now,
+                IdDestinatario = boletin.IdEstudiante.GetValueOrDefault(),
+                IdNotificacion = 0,
+                Mensaje = $"Han cargado la calificación de " + boletin.Materia + $"{DateTime.Now:g}",
+                TipoNotificacion = (int)TipoNotificacion.Calificacion
+            };
+            
+            _context.Notificacion.Add(notificacionEstudiante);
             _context.Boletin.Add(bol);
             await _context.SaveChangesAsync();
             return bol;
