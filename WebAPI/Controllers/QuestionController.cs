@@ -50,9 +50,10 @@ namespace WebAPI.Controllers
                 Unidad = pregunta.ActividadesQuiz.Unidad,
                 Titulo = pregunta.ActividadesQuiz.Titulo,
                 Descripcion = pregunta.ActividadesQuiz.Descripcion,
-                IdMateria = pregunta.ActividadesQuiz.IdMateria
+                IdMateria = pregunta.ActividadesQuiz.IdMateria,
+               
             };
-           
+
 
             var answer = new List<Answer>();
             foreach (var i in pregunta.Answers)

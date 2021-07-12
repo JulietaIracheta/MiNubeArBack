@@ -35,12 +35,13 @@ namespace WebAPI.Controllers
         {
             return InformeRepository.Crear(Informe, _env.ContentRootPath);
         }
+       
         [HttpPost("crearInformeTrayectoria")]
-        public async Task<ActionResult<InformeTrayectoria>> CrearInformetrayectoria(InformeTrayectoria Informe)
-        {
-            return InformeRepository.CrearInformeTrayectoria(Informe);
-        }
-
+             public async Task<ActionResult<Trayectoria>> CrearInformetrayectoria(Trayectoria Informe)
+             {
+                 return InformeRepository.CrearInformeTrayectoria(Informe);
+             }
+        
         [HttpPost("cargarInforme")]
         public async Task<ActionResult> CargarInforme([FromForm] FileModel file)
         {
@@ -54,19 +55,17 @@ namespace WebAPI.Controllers
             {
                 IdUsuario = file.IdUsuario,
                 Informe = file.Informe,
-                IdCurso = 1,
+                IdCurso = file.IdCurso,
                 Año = file.Año
             };
 
-            var trayectoria = _context.InformeTrayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
-            trayectoria.Informe = file.Informe;
-            _context.InformeTrayectoria.Update(trayectoria);
+      //      var trayectoria = _context.InformeTrayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
+        //    trayectoria.Informe = file.Informe;
+          //  _context.InformeTrayectoria.Update(trayectoria);
             _context.Informes.Add(informes);
             _context.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
-
         }
-
 
         [HttpGet]
         public async Task<ActionResult<Informes>> GetInformeById(int id)
@@ -106,10 +105,12 @@ namespace WebAPI.Controllers
             return InformeRepository.GetInformeTrayectoriaEstudiante(userId);
         }
 
-        [HttpGet("prom")]
-        public decimal Prom()
+        [HttpGet("getTrayectoria")]
+        public async Task<List<TrayectoriaDto>> GetTrayectoriaEstudiante()
         {
-            return InformeRepository.Promedio(3,2020);
+           
+            return InformeRepository.GetTrayectoriaEstudiante(3);
         }
+
     }
 }

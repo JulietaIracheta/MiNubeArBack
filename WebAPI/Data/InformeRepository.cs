@@ -27,7 +27,7 @@ namespace WebAPI.Data
         {
             return _context.Informes.FirstOrDefault(x => x.IdInforme == id);
         }
-        
+
         public IQueryable<string> GetByEstudianteId(int estudianteId)
         {
             DateTime año = DateTime.Today;
@@ -35,9 +35,9 @@ namespace WebAPI.Data
 
             var inf = _context.Informes
                 .Include(p => p.IdUsuarioNavigation)
-                .Where(c => c.IdUsuario == estudianteId && c.Año == a).Select(p=>p.Informe);
+                .Where(c => c.IdUsuario == estudianteId && c.Año == a).Select(p => p.Informe);
             return inf;
-                
+
         }
         public IQueryable<string> GetInformeTrayectoria(int estudianteId, int anio)
         {
@@ -52,8 +52,40 @@ namespace WebAPI.Data
         {
 
             var inf = _context.InformeTrayectoria
-                .Where(c => c.IdEstudiante == estudianteId).OrderBy(x=>x.Año).ToList();
+                .Where(c => c.IdEstudiante == estudianteId).OrderBy(x => x.Año).ToList();
             return inf;
+
+        }
+        public List<TrayectoriaDto> GetTrayectoriaEstudiante(int estudianteId)
+        {
+
+            var inf = _context.Trayectoria.Include(x => x.IdInformeNavigation).ThenInclude(x => x.IdCursoNavigation).ThenInclude(x => x.EstudianteCurso)
+                .Where(c => c.IdInformeNavigation.IdUsuario == estudianteId);
+            
+            var años = inf.OrderByDescending(a => a.Año).Select(x => x.Año).Distinct();
+            var listaTrayectoria = new List<TrayectoriaDto>();
+            foreach (var año in años)
+            {
+                var t = new TrayectoriaDto
+                {
+                    Año = año,
+                    Curso = inf.First(c=>c.Año == año).IdInformeNavigation.IdCursoNavigation.Nombre,
+                    Informe = inf.First(c => c.Año == año).IdInformeNavigation.Informe,
+                    MateriaCalificacion = new List<MateriaCalificacionDto>()
+                };
+                foreach (var i in inf.Where(a=>a.Año == año))
+                {
+
+                    t.MateriaCalificacion.Add(new MateriaCalificacionDto
+                    {
+                        Materia = i.Materia,
+                        Calificacion = i.Calificacion
+                    });
+                };
+                listaTrayectoria.Add(t);
+            }
+           
+                return listaTrayectoria;
 
         }
 
@@ -65,6 +97,7 @@ namespace WebAPI.Data
             {
                 IdUsuario = informe.IdUsuario,
                 Informe = nombreInforme,
+                IdCurso = informe.IdCurso,
                 Año = informe.Año
             };
           
@@ -73,31 +106,50 @@ namespace WebAPI.Data
             return informes;
         }
 
-        public InformeTrayectoria CrearInformeTrayectoria(InformeTrayectoria informe)
-        {
-
-            var informes = new InformeTrayectoria
+        /*    public InformeTrayectoria CrearInformeTrayectoria(InformeTrayectoria informe)
             {
-                IdEstudiante = informe.IdEstudiante,
-                Curso = informe.Curso,
-                Año = informe.Año,
-                Institucion = informe.Institucion,
-                Matematica = informe.Matematica,
-                Lengua = informe.Lengua,
-                Sociales = informe.Sociales,
-                Naturales = informe.Naturales,
-                Promedio = Promedio(informe.IdEstudiante, informe.Año)
+                var informes = new InformeTrayectoria
+                {
+                    IdEstudiante = informe.IdEstudiante,
+                    Curso = informe.Curso,
+                    Año = informe.Año,
+                    Institucion = informe.Institucion,
+                    Matematica = informe.Matematica,
+                    Lengua = informe.Lengua,
+                    Sociales = informe.Sociales,
+                    Naturales = informe.Naturales,
+                    Promedio = Promedio(informe.IdEstudiante, informe.Año)
+                };
+                _context.InformeTrayectoria.Add(informes);
+                _context.SaveChanges();
+                return informes;
+            }*/
 
-            };
+            public Trayectoria CrearInformeTrayectoria(Trayectoria informe)
+    {
+            Trayectoria[] materiasList = new Trayectoria[informe.Materia.Length];
+            for (int i = 0; i < informe.Materia.Length; i++)
+            {
+                var Materia = informe.Materia[i];
+                materiasList[i] = new Trayectoria { Materia = informe.Materia, Calificacion = informe.Calificacion, IdInforme = informe.IdInforme  };
+            }
+            foreach (var item in materiasList)
+            {
+                _context.Trayectoria.Add(item);
+            }
 
-            _context.InformeTrayectoria.Add(informes);
-            _context.SaveChanges();
-            return informes;
-        }
+           _context.SaveChanges();
+            return informe;
+    }
 
         public decimal Promedio(int est, int año)
         {
-            return _context.Boletin.Where(z=>z.IdEstudiante == est && z.Año == año).GroupBy(m => new { m.IdEstudiante, m.Año}).Select(m =>m.Sum(i => i.Prom)/4).FirstOrDefault();
+
+            int materias = _context.Boletin.GroupBy(x => new { x.Año }).Count();
+            return _context.Boletin
+                .Where(z => z.IdEstudiante == est && z.Año == año)
+                .GroupBy(m => new { m.IdEstudiante, m.Año })
+                .Select(m => m.Sum(i => i.Prom) / materias).FirstOrDefault();
                            
         }
     }

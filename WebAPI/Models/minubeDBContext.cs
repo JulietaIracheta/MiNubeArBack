@@ -57,6 +57,7 @@ namespace WebAPI.Models
         public virtual DbSet<Boletin> Boletin { get; set; }
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<Trayectoria> Trayectoria { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -953,6 +954,34 @@ namespace WebAPI.Models
                     .HasColumnName("descripcion")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+            modelBuilder.Entity<Trayectoria>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("PK__Trayectoria");
+
+                entity.Property(e => e.IdInforme).HasColumnName("idInforme");
+
+                entity.Property(e => e.Materia)
+                    .IsRequired()
+                    .HasColumnName("materia")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Calificacion)
+                    .IsRequired()
+                    .HasColumnName("calificacion")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Año).HasColumnName("año");
+
+                entity.HasOne(d => d.IdInformeNavigation)
+                   .WithMany(p => p.TrayectoriaNavigation)
+                   .HasForeignKey(d => d.IdInforme)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("FK_Informe_Trayectoria");
+
             });
 
             modelBuilder.Entity<TutorEstudiante>(entity =>
