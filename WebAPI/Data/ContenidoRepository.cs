@@ -26,11 +26,12 @@ namespace WebAPI.Data
         }
         public List<Contenidos> GetByMateriaId(int materiaId)
         {
-            return _context.Contenidos.Include(e => e.Actividades).ThenInclude(e => e.Questions)
+            var list= _context.Contenidos.Include(e => e.Actividades).ThenInclude(e => e.Questions)
                 .ThenInclude(e => e.Answers)
                 .Where(c => c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == materiaId))
                 .OrderBy(e => e.Unidad)
                 .ToList();
+            return list;
         }
         public Contenidos Crear(ContenidoDto contenido, string contentRootPath)
         {

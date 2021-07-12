@@ -193,7 +193,7 @@ namespace WebAPI.Controllers
                     Fecha = DateTime.Now,
                     IdDestinatario = tutor.Value,
                     IdNotificacion = 0,
-                    Mensaje = "Han cargado la calificación de " + boletin.Materia + $"{DateTime.Now:g}",
+                    Mensaje = "Han cargado la calificación de " + boletin.Materia + $" {DateTime.Now:g}",
                     TipoNotificacion = (int)TipoNotificacion.Calificacion
                 };
                 _context.Notificacion.Add(notificacionTutor);
@@ -204,7 +204,7 @@ namespace WebAPI.Controllers
                 Fecha = DateTime.Now,
                 IdDestinatario = boletin.IdEstudiante.GetValueOrDefault(),
                 IdNotificacion = 0,
-                Mensaje = $"Han cargado la calificación de " + boletin.Materia + $"{DateTime.Now:g}",
+                Mensaje = $"Han cargado la calificación de " + boletin.Materia + $" {DateTime.Now:g}",
                 TipoNotificacion = (int)TipoNotificacion.Calificacion
             };
             

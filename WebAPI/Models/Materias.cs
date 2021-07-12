@@ -19,6 +19,7 @@ namespace WebAPI.Models
         public string Icon { get; set; }
 
         public virtual ICollection<InstitucionMateria> InstitucionMateria { get; set; }
+        public virtual ICollection<ActividadMateriaUnidad> ActividadMateriaUnidad { get; set; }
         public virtual ICollection<MateriaCurso> MateriaCurso { get; set; }
         public virtual ICollection<MateriaDocente> MateriaDocente { get; set; }
         public virtual ICollection<MateriaEstudiante> MateriaEstudiante { get; set; }

@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
         }
         
         [HttpPost]
-        public Question CreateQuestion(Question pregunta)
+        public Question CreateQuestion(CrearActividadDto pregunta)
         {
             var act = new Actividades
             {
@@ -53,7 +53,13 @@ namespace WebAPI.Controllers
                 IdMateria = pregunta.ActividadesQuiz.IdMateria,
                 IdContenido = pregunta.ActividadesQuiz.IdContenido
             };
-           
+            
+            var actividadCurso = new ActividadCurso
+            {
+                IdActividad = act.IdActividad,
+                IdActividadNavigation = act,
+                IdCurso = pregunta.CursoId
+            };
 
             var answer = new List<Answer>();
             foreach (var i in pregunta.Answers)
@@ -68,6 +74,7 @@ namespace WebAPI.Controllers
             };
 
             _context.Actividades.Add(act);
+            _context.ActividadCurso.Add(actividadCurso);
             _context.Questions.Add(question);
             _context.SaveChanges();
             return question;
