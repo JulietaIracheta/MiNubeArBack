@@ -207,13 +207,28 @@ insert into Institucion_Curso(idInstitucion,idCurso) values(1,1),(1,2),(2,3),(2,
 select * from Contenido_Materia_Curso
 insert into Contenidos(titulo,descripcion,unidad,video) values('Clase presentacion','Bienvenidos al colegio',1,'video.mp4');
 insert into Contenido_Materia_Curso(idContenido,idMateriaCurso) values(1,1);
-
  
-insert into Estudiante_Curso (idUsuario,idCurso) values(3,1),(1,1),(1,2);
+insert into Estudiante_Curso (idUsuario,idCurso) values(3,1),(1,1);
 insert into Curso_Docente(idCurso,idDocente) values(1,2),(2,2);
 
 insert into Institucion_Docente(idInstitucion,idDocente) values(1,2),(2,2);
 insert into Institucion_Curso (idInstitucion,idCurso)values(3,1);
---idusuario
 
+
+insert into Institucion_Estudiante(idInstitucion,idUsuario) values(1,1),(1,3);
+GO
 insert into Materia_Docente (idMateria,idUsuario) values(1,2),(2,2),(3,2),(4,2);
+
+GO
+CREATE TABLE minubeDB.dbo.Actividad_Materia_Unidad (
+	idActividad_Materia_Unidad int IDENTITY(1,1) NOT NULL,
+	idActividad int NOT NULL,
+	idMateria int NOT NULL,
+	unidad int NOT NULL,
+	titulo varchar(200) COLLATE Modern_Spanish_CI_AS NOT NULL,
+	CONSTRAINT PK_Actividad_Materia_Unidad PRIMARY KEY (idActividad_Materia_Unidad)
+);
+GO
+ALTER TABLE minubeDB.dbo.Actividad_Materia_Unidad ADD CONSTRAINT FK_Actividad_Materia_Unidad_Actividades FOREIGN KEY (idActividad) REFERENCES minubeDB.dbo.Actividades(idActividad);
+GO
+ALTER TABLE minubeDB.dbo.Actividad_Materia_Unidad ADD CONSTRAINT FK_Actividad_Materia_Unidad_Materias FOREIGN KEY (idMateria) REFERENCES minubeDB.dbo.Materias(idMateria);

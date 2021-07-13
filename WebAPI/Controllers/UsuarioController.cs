@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using WebAPI.Data;
 using WebAPI.Dto;
 using WebAPI.Helpers;
@@ -126,7 +127,26 @@ namespace WebAPI.Controllers
             var estudiante = _context.TutorEstudiante.Where(x => x.IdUsuarioTutor == id).Select(x => x.IdUsuarioEstudianteNavigation).ToList();
             return estudiante;
         }
+        [HttpGet("estudiantesByDocente")]
+        public List<PersonaDto> getEstudiantesByDocente()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+            var userId = Convert.ToInt32(token.Issuer);
 
+            var materia = _context.MateriaDocente.Where(x => x.IdUsuario == userId).Select(x => x.IdMateria)
+                .Distinct().ToList();
+            var estudiantes= _context.MateriaEstudiante.Include(e => e.IdUsuarioNavigation)
+                .ThenInclude(e => e.IdPersonaNavigation)
+                .Where(e => materia.Any(m => m == e.IdMateria)).Select(u => new PersonaDto
+                {
+                    IdUsuario = u.IdUsuario,
+                    Nombre = u.IdUsuarioNavigation.IdPersonaNavigation.Nombre,
+                    Apellido = u.IdUsuarioNavigation.IdPersonaNavigation.Apellido
+                });
+            
+            return estudiantes.ToList();
+        }
         [HttpGet("getEstudiantes/")]
         public List<Usuarios> getEstudiantes()
         {

@@ -189,7 +189,7 @@ namespace WebAPI.Controllers
             {
                 notificacionTutor = new Notificacion
                 {
-                    Descripcion = "Nuevo comunicado",
+                    Descripcion = "Nueva calificación",
                     Fecha = DateTime.Now,
                     IdDestinatario = tutor.Value,
                     IdNotificacion = 0,
@@ -200,7 +200,7 @@ namespace WebAPI.Controllers
             }
             notificacionEstudiante = new Notificacion
             {
-                Descripcion = "Nuevo comunicado",
+                Descripcion = "Nueva calificación",
                 Fecha = DateTime.Now,
                 IdDestinatario = boletin.IdEstudiante.GetValueOrDefault(),
                 IdNotificacion = 0,

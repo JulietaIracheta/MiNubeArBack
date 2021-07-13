@@ -60,13 +60,14 @@ namespace WebAPI.Controllers
             var flag = true;
             var contenido = _context.Contenidos.Include(e => e.ContenidoMateriaCurso).First(e => e.IdContenido == id);
             var contenidoMateriaCurso = _context.ContenidoMateriaCurso.First(e => e.IdContenido == id);
-            var contenidoActividad = _context.Actividades.First(e => e.IdContenido == id);
+            var contenidoActividad = _context.Actividades.Include(e=>e.ActividadCurso).First(e => e.IdContenido == id);
             var questionActividad = _context.Questions.First(e => e.ActividadesId == contenidoActividad.IdActividad);
             var answerQuestion = _context.Answers.Where(a => a.QuestionId == questionActividad.Id);
             try
             {
                 _context.Answers.RemoveRange(answerQuestion);
                 _context.Questions.Remove(questionActividad);
+                _context.ActividadCurso.RemoveRange(contenidoActividad.ActividadCurso);
                 _context.Actividades.Remove(contenidoActividad);
                 _context.ContenidoMateriaCurso.Remove(contenidoMateriaCurso);
                 _context.Contenidos.Remove(contenido);
