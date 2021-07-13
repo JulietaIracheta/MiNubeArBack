@@ -13,8 +13,8 @@ namespace WebAPI.Dto
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Materia { get; set; }
-        public string T1 { get; set; }
-        public string T2 { get; set; }
-        public string T3 { get; set; }
+        public decimal T1 { get; set; }
+        public decimal T2 { get; set; }
+        public decimal T3 { get; set; }
     }
 }
