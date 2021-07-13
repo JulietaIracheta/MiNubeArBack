@@ -35,6 +35,13 @@ namespace WebAPI.Controllers
         {
             return InformeRepository.Crear(Informe, _env.ContentRootPath);
         }
+
+        [HttpPost("crearInformeTrayectoria")]
+        public async Task<ActionResult<Trayectoria>> CrearInformetrayectoria(Trayectoria Informe)
+        {
+            return InformeRepository.CrearInformeTrayectoria(Informe);
+        }
+
         [HttpPost("cargarInforme")]
         public async Task<ActionResult> CargarInforme([FromForm] FileModel file)
         {
@@ -48,16 +55,17 @@ namespace WebAPI.Controllers
             {
                 IdUsuario = file.IdUsuario,
                 Informe = file.Informe,
-                IdCurso = 1,
+                IdCurso = file.IdCurso,
                 Año = file.Año
             };
 
+            //      var trayectoria = _context.InformeTrayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
+            //    trayectoria.Informe = file.Informe;
+            //  _context.InformeTrayectoria.Update(trayectoria);
             _context.Informes.Add(informes);
             _context.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
-
         }
-
 
         [HttpGet]
         public async Task<ActionResult<Informes>> GetInformeById(int id)
@@ -86,5 +94,26 @@ namespace WebAPI.Controllers
 
             return InformeRepository.GetInformeTrayectoria(userId, anio);
         }
+
+        [HttpGet("getInformeTrayectoria")]
+        public async Task<List<InformeTrayectoria>> GetInformeTrayectoriaEstudiante()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Convert.ToInt32(token.Issuer);
+            return InformeRepository.GetInformeTrayectoriaEstudiante(userId);
+        }
+
+        [HttpGet("getTrayectoria")]
+        public async Task<List<TrayectoriaDto>> GetTrayectoriaEstudiante()
+        {
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Convert.ToInt32(token.Issuer);
+            return InformeRepository.GetTrayectoriaEstudiante(userId);
+        }
+
     }
 }
