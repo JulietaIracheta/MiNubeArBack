@@ -30,6 +30,12 @@ alter table Actividades add CONSTRAINT fk_contenido FOREIGN KEY (idContenido) RE
 go
 alter table Comunicados add fecha datetime;
 go
+CREATE TABLE ContenidoHistorico(
+	idContenidoHistorico int PRIMARY KEY IDENTITY(1,1)  NOT NULL,
+	idContenido int not null,
+	CONSTRAINT fk_ContenidoHistorico	 FOREIGN KEY (idContenido) REFERENCES Contenidos (idContenido)
+)
+go
 CREATE TABLE [dbo].[Answer](
 	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[content] [nvarchar](250) NOT NULL,
