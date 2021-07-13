@@ -10,5 +10,7 @@ namespace WebAPI.Dto
         public string Descripcion { get; set; }
         public IFormFile file { get; set; }
         public int Unidad { get; set; }
+        public int Curso { get; set; }
+        public int Materia { get; set; }
     }
 }

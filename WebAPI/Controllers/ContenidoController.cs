@@ -21,12 +21,15 @@ namespace WebAPI.Controllers
         private readonly minubeDBContext _context;
         private ContenidoRepository contenidoRepository;
         private readonly IHostingEnvironment _env;
+        private readonly JwtService _jwtService;
 
-        public ContenidoController(minubeDBContext context, IHostingEnvironment env)
+        public ContenidoController(minubeDBContext context, IHostingEnvironment env, JwtService jwtService)
         {
             _context = context;
             contenidoRepository = new ContenidoRepository(context);
             _env = env;
+            _jwtService = jwtService;
+
         }
 
         [HttpPost("crearContenido")]
@@ -49,28 +52,29 @@ namespace WebAPI.Controllers
             return contenidoRepository.GetById(id);
         }
         
-        [HttpGet("getContenidoByMateria/{id}")]
-        public async Task<ActionResult<List<Contenidos>>> GetContenidoByMateria(int id)
+        [HttpGet("getContenidoByMateria/{idMateria}/{idCurso}")]
+        public async Task<ActionResult<List<Contenidos>>> GetContenidoByMateria(int idMateria, int idCurso)
         {
-            return contenidoRepository.GetByMateriaId(id);
+            return contenidoRepository.GetByMateriaId(idMateria,idCurso);
         }
         [HttpDelete]
         public ActionResult Eliminar(int id)
         {
             var flag = true;
             var contenido = _context.Contenidos.Include(e => e.ContenidoMateriaCurso).First(e => e.IdContenido == id);
-            var contenidoMateriaCurso = _context.ContenidoMateriaCurso.First(e => e.IdContenido == id);
+            /*  var contenidoMateriaCurso = _context.ContenidoMateriaCurso.First(e => e.IdContenido == id);
             var contenidoActividad = _context.Actividades.Include(e=>e.ActividadCurso).First(e => e.IdContenido == id);
             var questionActividad = _context.Questions.First(e => e.ActividadesId == contenidoActividad.IdActividad);
             var answerQuestion = _context.Answers.Where(a => a.QuestionId == questionActividad.Id);
-            try
+            */try
             {
-                _context.Answers.RemoveRange(answerQuestion);
+                contenido.FechaBaja = DateTime.Now;
+                /*_context.Answers.RemoveRange(answerQuestion);
                 _context.Questions.Remove(questionActividad);
                 _context.ActividadCurso.RemoveRange(contenidoActividad.ActividadCurso);
                 _context.Actividades.Remove(contenidoActividad);
                 _context.ContenidoMateriaCurso.Remove(contenidoMateriaCurso);
-                _context.Contenidos.Remove(contenido);
+                //_context.Contenidos.Remove(contenido);*/
                 _context.SaveChanges();
             }
             catch (Exception e)
@@ -79,6 +83,26 @@ namespace WebAPI.Controllers
             }
 
             return flag ? (ActionResult) Ok() : BadRequest();
+        }
+        [HttpGet("getContenidosHistoricos")]
+        public List<Contenidos> GetContenidosHistoricos(string jwt)
+        {
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Convert.ToInt32(token.Issuer);
+            var listaDeCursos = _context.EstudianteCurso.Where(e => e.IdUsuario == userId).Select(e => e.IdCurso).Distinct().ToList();
+            var listaDeContenidos= _context.Contenidos.Include(e => e.ContenidoHistorico).Where(e =>
+                    e.ContenidoMateriaCurso.Any(p => listaDeCursos.Contains(p.IdMateriaCursoNavigation.IdCurso)) &&
+                    e.Fecha.HasValue && e.Fecha.Value.Year != DateTime.Now.Year)
+                .Select(e => e.IdContenido).Distinct().ToList();
+
+
+            return _context.ContenidoHistorico.Include(e => e.IdContenidoNavigation).ThenInclude(e => e.Actividades)
+                .ThenInclude(e => e.Questions).ThenInclude(e => e.Answers).Include(e => e.IdContenidoNavigation)
+                .ThenInclude(e => e.ContenidoMateriaCurso).ThenInclude(e => e.IdMateriaCursoNavigation)
+                .ThenInclude(e => e.IdMateriaNavigation)
+                .Where(e => listaDeContenidos.Contains(e.IdContenido)).OrderBy(e => e.IdContenidoNavigation.Fecha)
+                .Select(e => e.IdContenidoNavigation).ToList();
         }
     }
 }

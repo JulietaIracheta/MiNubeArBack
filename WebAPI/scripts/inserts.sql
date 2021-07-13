@@ -21,7 +21,11 @@ alter table Comunicados add CONSTRAINT fk_docente FOREIGN KEY (idDocente) REFERE
 go
 alter table Actividades add idContenido int;
 go
-
+alter table Contenidos add fecha date;
+go
+go
+alter table Contenidos add fechaBaja date;
+go
 alter table Actividades add CONSTRAINT fk_contenido FOREIGN KEY (idContenido) REFERENCES Contenidos (idContenido)
 go
 alter table Comunicados add fecha datetime;

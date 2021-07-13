@@ -22,13 +22,13 @@ namespace WebAPI.Data
         }
         public Contenidos GetById(int id)
         {
-            return _context.Contenidos.FirstOrDefault(x => x.IdContenido == id);
+            return _context.Contenidos.FirstOrDefault(x => !x.FechaBaja.HasValue && x.IdContenido == id);
         }
-        public List<Contenidos> GetByMateriaId(int materiaId)
+        public List<Contenidos> GetByMateriaId(int materiaId, int cursoId)
         {
             var list= _context.Contenidos.Include(e => e.Actividades).ThenInclude(e => e.Questions)
                 .ThenInclude(e => e.Answers)
-                .Where(c => c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == materiaId))
+                .Where(c => !c.FechaBaja.HasValue && c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == materiaId && cmc.IdMateriaCursoNavigation.IdCurso==cursoId))
                 .OrderBy(e => e.Unidad)
                 .ToList();
             return list;
@@ -36,21 +36,34 @@ namespace WebAPI.Data
         public Contenidos Crear(ContenidoDto contenido, string contentRootPath)
         {
             var nombreVideo= contenido.file == null ? string.Empty : FileHelper.GuardarVideo(contentRootPath, contenido.file);
-            
+
             var contenidos= new Contenidos
             {
                 Descripcion = contenido.Descripcion, Titulo = contenido.Titulo, Unidad = contenido.Unidad,
-                Video = nombreVideo
+                Video = nombreVideo,Fecha = DateTime.Now
             };
-            var contenidoMateria = new ContenidoMateriaCurso
+            var contenidoHistorico = new ContenidoHistorico
             {
-                IdContenidoNavigation = contenidos,
-                IdMateriaCurso = 1
+                IdContenidoNavigation = contenidos
             };
-           _context.Contenidos.Add(contenidos);
-           _context.ContenidoMateriaCurso.Add(contenidoMateria);
-           _context.SaveChanges();
-           return contenidos;
+            var materiaCurso =
+                _context.MateriaCurso.FirstOrDefault(e =>
+                    e.IdMateria == contenido.Materia && e.IdCurso == contenido.Curso);
+            _context.Contenidos.Add(contenidos);
+            _context.ContenidoHistorico.Add(contenidoHistorico);
+            if (materiaCurso != null)
+            {
+                var contenidoMateria = new ContenidoMateriaCurso
+                {
+                    IdContenidoNavigation = contenidos,
+                    IdMateriaCurso = materiaCurso.IdMateriaCurso
+                };
+                _context.ContenidoMateriaCurso.Add(contenidoMateria);
+            }
+
+
+            _context.SaveChanges();
+            return contenidos;
         }
     }
 }

@@ -26,6 +26,8 @@ namespace WebAPI.Models
         public virtual DbSet<Comunicados> Comunicados { get; set; }
         public virtual DbSet<ContenidoMateriaCurso> ContenidoMateriaCurso { get; set; }
         public virtual DbSet<Contenidos> Contenidos { get; set; }
+        public virtual DbSet<ContenidoHistorico> ContenidoHistorico { get; set; }
+
         public virtual DbSet<CursoDocente> CursoDocente { get; set; }
         public virtual DbSet<Cursos> Cursos { get; set; }
         public virtual DbSet<EstudianteCurso> EstudianteCurso { get; set; }
@@ -279,6 +281,22 @@ namespace WebAPI.Models
                     .HasConstraintName("fk_Usuario_Comunicado");
             });
 
+             modelBuilder.Entity<ContenidoHistorico>(entity =>
+            {
+                entity.HasKey(e => e.IdContenidoHistorico)
+                    .HasName("PK__Contenid__5187D6143A55B7DC");
+
+                entity.Property(e => e.IdContenidoHistorico).HasColumnName("idContenidoHistorico");
+
+                entity.Property(e => e.IdContenido).HasColumnName("idContenido");
+
+                entity.HasOne(d => d.IdContenidoNavigation)
+                    .WithMany(p => p.ContenidoHistorico)
+                    .HasForeignKey(d => d.IdContenido)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Contenido_Historico");
+            });
+
             modelBuilder.Entity<ContenidoMateriaCurso>(entity =>
             {
                 entity.HasKey(e => e.IdContenidoMateriaCurso)
@@ -317,6 +335,14 @@ namespace WebAPI.Models
                     .HasColumnName("descripcion")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Fecha)
+                    .HasColumnName("fecha")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.FechaBaja)
+                    .HasColumnName("fechaBaja")
+                    .HasColumnType("date");
 
                 entity.Property(e => e.Titulo)
                     .IsRequired()
