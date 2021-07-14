@@ -13,5 +13,6 @@ namespace WebAPI.Models
 
         public virtual Cursos IdCursoNavigation { get; set; }
         public virtual Usuarios IdUsuarioNavigation { get; set; }
+        public virtual ICollection<Trayectoria> TrayectoriaNavigation { get; set; }
     }
 }

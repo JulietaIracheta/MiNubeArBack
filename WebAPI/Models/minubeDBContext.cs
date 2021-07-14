@@ -34,6 +34,7 @@ namespace WebAPI.Models
         public virtual DbSet<Evento> Evento { get; set; }
         public virtual DbSet<Historiales> Historiales { get; set; }
         public virtual DbSet<Informes> Informes { get; set; }
+        public virtual DbSet<InformeTrayectoria> InformeTrayectoria { get; set; }
         public virtual DbSet<InstitucionCurso> InstitucionCurso { get; set; }
         public virtual DbSet<InstitucionDocente> InstitucionDocente { get; set; }
         public virtual DbSet<InstitucionEstudiante> InstitucionEstudiante { get; set; }
@@ -59,7 +60,8 @@ namespace WebAPI.Models
         public virtual DbSet<Boletin> Boletin { get; set; }
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
-
+        public virtual DbSet<Trayectoria> Trayectoria { get; set; }
+        public virtual DbSet<MateriaCalificacion> MatCal { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -199,18 +201,22 @@ namespace WebAPI.Models
 
                 entity.Property(e => e.T1)
                 .IsRequired()
-                .HasColumnName("T1")
-                .HasMaxLength(20);
+                .HasColumnName("T1");
 
                 entity.Property(e => e.T2)
                 .IsRequired()
                 .HasColumnName("T2")
-                .HasMaxLength(20);
+                ;
 
                 entity.Property(e => e.T3)
                 .IsRequired()
                 .HasColumnName("T3")
-                .HasMaxLength(20);
+                ;
+
+                entity.Property(e => e.Prom)
+                .IsRequired()
+                .HasColumnName("Prom")
+                ;
 
                 entity.HasOne(d => d.IdEstudianteNavigation)
                    .WithMany(p => p.Boletin)
@@ -495,6 +501,7 @@ namespace WebAPI.Models
                 entity.Property(e => e.IdCurso).HasColumnName("idCurso");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+                entity.Property(e => e.Año).HasColumnName("año");
 
                 entity.HasOne(d => d.IdCursoNavigation)
                     .WithMany(p => p.Informes)
@@ -507,6 +514,37 @@ namespace WebAPI.Models
                     .HasForeignKey(d => d.IdUsuario)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Usuario_Informe");
+            });
+
+            modelBuilder.Entity<InformeTrayectoria>(entity =>
+            {
+                entity.ToTable("Informe_Trayectoria");
+
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Año)
+                    .IsRequired()
+                    .HasColumnName("año");
+
+                entity.Property(e => e.Curso).HasColumnName("Curso").HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Matematica).HasColumnName("matematica").HasMaxLength(1000)
+                   .IsUnicode(false);
+                entity.Property(e => e.Lengua).HasColumnName("lengua").HasMaxLength(1000)
+                   .IsUnicode(false);
+                entity.Property(e => e.Sociales).HasColumnName("sociales").HasMaxLength(1000)
+                   .IsUnicode(false);
+                entity.Property(e => e.Naturales).HasColumnName("naturales").HasMaxLength(1000)
+                   .IsUnicode(false);
+                entity.Property(e => e.Institucion).HasColumnName("institucion").HasMaxLength(1000)
+                   .IsUnicode(false);
+                entity.Property(e => e.Informe).HasColumnName("informe").HasMaxLength(1000)
+                   .IsUnicode(false);
+
+                entity.Property(e => e.IdEstudiante).HasColumnName("idUsuario");
+
             });
 
             modelBuilder.Entity<InstitucionCurso>(entity =>
@@ -983,6 +1021,35 @@ namespace WebAPI.Models
                     .HasColumnName("descripcion")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Trayectoria>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("PK__Trayectoria");
+
+                entity.Property(e => e.IdInforme).HasColumnName("idInforme");
+
+                entity.Property(e => e.Materia)
+                    .IsRequired()
+                    .HasColumnName("materia")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Calificacion)
+                    .IsRequired()
+                    .HasColumnName("calificacion")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Año).HasColumnName("año");
+
+                entity.HasOne(d => d.IdInformeNavigation)
+                   .WithMany(p => p.TrayectoriaNavigation)
+                   .HasForeignKey(d => d.IdInforme)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("FK_Informe_Trayectoria");
+
             });
 
             modelBuilder.Entity<TutorEstudiante>(entity =>

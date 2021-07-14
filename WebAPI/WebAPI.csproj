@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Avatares\" />
+    <Folder Include="Avatares\NewFolder\" />
     <Folder Include="videos\" />
   </ItemGroup>
 

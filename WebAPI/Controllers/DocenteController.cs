@@ -72,6 +72,20 @@ namespace WebAPI.Controllers
 
             return usuariosPorCursos.ToList();
         }
+        [HttpGet("getEstudiantesPorCurso/{id}")]
+        public List<PersonaDto> GetEstudiantesCurso(int id)
+        {
+            var usuariosPorCursos = _context.EstudianteCurso.Where(x => x.IdCurso == id).Include(x => x.IdUsuarioNavigation)
+                .ThenInclude(x => x.IdPersonaNavigation).Select(u => new PersonaDto
+                {
+                    IdPersona = u.IdUsuarioNavigation.IdPersona.Value,
+                    IdUsuario = u.IdUsuario,
+                    Nombre = u.IdUsuarioNavigation.IdPersonaNavigation.Nombre,
+                    Apellido = u.IdUsuarioNavigation.IdPersonaNavigation.Apellido,
+                });
+
+            return usuariosPorCursos.ToList();
+        }
 
         [HttpGet("getId")]
         public int GetIDDocente(string jwt)
