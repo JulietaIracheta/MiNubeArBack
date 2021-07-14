@@ -63,22 +63,31 @@ namespace WebAPI.Data
         {
             if (!_context.EstudianteCurso.Any(e => e.IdUsuario == userId))
                 return string.Empty;
-            var curso = _context.EstudianteCurso.Include(e => e.IdCursoNavigation).First(e => e.IdUsuario == userId);
-            var nombreSala = curso.IdCursoNavigation.Nombre + curso.IdCurso;
+            var curso = _context.EstudianteCurso.Include(e => e.IdCursoNavigation).Include(e => e.IdUsuarioNavigation)
+                .ThenInclude(e => e.InstitucionEstudiante).ThenInclude(e => e.IdInstitucionNavigation)
+                .First(e => e.IdUsuario == userId);
+            var nombreSala = curso.IdUsuarioNavigation.InstitucionEstudiante.First().IdInstitucionNavigation.Nombre +
+                             curso.IdCursoNavigation.Nombre + curso.IdCurso;
             var sala = nombreSala.Replace(" ", "");
             return sala;
         }
 
         public List<string> ObtenerChatsDocente(int userId)
         {
-            var curso = _context.CursoDocente.Include(e => e.IdCursoNavigation).Where(e => e.IdDocente == userId);
+            var curso = _context.CursoDocente.Include(e => e.IdCursoNavigation).Include(e => e.IdDocenteNavigation)
+                .ThenInclude(e => e.InstitucionDocente).ThenInclude(e=>e.IdInstitucionNavigation)
+                .Where(e => e.IdDocente == userId);
             var listaCursos = new List<string>();
 
             foreach (var c in curso)
             {
-                var sala = c.IdCursoNavigation.Nombre + c.IdCurso;
-                sala = sala.Replace(" ", "");
-                listaCursos.Add(sala);
+                foreach (var v in c.IdDocenteNavigation.InstitucionDocente)
+                {
+                    var sala = v.IdInstitucionNavigation.Nombre +c.IdCursoNavigation.Nombre + c.IdCursoNavigation.IdCurso;
+                    sala = sala.Replace(" ", "");
+                    listaCursos.Add(sala);
+                }
+               
             }
 
             return listaCursos;

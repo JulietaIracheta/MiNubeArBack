@@ -32,9 +32,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("materias")]
-        public ActionResult<EstudianteMateriasDto> GetMaterias()
+        public ActionResult<EstudianteMateriasDto> GetMaterias(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
