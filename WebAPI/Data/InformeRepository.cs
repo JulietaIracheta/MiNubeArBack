@@ -150,12 +150,13 @@ namespace WebAPI.Data
         public decimal Promedio(int est, int año)
         {
 
-            int materias = _context.Boletin.GroupBy(x => new { x.Año }).Count();
+            /*int materias = _context.Boletin.GroupBy(x => new { x.Año }).Count();
             return _context.Boletin
                 .Where(z => z.IdEstudiante == est && z.Año == año)
                 .GroupBy(m => new { m.IdEstudiante, m.Año })
                 .Select(m => m.Sum(i => i.Prom) / materias).FirstOrDefault();
-
+            */
+            return 0;
         }
     }
 }
