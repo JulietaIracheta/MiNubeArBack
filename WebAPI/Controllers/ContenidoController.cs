@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
             
             return Ok();
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Contenidos>> GetContenidoById(int id)
         {
             return contenidoRepository.GetById(id);
@@ -56,6 +56,14 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<List<Contenidos>>> GetContenidoByMateria(int idMateria, int idCurso)
         {
             return contenidoRepository.GetByMateriaId(idMateria,idCurso);
+        }
+        [HttpGet("getContenidoDeEstudiante/{idMateria}")]
+        public async Task<ActionResult<List<Contenidos>>> GetContenidoDeEstudiante(int idMateria, string jwt)
+        {
+            var token = _jwtService.Verify(jwt);
+            var userId = Convert.ToInt32(token.Issuer);
+            var idCurso=_context.EstudianteCurso.First(e => e.IdUsuario == userId).IdCurso;
+            return contenidoRepository.GetByEstudiante(idMateria, idCurso);
         }
         [HttpDelete]
         public ActionResult Eliminar(int id)

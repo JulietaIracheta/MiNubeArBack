@@ -56,9 +56,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getActidades/{idMateria}/{unidad}")]
-        public List<ActividadDto> GetActividades(int idMateria, int unidad)
+        public List<ActividadDto> GetActividades(int idMateria, int unidad, string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+            //var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
