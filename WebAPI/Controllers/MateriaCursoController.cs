@@ -26,6 +26,22 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<MateriaCurso>> PostMateriaCurso(MateriaCursoDto materiaCurso)
         {
             MateriaCurso[] materiaCursoList = new MateriaCurso[materiaCurso.IdMateria.Length];
+            var estudiantes =
+                _context.Usuarios.Where(e => e.EstudianteCurso.Any(e => e.IdCurso == materiaCurso.IdCurso)).Select(e=>e.IdUsuario);
+            
+            foreach (var e in estudiantes)
+            {
+                foreach (var materia in materiaCurso.IdMateria)
+                {
+                    var materiaEstudiante = new MateriaEstudiante
+                    {
+                        IdMateria = materia,
+                        IdUsuario = e
+                    };
+                    _context.MateriaEstudiante.Add(materiaEstudiante);
+                }
+            }
+
             for (int i = 0; i < materiaCurso.IdMateria.Length; i++)
             {
                 var IdMateria = materiaCurso.IdMateria[i];
@@ -35,7 +51,7 @@ namespace WebAPI.Controllers
             {
                 _context.MateriaCurso.Add(item);
             }
-
+            
             await _context.SaveChangesAsync();
             return Ok();
         }

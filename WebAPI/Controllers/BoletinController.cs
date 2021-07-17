@@ -262,7 +262,7 @@ namespace WebAPI.Controllers
             var totalEstudiantes = _context.InstitucionEstudiante.Select(e => e.IdUsuario).Count();
             var totalDocentes= _context.InstitucionDocente.Select(e => e.IdDocente).Distinct().Count();
             var totalInstituciones= _context.Instituciones.Select(e => e.IdInstitucion).Count();
-            var totalTutores= _context.TutorEstudiante.Select(e => e.IdTutorEstudiante).Distinct().Count();
+            var totalTutores= _context.TutorEstudiante.Select(e => e.IdUsuarioTutor).Distinct().Count();
 
 
             return new dto

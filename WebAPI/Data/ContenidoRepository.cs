@@ -33,6 +33,18 @@ namespace WebAPI.Data
                 .ToList();
             return list;
         }
+
+        public List<Contenidos> GetByEstudiante(int materiaId, int cursoId)
+        {
+            var list = _context.Contenidos.Include(e => e.Actividades).ThenInclude(e => e.Questions)
+                .ThenInclude(e => e.Answers)
+                .Where(c => !c.FechaBaja.HasValue && c.ContenidoMateriaCurso.Any(cmc =>
+                    cmc.IdMateriaCursoNavigation.IdMateria == materiaId &&
+                    cmc.IdMateriaCursoNavigation.IdCurso == cursoId))
+                .OrderBy(e => e.Unidad)
+                .ToList();
+            return list;
+        }
         public Contenidos Crear(ContenidoDto contenido, string contentRootPath)
         {
             var nombreVideo= contenido.file == null ? string.Empty : FileHelper.GuardarVideo(contentRootPath, contenido.file);

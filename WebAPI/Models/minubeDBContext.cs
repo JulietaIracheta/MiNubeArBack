@@ -213,10 +213,7 @@ namespace WebAPI.Models
                 .HasColumnName("T3")
                 ;
 
-                entity.Property(e => e.Prom)
-                .IsRequired()
-                .HasColumnName("Prom")
-                ;
+               
 
                 entity.HasOne(d => d.IdEstudianteNavigation)
                    .WithMany(p => p.Boletin)
