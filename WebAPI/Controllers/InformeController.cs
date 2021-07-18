@@ -62,8 +62,12 @@ namespace WebAPI.Controllers
 
             _context.Informes.Add(informes);
             var trayectoria = _context.Trayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
-            trayectoria.IdInforme = informes.IdInforme;
-            _context.Trayectoria.Update(trayectoria);
+            if (trayectoria != null)
+            {
+                trayectoria.IdInforme = informes.IdInforme;
+                _context.Trayectoria.Update(trayectoria);
+            }
+               
             _context.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
         }
