@@ -34,11 +34,12 @@ namespace WebAPI
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder
-                .SetIsOriginAllowed(origin => true)
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials();                
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .WithOrigins("https://134.209.120.136");
             }));
+
             /*services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder
@@ -71,7 +72,7 @@ namespace WebAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            app.UseCors("CorsPolicy");
+           
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -109,7 +110,7 @@ namespace WebAPI
             }
 
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
