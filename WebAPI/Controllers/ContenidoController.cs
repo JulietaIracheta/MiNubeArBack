@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -70,19 +71,9 @@ namespace WebAPI.Controllers
         {
             var flag = true;
             var contenido = _context.Contenidos.Include(e => e.ContenidoMateriaCurso).First(e => e.IdContenido == id);
-            /*  var contenidoMateriaCurso = _context.ContenidoMateriaCurso.First(e => e.IdContenido == id);
-            var contenidoActividad = _context.Actividades.Include(e=>e.ActividadCurso).First(e => e.IdContenido == id);
-            var questionActividad = _context.Questions.First(e => e.ActividadesId == contenidoActividad.IdActividad);
-            var answerQuestion = _context.Answers.Where(a => a.QuestionId == questionActividad.Id);
-            */try
+            try
             {
                 contenido.FechaBaja = DateTime.Now;
-                /*_context.Answers.RemoveRange(answerQuestion);
-                _context.Questions.Remove(questionActividad);
-                _context.ActividadCurso.RemoveRange(contenidoActividad.ActividadCurso);
-                _context.Actividades.Remove(contenidoActividad);
-                _context.ContenidoMateriaCurso.Remove(contenidoMateriaCurso);
-                //_context.Contenidos.Remove(contenido);*/
                 _context.SaveChanges();
             }
             catch (Exception e)
@@ -112,5 +103,55 @@ namespace WebAPI.Controllers
                 .Where(e => listaDeContenidos.Contains(e.IdContenido)).OrderBy(e => e.IdContenidoNavigation.Fecha)
                 .Select(e => e.IdContenidoNavigation).ToList();
         }
+        [HttpGet("ContenidoPromedio")]
+        public PromedioActividadContenidoDto GetContenidosPromedio(int materiaId, string jwt)
+        {
+            var token = _jwtService.Verify(jwt);
+            var idUsuario = Convert.ToInt32(token.Issuer);
+            
+            var total = _context.ContenidoMateriaCurso
+                .Include(e => e.IdContenidoNavigation)
+                .ThenInclude(e => e.PuntajeContenido)
+                .Where(e => e.IdMateriaCursoNavigation.IdMateria == materiaId && !e.IdContenidoNavigation.FechaBaja.HasValue);
+           
+            var promedioVisto = 0;
+            
+            if(total.Any())
+                promedioVisto = total.Count(e => e.IdContenidoNavigation.Visto) * 100 / total.Count();
+
+            var actResuelta = total
+                .Where(e => e.IdContenidoNavigation.PuntajeContenido.Any(a => a.IdEstudiante == idUsuario))
+                .Select(e => e.IdContenidoNavigation.PuntajeContenido);
+            
+            var totalActividadesResueltas = 0;
+            var listaDePuntajes = new List<int>();
+            
+            foreach (var actividad in actResuelta)
+            {
+                foreach (var puntajeActividad in actividad)
+                {
+                    totalActividadesResueltas++;
+                    listaDePuntajes.Add(puntajeActividad.Puntaje);
+                }
+            }
+
+            var aciertos = listaDePuntajes.Count(puntaje => puntaje > 0);
+
+            var promedioActividades = 0;
+            if (totalActividadesResueltas != 0)
+                promedioActividades = aciertos * 100 / totalActividadesResueltas;
+
+            var textoActividad = TextoResueltoHelper.ObtenerTextoDeResultadoActividades(promedioActividades);
+
+            var contenidoRes = TextoResueltoHelper.ObtenerTextoDeResultado(promedioVisto);
+        
+            return new PromedioActividadContenidoDto
+            {
+                ActividadResuelta = promedioActividades,
+                ContenidoVisto = promedioVisto,
+                ActividadResumen = textoActividad,
+                ContenidoResumen = contenidoRes
+            };
+        }   
     }
 }

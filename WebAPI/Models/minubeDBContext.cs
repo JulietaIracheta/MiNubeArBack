@@ -51,6 +51,7 @@ namespace WebAPI.Models
         public virtual DbSet<Permisos> Permisos { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
         public virtual DbSet<PuntajeActividad> PuntajeActividades { get; set; }
+		public virtual DbSet<PuntajeContenido> PuntajeContenido { get; set; }
         public virtual DbSet<RolInstitucion> RolInstitucion { get; set; }
         public virtual DbSet<RolPermiso> RolPermiso { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
@@ -359,6 +360,10 @@ namespace WebAPI.Models
                     .HasColumnName("video")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Visto)
+                    .HasColumnName("visto")
+                    .HasDefaultValueSql("((0))");
             });
 
             modelBuilder.Entity<CursoDocente>(entity =>
@@ -952,6 +957,53 @@ namespace WebAPI.Models
                     .HasForeignKey(d => d.IdMateria)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Materia_Puntaje_Actividad");
+            });
+
+            modelBuilder.Entity<PuntajeContenido>(entity =>
+            {
+                entity.HasKey(e => e.IdPuntajeContenido)
+                    .HasName("PK__PuntajeC__5CE607648B7D5471");
+
+                entity.Property(e => e.IdPuntajeContenido).HasColumnName("idPuntajeContenido");
+
+                entity.Property(e => e.Fecha)
+                    .HasColumnName("fecha")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdContenido).HasColumnName("idContenido");
+
+                entity.Property(e => e.IdEstudiante).HasColumnName("idEstudiante");
+
+                entity.Property(e => e.Puntaje).HasColumnName("puntaje");
+
+                entity.HasOne(d => d.IdContenidoNavigation)
+                    .WithMany(p => p.PuntajeContenido)
+                    .HasForeignKey(d => d.IdContenido)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Contenido_Puntaje");
+
+                entity.HasOne(d => d.IdEstudianteNavigation)
+                    .WithMany(p => p.PuntajeContenido)
+                    .HasForeignKey(d => d.IdEstudiante)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Contenido_Puntaje_Estudiante");
+            });
+
+            modelBuilder.Entity<Question>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ActividadesId).HasColumnName("actividadesId");
+
+                entity.Property(e => e.Content)
+                    .IsRequired()
+                    .HasColumnName("content")
+                    .HasMaxLength(250);
+
+                entity.HasOne(d => d.ActividadesQuiz)
+                    .WithMany(p => p.Questions)
+                    .HasForeignKey(d => d.ActividadesId)
+                    .HasConstraintName("FK_Question_Actividades");
             });
 
             modelBuilder.Entity<RolInstitucion>(entity =>

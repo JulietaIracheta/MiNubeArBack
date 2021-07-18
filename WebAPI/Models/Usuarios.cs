@@ -20,6 +20,7 @@ namespace WebAPI.Models
             MateriaEstudiante = new HashSet<MateriaEstudiante>();
             NivelEducativoEstudiante = new HashSet<NivelEducativoEstudiante>();
             Notificacion = new HashSet<Notificacion>();
+            PuntajeContenido = new HashSet<PuntajeContenido>();
             TutorEstudianteIdUsuarioEstudianteNavigation = new HashSet<TutorEstudiante>();
             TutorEstudianteIdUsuarioTutorNavigation = new HashSet<TutorEstudiante>();
             UsuarioRol = new HashSet<UsuarioRol>();
@@ -49,6 +50,7 @@ namespace WebAPI.Models
         public virtual ICollection<MateriaEstudiante> MateriaEstudiante { get; set; }
         public virtual ICollection<NivelEducativoEstudiante> NivelEducativoEstudiante { get; set; }
         public virtual ICollection<Notificacion> Notificacion { get; set; }
+		public virtual ICollection<PuntajeContenido> PuntajeContenido { get; set; }
         public virtual ICollection<TutorEstudiante> TutorEstudianteIdUsuarioEstudianteNavigation { get; set; }
         public virtual ICollection<TutorEstudiante> TutorEstudianteIdUsuarioTutorNavigation { get; set; }
         public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
