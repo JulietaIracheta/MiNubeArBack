@@ -59,7 +59,6 @@ namespace WebAPI.Controllers
                 IdInstitucion = file.IdInstitucion,
                 Año = file.Año
             };
-
             _context.Informes.Add(informes);
             //         var trayectoria = _context.Trayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
             //       trayectoria.IdInformeNavigation = informes;
@@ -67,12 +66,13 @@ namespace WebAPI.Controllers
             if (!InformeExists(informes.IdUsuario, informes.Año))
             {
                 _context.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created);
+                return StatusCode(StatusCodes.Status201Created);
             }
             else
             {
                 return BadRequest(new { message = "Ese Usuario ya tiene informe cargado en ese año" });
             }
+
         }
 
         private bool InformeExists(int? id, int año)

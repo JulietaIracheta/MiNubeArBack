@@ -103,8 +103,8 @@ namespace WebAPI.Controllers
                 .Where(e => listaDeContenidos.Contains(e.IdContenido)).OrderBy(e => e.IdContenidoNavigation.Fecha)
                 .Select(e => e.IdContenidoNavigation).ToList();
         }
-        [HttpGet("ContenidoPromedio")]
-        public PromedioActividadContenidoDto GetContenidosPromedio(int materiaId, string jwt)
+        [HttpGet("ContenidoPromedio/{id}")]
+        public PromedioActividadContenidoDto GetContenidosPromedio(int id, string jwt)
         {
             var token = _jwtService.Verify(jwt);
             var idUsuario = Convert.ToInt32(token.Issuer);
@@ -112,14 +112,20 @@ namespace WebAPI.Controllers
             var total = _context.ContenidoMateriaCurso
                 .Include(e => e.IdContenidoNavigation)
                 .ThenInclude(e => e.PuntajeContenido)
-                .Where(e => e.IdMateriaCursoNavigation.IdMateria == materiaId && !e.IdContenidoNavigation.FechaBaja.HasValue);
-           
+                .Where(e => e.IdMateriaCursoNavigation.IdMateria == id && !e.IdContenidoNavigation.FechaBaja.HasValue &&
+                            !string.IsNullOrEmpty(e.IdContenidoNavigation.Video));
+            var totalActividades = _context.ContenidoMateriaCurso
+                .Include(e => e.IdContenidoNavigation)
+                .ThenInclude(e => e.PuntajeContenido)
+                .Where(e => e.IdMateriaCursoNavigation.IdMateria == id && !e.IdContenidoNavigation.FechaBaja.HasValue);
             var promedioVisto = 0;
-            
-            if(total.Any())
-                promedioVisto = total.Count(e => e.IdContenidoNavigation.Visto) * 100 / total.Count();
 
-            var actResuelta = total
+            if (total.Any())
+            {
+                promedioVisto = total.Count(e => e.IdContenidoNavigation.Visto) * 100 / total.Count();
+            }
+
+            var actResuelta = totalActividades
                 .Where(e => e.IdContenidoNavigation.PuntajeContenido.Any(a => a.IdEstudiante == idUsuario))
                 .Select(e => e.IdContenidoNavigation.PuntajeContenido);
             
