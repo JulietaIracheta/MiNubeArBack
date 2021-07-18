@@ -75,9 +75,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getInformeByEstudiante/{id}")]
-        public async Task<IQueryable<string>> GetInformeByEstudiante()
+        public async Task<IQueryable<string>> GetInformeByEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
@@ -86,9 +86,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getInformeTrayectoria/{anio}")]
-        public async Task<IQueryable<string>> GetInformeTrayectoria(int anio)
+        public async Task<IQueryable<string>> GetInformeTrayectoria(int anio, string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+        //    var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
@@ -97,9 +97,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getInformeTrayectoria")]
-        public async Task<List<InformeTrayectoria>> GetInformeTrayectoriaEstudiante()
+        public async Task<List<InformeTrayectoria>> GetInformeTrayectoriaEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
@@ -107,9 +107,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getTrayectoria")]
-        public async Task<List<TrayectoriaDto>> GetTrayectoriaEstudiante()
+        public async Task<List<TrayectoriaDto>> GetTrayectoriaEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);

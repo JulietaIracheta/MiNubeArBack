@@ -128,9 +128,9 @@ namespace WebAPI.Controllers
             return estudiante;
         }
         [HttpGet("estudiantesByDocente")]
-        public List<PersonaDto> getEstudiantesByDocente()
+        public List<PersonaDto> getEstudiantesByDocente(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var userId = Convert.ToInt32(token.Issuer);
 
