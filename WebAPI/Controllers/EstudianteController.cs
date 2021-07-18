@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,14 +39,41 @@ namespace WebAPI.Controllers
 
             var userId = Convert.ToInt32(token.Issuer);
 
-            List<EstudianteMateriasDto> materias = estudianteRepository.GetMaterias(userId);
+            var materias = estudianteRepository.GetMaterias(userId);
 
-            if (materias.Count() > 0)
+            if (materias.Any())
             {
                 return Ok(materias);
             }
 
             return NotFound("Sin materias");
+        }
+        [HttpGet("materiasDeEstudiante/{id}")]
+        public ActionResult<EstudianteMateriasDto> GetMaterias(int id)
+        {
+
+            var materias = estudianteRepository.GetMaterias(id);
+
+            if (materias.Any())
+            {
+                return Ok(materias);
+            }
+
+            return NotFound("Sin materias");
+        }
+        [HttpGet("getByCurso/{id}/{idInstitucion}")]
+        public ActionResult<Usuarios> GetByCurso(int id, int idInstitucion)
+        {
+            var usuarios = _context.EstudianteCurso.Include(e => e.IdUsuarioNavigation).Where(e =>
+                    e.IdCurso == id && e.IdCursoNavigation.InstitucionCurso.Any(e => e.IdInstitucion == idInstitucion))
+                .Select(e=>e.IdUsuarioNavigation).ToList();
+
+            if (usuarios.Any())
+            {
+                return Ok(usuarios);
+            }
+
+            return NotFound("Sin estudiantes");
         }
     }
 }

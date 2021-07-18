@@ -22,13 +22,26 @@ namespace WebAPI.Data
         }
         public Contenidos GetById(int id)
         {
-            return _context.Contenidos.FirstOrDefault(x => !x.FechaBaja.HasValue && x.IdContenido == id);
+            return _context.Contenidos.Include(e=>e.PuntajeContenido).FirstOrDefault(x => !x.FechaBaja.HasValue && x.IdContenido == id);
         }
         public List<Contenidos> GetByMateriaId(int materiaId, int cursoId)
         {
             var list= _context.Contenidos.Include(e => e.Actividades).ThenInclude(e => e.Questions)
                 .ThenInclude(e => e.Answers)
+                .Include(e=>e.ContenidoMateriaCurso).ThenInclude(e=>e.IdMateriaCursoNavigation)
                 .Where(c => !c.FechaBaja.HasValue && c.ContenidoMateriaCurso.Any(cmc => cmc.IdMateriaCursoNavigation.IdMateria == materiaId && cmc.IdMateriaCursoNavigation.IdCurso==cursoId))
+                .OrderBy(e => e.Unidad)
+                .ToList();
+            return list;
+        }
+
+        public List<Contenidos> GetByEstudiante(int materiaId, int cursoId)
+        {
+            var list = _context.Contenidos.Include(e => e.Actividades).ThenInclude(e => e.Questions)
+                .ThenInclude(e => e.Answers)
+                .Where(c => !c.FechaBaja.HasValue && c.ContenidoMateriaCurso.Any(cmc =>
+                    cmc.IdMateriaCursoNavigation.IdMateria == materiaId &&
+                    cmc.IdMateriaCursoNavigation.IdCurso == cursoId))
                 .OrderBy(e => e.Unidad)
                 .ToList();
             return list;

@@ -53,6 +53,24 @@ namespace WebAPI.Controllers
 
             return boletin.ToList();
         }
+        [HttpGet("estudianteTutor")]
+        public List<Boletin> GetBoletinEstudianteTutor(int id)
+        {
+
+            IQueryable<Boletin> boletin = from b in _context.Boletin
+                                          where b.IdEstudiante == id && b.Año == DateTime.Today.Year
+                                          select new Boletin
+                                          {
+                                              IdEstudiante = id,
+                                              Año = b.Año,
+                                              Materia = b.Materia,
+                                              T1 = b.T1,
+                                              T2 = b.T2,
+                                              T3 = b.T3,
+                                          };
+
+            return boletin.ToList();
+        }
         [HttpGet("getByEstudianteId/{id}")]
         public List<Boletin> GetBoletinEstudiante(int id)
         {
@@ -72,13 +90,13 @@ namespace WebAPI.Controllers
             return boletin.ToList();
         }
         [HttpGet("trayectoria/{anio}")]
-        public List<Boletin> GettrayectoriaEstudiante(int anio)
+        public List<Boletin> GettrayectoriaEstudiante(int anio, string jwt)
         {
             DateTime año = DateTime.Today;
 
             var a = año.Year;
 
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
            
@@ -98,13 +116,13 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("año")]
-        public List<int> GettrayectoriaAño()
+        public List<int> GettrayectoriaAño(string jwt)
         {
             DateTime año = DateTime.Today;
 
             var a = año.Year;
 
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
 
@@ -210,8 +228,17 @@ namespace WebAPI.Controllers
             
             _context.Notificacion.Add(notificacionEstudiante);
             _context.Boletin.Add(bol);
-            await _context.SaveChangesAsync();
-            return bol;
+
+            if (!BoletinExists(bol.IdEstudiante, bol.Año, bol.Materia))
+            {
+                await _context.SaveChangesAsync();
+
+                return bol;
+            }
+            else
+            {
+                return BadRequest(new { message = "Ese Usuario Ya tiene notas cargadas en ese año" });
+            }
         }
 
         [HttpGet("getBoletinesEstudiante/{id}")]
@@ -262,7 +289,7 @@ namespace WebAPI.Controllers
             var totalEstudiantes = _context.InstitucionEstudiante.Select(e => e.IdUsuario).Count();
             var totalDocentes= _context.InstitucionDocente.Select(e => e.IdDocente).Distinct().Count();
             var totalInstituciones= _context.Instituciones.Select(e => e.IdInstitucion).Count();
-            var totalTutores= _context.TutorEstudiante.Select(e => e.IdTutorEstudiante).Distinct().Count();
+            var totalTutores= _context.TutorEstudiante.Select(e => e.IdUsuarioTutor).Distinct().Count();
 
 
             return new dto
@@ -276,6 +303,12 @@ namespace WebAPI.Controllers
                 totalTutores = totalTutores
             };
         }
+
+        private bool BoletinExists(int? id, int año, string materia)
+        {
+            return _context.Boletin.Any(e => e.IdEstudiante == id && e.Año == año && e.Materia == materia );
+        }
+
     }
 
     public class dto
@@ -288,4 +321,5 @@ namespace WebAPI.Controllers
         public string estudiante { get; set; }
         public double mejorPromedio { get; set; }
     }
+
 }

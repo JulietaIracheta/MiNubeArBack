@@ -14,6 +14,7 @@ namespace WebAPI.Models
 
         public int Id { get; set; }
         public int IdInforme { get; set; }
+        public int IdEstudiante { get; set; }
         public int Año { get; set; }
         public string Materia { get; set; }
         public string Calificacion{ get; set; }

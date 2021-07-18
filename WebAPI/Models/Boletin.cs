@@ -14,7 +14,6 @@ namespace WebAPI.Models
         public decimal T1 { get; set; }
         public decimal T2 { get; set; }
         public decimal T3 { get; set; }
-        public decimal Prom { get; set; }
 
         public virtual Usuarios IdEstudianteNavigation { get; set; }
     }
