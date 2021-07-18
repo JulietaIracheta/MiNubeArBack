@@ -228,8 +228,17 @@ namespace WebAPI.Controllers
             
             _context.Notificacion.Add(notificacionEstudiante);
             _context.Boletin.Add(bol);
-            await _context.SaveChangesAsync();
-            return bol;
+
+            if (!BoletinExists(bol.IdEstudiante, bol.Año, bol.Materia))
+            {
+                await _context.SaveChangesAsync();
+
+                return bol;
+            }
+            else
+            {
+                return BadRequest(new { message = "Ese Usuario Ya tiene notas cargadas en ese año" });
+            }
         }
 
         [HttpGet("getBoletinesEstudiante/{id}")]
@@ -294,6 +303,12 @@ namespace WebAPI.Controllers
                 totalTutores = totalTutores
             };
         }
+
+        private bool BoletinExists(int? id, int año, string materia)
+        {
+            return _context.Boletin.Any(e => e.IdEstudiante == id && e.Año == año && e.Materia == materia );
+        }
+
     }
 
     public class dto
@@ -306,4 +321,5 @@ namespace WebAPI.Controllers
         public string estudiante { get; set; }
         public double mejorPromedio { get; set; }
     }
+
 }

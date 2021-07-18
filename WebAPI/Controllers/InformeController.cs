@@ -61,11 +61,23 @@ namespace WebAPI.Controllers
             };
 
             _context.Informes.Add(informes);
-            var trayectoria = _context.Trayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
-            trayectoria.IdInforme = informes.IdInforme;
-            _context.Trayectoria.Update(trayectoria);
-            _context.SaveChanges();
+            //         var trayectoria = _context.Trayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
+            //       trayectoria.IdInformeNavigation = informes;
+            //     _context.Trayectoria.Update(trayectoria);
+            if (!InformeExists(informes.IdUsuario, informes.Año))
+            {
+                _context.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
+            }
+            else
+            {
+                return BadRequest(new { message = "Ese Usuario ya tiene informe cargado en ese año" });
+            }
+        }
+
+        private bool InformeExists(int? id, int año)
+        {
+            return _context.Informes.Any(e => e.IdUsuario == id && e.Año == año );
         }
 
         [HttpGet]
@@ -74,7 +86,7 @@ namespace WebAPI.Controllers
             return InformeRepository.GetById(id);
         }
 
-        [HttpGet("getInformeByEstudiante/{id}")]
+        [HttpGet("getInformeByEstudiante")]
         public async Task<IQueryable<string>> GetInformeByEstudiante(string jwt)
         {
 //            var jwt = Request.Cookies["jwt"];
