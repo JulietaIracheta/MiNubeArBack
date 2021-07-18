@@ -56,13 +56,14 @@ namespace WebAPI.Controllers
                 IdUsuario = file.IdUsuario,
                 Informe = file.Informe,
                 IdCurso = file.IdCurso,
+                IdInstitucion = file.IdInstitucion,
                 Año = file.Año
             };
 
-            //      var trayectoria = _context.InformeTrayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
-            //    trayectoria.Informe = file.Informe;
-            //  _context.InformeTrayectoria.Update(trayectoria);
             _context.Informes.Add(informes);
+            var trayectoria = _context.Trayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
+            trayectoria.IdInforme = informes.IdInforme;
+            _context.Trayectoria.Update(trayectoria);
             _context.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
         }

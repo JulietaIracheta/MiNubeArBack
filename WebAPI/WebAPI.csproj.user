@@ -11,5 +11,6 @@
     <WebStackScaffolding_DbContextTypeFullName>WebAPI.Models.minubeDBContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>False</WebStackScaffolding_IsViewGenerationSelected>
+    <NameOfLastUsedPublishProfile>C:\Users\Sebas\Desktop\Proyecto Final\MiNubeArBack\WebAPI\Properties\PublishProfiles\Default Settings.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

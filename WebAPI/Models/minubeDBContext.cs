@@ -506,6 +506,12 @@ namespace WebAPI.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Curso_Informe");
 
+                entity.HasOne(d => d.IdInstitucionNavigation)
+                   .WithMany(p => p.Informes)
+                   .HasForeignKey(d => d.IdInstitucion)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("fk_Institucion_Informe");
+
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Informes)
                     .HasForeignKey(d => d.IdUsuario)

@@ -59,8 +59,11 @@ namespace WebAPI.Data
         public List<TrayectoriaDto> GetTrayectoriaEstudiante(int estudianteId)
         {
 
-            var inf = _context.Trayectoria.Include(x => x.IdInformeNavigation).ThenInclude(x => x.IdCursoNavigation).ThenInclude(x => x.EstudianteCurso)
+            var inf = _context.Trayectoria.Include(x => x.IdInformeNavigation).ThenInclude(x => x.IdInstitucionNavigation)
+                .ThenInclude(o=>o.InstitucionCurso).ThenInclude(t=>t.IdCursoNavigation).ThenInclude(x => x.EstudianteCurso)
                 .Where(c => c.IdInformeNavigation.IdUsuario == estudianteId);
+            var inf2 = _context.Trayectoria.Include(x => x.IdInformeNavigation).ThenInclude(t => t.IdCursoNavigation).ThenInclude(x => x.EstudianteCurso)
+              .Where(c => c.IdInformeNavigation.IdUsuario == estudianteId);
 
             var años = inf.OrderByDescending(a => a.Año).Select(x => x.Año).Distinct();
             var listaTrayectoria = new List<TrayectoriaDto>();
@@ -69,7 +72,8 @@ namespace WebAPI.Data
                 var t = new TrayectoriaDto
                 {
                     Año = año,
-                    Curso = inf.First(c => c.Año == año).IdInformeNavigation.IdCursoNavigation.Nombre,
+                   Curso = inf2.First(c => c.Año == año).IdInformeNavigation.IdCursoNavigation.Nombre,
+                   Institucion = inf.First(c => c.Año == año).IdInformeNavigation.IdInstitucionNavigation.Nombre,
                     Informe = inf.First(c => c.Año == año).IdInformeNavigation.Informe,
                     MateriaCalificacion = new List<MateriaCalificacionDto>()
                 };
@@ -129,11 +133,10 @@ namespace WebAPI.Data
         {
             var materias = new List<MateriaCalificacion>();
             var tray = new Trayectoria();
-            var inf = new Informes();
             foreach (var i in informe.Calificaciones)
             {
-
-                tray.IdInforme = 26;
+                tray.IdEstudiante = informe.IdEstudiante;
+                tray.IdInforme = informe.IdInforme;
                 tray.Año = informe.Año;
                 tray.Materia = i.Materia;
                 tray.Calificacion = i.Calificacion;

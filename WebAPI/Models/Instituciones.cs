@@ -13,6 +13,7 @@ namespace WebAPI.Models
             InstitucionMateria = new HashSet<InstitucionMateria>();
             InstitucionTutor = new HashSet<InstitucionTutor>();
             RolInstitucion = new HashSet<RolInstitucion>();
+            Informes = new HashSet<Informes>();
         }
 
         public int IdInstitucion { get; set; }
@@ -26,5 +27,6 @@ namespace WebAPI.Models
         public virtual ICollection<InstitucionMateria> InstitucionMateria { get; set; }
         public virtual ICollection<InstitucionTutor> InstitucionTutor { get; set; }
         public virtual ICollection<RolInstitucion> RolInstitucion { get; set; }
+        public virtual ICollection<Informes> Informes { get; set; }
     }
 }
