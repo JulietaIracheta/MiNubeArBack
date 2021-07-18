@@ -53,6 +53,24 @@ namespace WebAPI.Controllers
 
             return boletin.ToList();
         }
+        [HttpGet("estudianteTutor")]
+        public List<Boletin> GetBoletinEstudianteTutor(int id)
+        {
+
+            IQueryable<Boletin> boletin = from b in _context.Boletin
+                                          where b.IdEstudiante == id && b.Año == DateTime.Today.Year
+                                          select new Boletin
+                                          {
+                                              IdEstudiante = id,
+                                              Año = b.Año,
+                                              Materia = b.Materia,
+                                              T1 = b.T1,
+                                              T2 = b.T2,
+                                              T3 = b.T3,
+                                          };
+
+            return boletin.ToList();
+        }
         [HttpGet("getByEstudianteId/{id}")]
         public List<Boletin> GetBoletinEstudiante(int id)
         {
@@ -72,13 +90,13 @@ namespace WebAPI.Controllers
             return boletin.ToList();
         }
         [HttpGet("trayectoria/{anio}")]
-        public List<Boletin> GettrayectoriaEstudiante(int anio)
+        public List<Boletin> GettrayectoriaEstudiante(int anio, string jwt)
         {
             DateTime año = DateTime.Today;
 
             var a = año.Year;
 
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
            
@@ -98,13 +116,13 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("año")]
-        public List<int> GettrayectoriaAño()
+        public List<int> GettrayectoriaAño(string jwt)
         {
             DateTime año = DateTime.Today;
 
             var a = año.Year;
 
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
             var id = Convert.ToInt32(token.Issuer);
 
