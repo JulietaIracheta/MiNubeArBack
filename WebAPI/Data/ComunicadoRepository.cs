@@ -94,11 +94,11 @@ namespace WebAPI.Data
             var listaDeNotificaciones = new List<Notificacion>();
 
             var estudiantes = _context.EstudianteCurso.Include(e => e.IdUsuarioNavigation)
-                .ThenInclude(e => e.IdPersonaNavigation).Where(e => e.IdCurso == comunicado.IdCurso);
+                .ThenInclude(e => e.IdPersonaNavigation).Where(e => e.IdCurso == comunicado.IdCurso).ToList();
 
             foreach (var estudiante in estudiantes)
             {
-                var tutor = _context.TutorEstudiante.FirstOrDefault(e => e.IdUsuarioEstudiante == estudiante.IdUsuario)?.IdUsuarioTutor;
+                var tutor = _context.TutorEstudiante.FirstOrDefault(e => e.IdUsuarioEstudiante == estudiante.IdUsuario);
 
                 listaDeComunicados.Add(new Comunicados
                 {
@@ -118,12 +118,12 @@ namespace WebAPI.Data
                     TipoNotificacion = (int)TipoNotificacion.Comunicado
                 });
                 
-                if(tutor.HasValue)
+                if(tutor != null)
                     listaDeNotificaciones.Add(new Notificacion
                     {
                         Descripcion = "Nuevo comunicado",
                         Fecha = DateTime.Now,
-                        IdDestinatario = tutor.Value,
+                        IdDestinatario = tutor.IdUsuarioTutor,
                         IdNotificacion = 0,
                         Mensaje = $"Ha recibido un nuevo comunicado {DateTime.Now:g}",
                         TipoNotificacion = (int)TipoNotificacion.Comunicado
