@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using WebAPI.Dto;
 using WebAPI.Helpers;
@@ -58,35 +59,38 @@ namespace WebAPI.Data
         }
         public List<TrayectoriaDto> GetTrayectoriaEstudiante(int estudianteId)
         {
-
-            var inf = _context.Trayectoria.Include(x => x.IdInformeNavigation).ThenInclude(x => x.IdCursoNavigation).ThenInclude(x => x.EstudianteCurso)
-                .Where(c => c.IdInformeNavigation.IdUsuario == estudianteId);
+            var inf = _context.Informes.Include(e => e.IdCursoNavigation).Include(e => e.IdInstitucionNavigation)
+                .Where(c => c.IdUsuario == estudianteId).ToList();
 
             var años = inf.OrderByDescending(a => a.Año).Select(x => x.Año).Distinct();
             var listaTrayectoria = new List<TrayectoriaDto>();
             foreach (var año in años)
             {
+                if(año==DateTime.Now.Year) continue;
                 var t = new TrayectoriaDto
                 {
                     Año = año,
-                    Curso = inf.First(c => c.Año == año).IdInformeNavigation.IdCursoNavigation.Nombre,
-                    Informe = inf.First(c => c.Año == año).IdInformeNavigation.Informe,
+                    Curso = inf.First(e => e.Año == año).IdCursoNavigation.Nombre,
+                    Institucion = inf.First(e => e.Año == año).IdInstitucionNavigation.Nombre,
+                    Informe = inf.Any() ? inf.First(c => c.Año == año).Informe : string.Empty,
                     MateriaCalificacion = new List<MateriaCalificacionDto>()
                 };
-                foreach (var i in inf.Where(a => a.Año == año))
+                var boletin = _context.Boletin.Where(e => e.Año == año && e.IdEstudiante == estudianteId).ToList();
+                foreach (var nota in boletin)
                 {
-
+                    var promedio = Math.Round((nota.T1 + nota.T2 + nota.T3) / 3, 2)
+                        .ToString(CultureInfo.InvariantCulture);
                     t.MateriaCalificacion.Add(new MateriaCalificacionDto
                     {
-                        Materia = i.Materia,
-                        Calificacion = i.Calificacion
+                        Materia = nota.Materia,
+                        Calificacion = promedio
                     });
-                };
+                }
+
                 listaTrayectoria.Add(t);
             }
 
-            return listaTrayectoria;
-
+            return listaTrayectoria.OrderBy(e=>e.Año).ToList();
         }
 
         public Informes Crear(InformeDto informe, string contentRootPath)
@@ -129,11 +133,10 @@ namespace WebAPI.Data
         {
             var materias = new List<MateriaCalificacion>();
             var tray = new Trayectoria();
-            var inf = new Informes();
             foreach (var i in informe.Calificaciones)
             {
-
-                tray.IdInforme = 26;
+                tray.IdEstudiante = informe.IdEstudiante;
+                tray.IdInforme = informe.IdInforme;
                 tray.Año = informe.Año;
                 tray.Materia = i.Materia;
                 tray.Calificacion = i.Calificacion;

@@ -56,15 +56,28 @@ namespace WebAPI.Controllers
                 IdUsuario = file.IdUsuario,
                 Informe = file.Informe,
                 IdCurso = file.IdCurso,
+                IdInstitucion = file.IdInstitucion,
                 Año = file.Año
             };
-
-            //      var trayectoria = _context.InformeTrayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
-            //    trayectoria.Informe = file.Informe;
-            //  _context.InformeTrayectoria.Update(trayectoria);
             _context.Informes.Add(informes);
-            _context.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created);
+            //         var trayectoria = _context.Trayectoria.FirstOrDefault(x => x.IdEstudiante == file.IdUsuario && x.Año == file.Año);
+            //       trayectoria.IdInformeNavigation = informes;
+            //     _context.Trayectoria.Update(trayectoria);
+            if (!InformeExists(informes.IdUsuario, informes.Año))
+            {
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created);
+            }
+            else
+            {
+                return BadRequest(new { message = "Ese Usuario ya tiene informe cargado en ese año" });
+            }
+
+        }
+
+        private bool InformeExists(int? id, int año)
+        {
+            return _context.Informes.Any(e => e.IdUsuario == id && e.Año == año );
         }
 
         [HttpGet]
@@ -73,10 +86,10 @@ namespace WebAPI.Controllers
             return InformeRepository.GetById(id);
         }
 
-        [HttpGet("getInformeByEstudiante/{id}")]
-        public async Task<IQueryable<string>> GetInformeByEstudiante()
+        [HttpGet("getInformeByEstudiante")]
+        public async Task<IQueryable<string>> GetInformeByEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
@@ -85,9 +98,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getInformeTrayectoria/{anio}")]
-        public async Task<IQueryable<string>> GetInformeTrayectoria(int anio)
+        public async Task<IQueryable<string>> GetInformeTrayectoria(int anio, string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+        //    var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
@@ -96,9 +109,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getInformeTrayectoria")]
-        public async Task<List<InformeTrayectoria>> GetInformeTrayectoriaEstudiante()
+        public async Task<List<InformeTrayectoria>> GetInformeTrayectoriaEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);
@@ -106,9 +119,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getTrayectoria")]
-        public async Task<List<TrayectoriaDto>> GetTrayectoriaEstudiante()
+        public async Task<List<TrayectoriaDto>> GetTrayectoriaEstudiante(string jwt)
         {
-            var jwt = Request.Cookies["jwt"];
+//            var jwt = Request.Cookies["jwt"];
             var token = _jwtService.Verify(jwt);
 
             var userId = Convert.ToInt32(token.Issuer);

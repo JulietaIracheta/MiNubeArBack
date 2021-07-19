@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public List<Question> GetQuestionsById(int id)
         {
-            return _context.Questions.Include(p => p.Answers).Where(a=>a.ActividadesQuiz.Unidad == id).ToList();
+            return _context.Questions.Include(p => p.Answers).Where(a=>a.ActividadesQuiz.IdContenido == id).ToList();
         }
 
         [HttpGet("{curso}/{unidad}")]

@@ -3,7 +3,7 @@
 /WebAPI/obj
 /WebAPI/.vs
 /WebAPI/.vs/config/applicationhost.config
-
+.vs
 *.swp
 *.*~
 project.lock.json

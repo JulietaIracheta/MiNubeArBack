@@ -11,6 +11,7 @@ namespace WebAPI.Models
             Comentarios = new HashSet<Comentarios>();
             ContenidoHistorico = new HashSet<ContenidoHistorico>();
             ContenidoMateriaCurso = new HashSet<ContenidoMateriaCurso>();
+			PuntajeContenido = new HashSet<PuntajeContenido>();
         }
 
         public int IdContenido { get; set; }
@@ -20,11 +21,13 @@ namespace WebAPI.Models
         public string Video { get; set; }
         public DateTime? Fecha { get; set; }
         public DateTime? FechaBaja { get; set; }
+	    public bool Visto { get; set; }
 
         public virtual ICollection<Actividades> Actividades { get; set; }
         public virtual ICollection<Comentarios> Comentarios { get; set; }
         public virtual ICollection<ContenidoHistorico> ContenidoHistorico { get; set; }
 
         public virtual ICollection<ContenidoMateriaCurso> ContenidoMateriaCurso { get; set; }
+		public virtual ICollection<PuntajeContenido> PuntajeContenido { get; set; }
     }
 }
