@@ -145,7 +145,7 @@ namespace WebAPI.Controllers
         {
 
             IQueryable<Boletin> boletin = from b in _context.Boletin
-                                          where b.IdEstudiante == id
+                                          where b.IdEstudiante == id && b.Año == DateTime.Now.Year
                                           select new Boletin
                                           {
                                               IdEstudiante = id,

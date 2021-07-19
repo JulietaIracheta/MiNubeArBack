@@ -108,6 +108,7 @@ namespace WebAPI.Data
                     IdUsuarioNavigation = estudiante.IdUsuarioNavigation,
                     IdUsuario = estudiante.IdUsuario
                 });
+                
                 listaDeNotificaciones.Add(new Notificacion
                 {
                     Descripcion = "Nuevo Comunicado",
