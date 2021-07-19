@@ -12,7 +12,7 @@ namespace WebAPI.Helpers
     {
         public static string GuardarVideo(string contentRootPath, IFormFile file)
         {
-            var path = Path.Combine(contentRootPath, "videos\\");
+            var path = Path.Combine(contentRootPath, "videos//");
 
             var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"), file.FileName);
 
