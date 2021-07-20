@@ -50,6 +50,7 @@ namespace WebAPI.Models
         public virtual DbSet<Notificacion> Notificacion { get; set; }
         public virtual DbSet<Permisos> Permisos { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<PuntajeActividad> PuntajeActividades { get; set; }
 		public virtual DbSet<PuntajeContenido> PuntajeContenido { get; set; }
         public virtual DbSet<RolInstitucion> RolInstitucion { get; set; }
@@ -224,7 +225,21 @@ namespace WebAPI.Models
 
             });
 
-                modelBuilder.Entity<Comentarios>(entity =>
+            modelBuilder.Entity<Log>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.IdLog)
+                    .HasColumnName("idLog")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.MensajeError)
+                    .IsRequired()
+                    .HasColumnName("mensajeError")
+                    .HasColumnType("text");
+            });
+
+            modelBuilder.Entity<Comentarios>(entity =>
             {
                 entity.HasKey(e => e.IdComentario)
                     .HasName("PK__Comentar__C74515DA1C70AC3B");

@@ -37,7 +37,7 @@ namespace WebAPI
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
-                    .WithOrigins("https://134.209.120.136");
+                    .WithOrigins("http://134.209.120.136","http://localhost:3000");
             }));
 
             /*services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
