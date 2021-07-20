@@ -85,7 +85,7 @@ namespace WebAPI.Controllers
                 var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"),
                     cuentaUsuario.File.FileName);
 
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "Avatares", nombreConHoras);
+                string path = Path.Combine(Environment.CurrentDirectory, "Avatares", nombreConHoras);
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
 
