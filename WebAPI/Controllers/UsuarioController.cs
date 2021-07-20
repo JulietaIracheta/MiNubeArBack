@@ -80,7 +80,6 @@ namespace WebAPI.Controllers
             var usuario = _context.Usuarios.First(e => e.IdUsuario == cuentaUsuario.IdUsuario);
             var persona = _context.Personas.First(e => e.IdPersona == cuentaUsuario.IdPersona);
 
-
             if (cuentaUsuario.File != null)
             {
                 var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"),
@@ -89,7 +88,17 @@ namespace WebAPI.Controllers
                 string path = Path.Combine(Directory.GetCurrentDirectory(), "Avatares", nombreConHoras);
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
-                    cuentaUsuario.File.CopyTo(stream);
+
+                    try
+                    {
+                        cuentaUsuario.File.CopyTo(stream);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogRepository log = new LogRepository();
+                        log.Crear(ex.Message);
+                    }
+                    
                 }
 
                 usuario.Avatar = nombreConHoras;
