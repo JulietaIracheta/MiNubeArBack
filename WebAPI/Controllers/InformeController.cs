@@ -127,6 +127,10 @@ namespace WebAPI.Controllers
             var userId = Convert.ToInt32(token.Issuer);
             return InformeRepository.GetTrayectoriaEstudiante(userId);
         }
-
+        [HttpGet("getTrayectoriaByEstudiante/{id}")]
+        public async Task<List<TrayectoriaDto>> GetTrayectoriaEstudiante(int id)
+        {
+            return InformeRepository.GetTrayectoriaEstudiante(id);
+        }
     }
 }

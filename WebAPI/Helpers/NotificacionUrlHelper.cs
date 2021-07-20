@@ -19,6 +19,9 @@ namespace WebAPI.Helpers
                 case (int)TipoNotificacion.Evento:
                     url = "calendario";
                     break;
+                case (int)TipoNotificacion.Calificacion:
+                    url = "calificacion";
+                    break;
             }
 
             return url;
