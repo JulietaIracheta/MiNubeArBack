@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -80,9 +81,19 @@ namespace WebAPI.Controllers
             var persona = _context.Personas.First(e => e.IdPersona == cuentaUsuario.IdPersona);
 
 
-            usuario.Avatar = cuentaUsuario.File == null
-                ? usuario.Avatar
-                : FileHelper.GuardarAvatar(_env.ContentRootPath, cuentaUsuario.File);
+            if (cuentaUsuario.File != null)
+            {
+                var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"),
+                    cuentaUsuario.File.FileName);
+
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "Avatares", nombreConHoras);
+                using (Stream stream = new FileStream(path, FileMode.Create))
+                {
+                    cuentaUsuario.File.CopyTo(stream);
+                }
+
+                usuario.Avatar = nombreConHoras;
+            }
 
             usuario.UsuarioNombre = cuentaUsuario.UsuarioNombre;
             
