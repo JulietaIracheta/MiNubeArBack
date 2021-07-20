@@ -82,6 +82,7 @@ namespace WebAPI.Controllers
 
             if (cuentaUsuario.File != null)
             {
+                Console.WriteLine("cuentaUsuario.File: "+ cuentaUsuario.File);
                 var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"),
                     cuentaUsuario.File.FileName);
 
