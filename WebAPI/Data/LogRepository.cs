@@ -15,7 +15,7 @@ namespace WebAPI.Data
             Log log = new Log();
 
             log.MensajeError = mensaje;
-
+            _context.Add(log);
             _context.SaveChanges();
         }
     }
