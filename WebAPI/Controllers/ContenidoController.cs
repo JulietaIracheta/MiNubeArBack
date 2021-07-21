@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
         [HttpPost("crearContenido")]
         public async Task<ActionResult<Contenidos>> CrearContenido([FromForm] ContenidoDto contenido)
         {
-            return contenidoRepository.Crear(contenido, _env.ContentRootPath);
+            return contenidoRepository.Crear(contenido);
         }
         [HttpPost("cargarVideo")]
         public async Task<ActionResult> Cargarvideo([FromForm]IFormFile file)

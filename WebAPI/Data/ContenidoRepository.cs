@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Dto;
@@ -46,9 +47,19 @@ namespace WebAPI.Data
                 .ToList();
             return list;
         }
-        public Contenidos Crear(ContenidoDto contenido, string contentRootPath)
+        public Contenidos Crear(ContenidoDto contenido)
         {
-            var nombreVideo= contenido.file == null ? string.Empty : FileHelper.GuardarVideo(contentRootPath, contenido.file);
+            var nombreVideo = "";
+            if (contenido.file != null)
+            {
+                var nombreConHoras = DateTime.Now.ToString("s") + contenido.file.FileName;
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "videos", nombreConHoras);
+                nombreVideo = nombreConHoras;
+                using (Stream stream = new FileStream(path, FileMode.Create))
+                {
+                    contenido.file.CopyTo(stream);
+                }
+            }
 
             var contenidos= new Contenidos
             {
