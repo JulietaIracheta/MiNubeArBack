@@ -25,10 +25,11 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpGet("{id}")]
-        public List<TutorEstudianteDto> GetEstudiantes(int id)
+        [HttpGet]
+        public List<TutorEstudianteDto> GetEstudiantes(string jwt)
         {
-
+            var token = _jwtService.Verify(jwt);
+            var id = Convert.ToInt32(token.Issuer);
             return tutorRepository.GetEstudiantesTutor(id);
         }
 
