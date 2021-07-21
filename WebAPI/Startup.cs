@@ -79,15 +79,10 @@ namespace WebAPI
            
             app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath,"videos")),
-                RequestPath = "/videos"
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"videos")),
+                RequestPath = new PathString("/videos")
             });
 
-            /*app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Avatares")),
-                RequestPath = "/Avatares"
-            });*/
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(
