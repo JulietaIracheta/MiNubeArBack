@@ -83,10 +83,10 @@ namespace WebAPI.Controllers
 
             if (cuentaUsuario.File != null)
             {
-                var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"),
-                    cuentaUsuario.File.FileName);
-
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "Avatares", nombreConHoras);
+                //var nombreConHoras = string.Format("{0} {1}", DateTime.Now.ToString("_MMddyyyy_HHmmss"),
+                   // cuentaUsuario.File.FileName);
+                var nombreConHoras = DateTime.Now.ToString("s") + cuentaUsuario.File.FileName;
+                string path = Path.Combine(Directory.GetCurrentDirectory(),"Avatares",nombreConHoras);
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
                     cuentaUsuario.File.CopyTo(stream);
